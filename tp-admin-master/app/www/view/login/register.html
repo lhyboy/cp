@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1">
+<meta name=viewport content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+<meta name=apple-touch-fullscreen content=yes>
+<link rel=apple-touch-icon href=/src/img/favicon.267ace1.png>
+<meta name=format-detection content="telephone=no">
+<meta name=format-detection content="email=no">
+<meta name=renderer content=webkit>
+<meta http-equiv=X-UA-Compatible content="IE=edge">
+<meta name=HandheldFriendly content=true>
+<meta name=MobileOptimized content=320>
+<meta name=screen-orientation content=portrait>
+<meta name=x5-orientation content=portrait>
+<meta name=full-screen content=yes>
+<meta name=x5-fullscreen content=true>
+<meta name=browsermode content=application>
+<meta name=x5-page-mode content=app>
+<meta name=msapplication-tap-highlight content=no>
+<link rel="shortcut icon" href=favicon.ico type=image/x-icon>
+{css href="__CSS__/login.css" /}
+{js href="__JS__/jquery.js" /}
+{js href="__JS__/resize.js" /}
+{js href="__JS__/register.js" /}
+</head>
+<body>
+<div id="app">
+  <header class="top">
+    <span>用户注册</span> <!---->
+    <a href="{:url('www/login/index')}" class="iconfont back"></a> 
+  </header>
+  <div data-v-4d86226c="" class="main">
+    <table data-v-4d86226c="">
+      <tbody data-v-4d86226c="">
+       <!--  <tr data-v-4d86226c="">
+          <td data-v-4d86226c="">邀请码</td>
+          <td data-v-4d86226c="" colspan="2" style="position: relative;"><input data-v-4d86226c="" regmsg="您输入的邀请码错误" tag="邀请码" type="tel" placeholder="请输入8位数字邀请码" maxlength="8" class="va43" name="InvitationCode" required style="position: relative; z-index: 1; background: rgba(0, 0, 0, 0);">
+            <em data-v-1355ab9a="" class="clearInput" data-v-4d86226c="" style="display: none;"></em></td>
+        </tr> -->
+        <tr data-v-4d86226c="">
+          <td data-v-4d86226c="">账号</td>
+          <td data-v-4d86226c="" colspan="2" style="position: relative;"><input data-v-4d86226c="" type="url" tag="帐号" regmsg="账号应为4-16个字符，可使用字母、数字" maxlength="16" placeholder="请输入您要注册的账号" class="va43" name="UserName" required style="position: relative; z-index: 1; background: rgba(0, 0, 0, 0);">
+            <em data-v-1355ab9a="" class="clearInput" data-v-4d86226c="" style="display: none;"></em></td>
+        </tr>
+        <tr data-v-4d86226c="">
+          <td data-v-4d86226c="">设置密码</td>
+          <td data-v-4d86226c="" colspan="2" style="position: relative;"><input data-v-4d86226c="" type="url" maxlength="16" tag="设置密码" placeholder="请输入您要设置的密码" class="va43" name="Password" required style="position: relative; z-index: 1; background: rgba(0, 0, 0, 0);">
+            <span data-v-7b1322d1="" class="iconfont eye open" data-v-4d86226c=""></span> <em data-v-1355ab9a="" class="clearInput" data-v-4d86226c="" style="display: none;"></em></td>
+        </tr>
+        <tr data-v-4d86226c="">
+          <td data-v-4d86226c="">验证码</td>
+          <td data-v-4d86226c="" style="position: relative;"><input data-v-4d86226c="" type="email" maxlength="5" tag="验证码" placeholder="请输入验证码" autocomplete="off" class="va43" name="ImgCode" required style="position: relative; z-index: 1; background: rgba(0, 0, 0, 0);">
+            <em data-v-1355ab9a="" class="clearInput" data-v-4d86226c="" style="display: none;"></em></td>
+          <td data-v-4d86226c=""><img  id="captchaimg" data-v-4d86226c="" src="{:captcha_src()}" alt="{:lang('Captcha')}" class="yzm">
+          </td>
+        </tr>
+        <tr data-v-4d86226c=""></tr>
+      </tbody>
+    </table>
+    <a href="{:url('www/login/index')}" class="tologin fr" data-v-4d86226c="">已有账号? 立即登录</a>
+    <div data-v-4d86226c="" class="loginBtn BTN mt30"><a data-v-4d86226c="">立即注册</a></div>
+  </div>
+</div>
+</body>
+</html>

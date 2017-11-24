@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1">
+<meta name=viewport content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+<meta name=apple-touch-fullscreen content=yes>
+<link rel=apple-touch-icon href=/src/img/favicon.267ace1.png>
+<meta name=format-detection content="telephone=no">
+<meta name=format-detection content="email=no">
+<meta name=renderer content=webkit>
+<meta http-equiv=X-UA-Compatible content="IE=edge">
+<meta name=HandheldFriendly content=true>
+<meta name=MobileOptimized content=320>
+<meta name=screen-orientation content=portrait>
+<meta name=x5-orientation content=portrait>
+<meta name=full-screen content=yes>
+<meta name=x5-fullscreen content=true>
+<meta name=browsermode content=application>
+<meta name=x5-page-mode content=app>
+<meta name=msapplication-tap-highlight content=no>
+<link rel="shortcut icon" href=favicon.ico type=image/x-icon>
+{css href="__CSS__/login.css" /}
+{js href="__JS__/resize.js" /}
+</head>
+<body>
+<div id="app">
+  <div id="shadow" style="display: none;"></div>
+  <header class="top"><span></span>
+    <ul>
+      <li class="on"><a>个人资料</a></li>
+      <li class=""><a href="{:url('www/usercenter/personallevel')}">等级头衔</a></li>
+    </ul>
+    <div class="iconfont back" style="display: none;"></div>
+    <a href="{:url('www/usercenter/index')}" class="iconfont back"></a> </header>
+  <nav class="bottom" style="display: none;"><a href="{:url('www/index/index')}" class=""><i class="iconfont"></i>
+    <p>购彩大厅</p>
+    </a> <a href="{:url('www/activity/index')}" class=""><i class="iconfont"></i>
+    <p>活动中心</p>
+    </a> <a href="{:url('www/newwinners/index')}" class=""><i class="iconfont"></i>
+    <p>发现</p>
+    </a> <a href="{:url('www/usercenter/index')}" class=""><i class="iconfont"></i>
+    <p>我的账户</p>
+    </a></nav>
+  <div data-v-df275b96="" class="main personalInfo" s="[object Object]">
+    <ul data-v-df275b96="">
+      <li data-v-df275b96="" class="headImg">
+        <div data-v-df275b96=""><span data-v-df275b96="">头像</span> <i data-v-df275b96="" class="iconfont right"></i> <em data-v-df275b96=""><img data-v-df275b96="" src="http://imagess-google.com/system/common/headimg/EED50A5799E76E58.jpg" alt="" width="50" height="50"></em></div>
+      </li>
+      <li data-v-df275b96="">
+        <div data-v-df275b96=""><span data-v-df275b96="">昵称</span> <i data-v-df275b96="" class="iconfont right"></i> <em data-v-df275b96="">
+          <input data-v-df275b96="" va-para="NickName" regmsg="请使用五位以内的汉字" tag="昵称" type="text" placeholder="请设置昵称" class="va131" name="NickName">
+          </em> </div>
+      </li>
+      <li data-v-df275b96="">
+        <div data-v-df275b96=""><span data-v-df275b96="">账号</span><em data-v-df275b96="">kris123</em></div>
+      </li>
+    </ul>
+    <ul data-v-df275b96="">
+      <li data-v-df275b96="">
+        <div data-v-df275b96=""><span data-v-df275b96="">手机</span><i data-v-df275b96="" class="iconfont right"></i><em data-v-df275b96="">未绑定</em></div>
+      </li>
+      <li data-v-df275b96="">
+        <div data-v-df275b96=""><span data-v-df275b96="">邮箱</span><i data-v-df275b96="" class="iconfont right"></i><em data-v-df275b96="">未绑定</em></div>
+      </li>
+      <li data-v-df275b96="">
+        <div data-v-df275b96=""><span data-v-df275b96="">性别</span><i data-v-df275b96="" class="iconfont right"></i><em data-v-df275b96="">
+          <select data-v-df275b96="" tag="性别" va-para="Sex" class="va131" name="Sex">
+            <option data-v-df275b96="" value="2">保密</option>
+            <option data-v-df275b96="" value="1">男</option>
+            <option data-v-df275b96="" value="0">女</option>
+          </select>
+          </em></div>
+      </li>
+      <li data-v-df275b96="">
+        <div data-v-df275b96=""><span data-v-df275b96="">生日</span> <i data-v-df275b96="" class="iconfont right"></i> <em data-v-df275b96="">
+          <input data-v-df275b96="" tag="生日" va-para="BirthDay" type="date" class="va131" name="BirthDay">
+          </em></div>
+      </li>
+    </ul>
+    <div data-v-5f6cdb54="" class="_changeHeadImg" data-v-df275b96="" style="display: none;">
+      <div data-v-5f6cdb54="" class="backShaw"></div>
+      <div data-v-5f6cdb54="" class="changeContent">
+        <h3 data-v-5f6cdb54="" class="line"><em data-v-5f6cdb54="">修改头像</em><a data-v-5f6cdb54=""><i data-v-5f6cdb54="" class="iconfont"></i></a></h3>
+        <div data-v-5f6cdb54="" class="content"><em data-v-5f6cdb54="">预览</em> <img data-v-5f6cdb54="" id="changePhoto" src="http://imagess-google.com/system/common/headimg/EED50A5799E76E58.jpg" alt="" title="4"> <span data-v-5f6cdb54="">普京</span>
+          <div data-v-5f6cdb54="" class="headImgListCon fix"><span data-v-5f6cdb54="" class="nomore"><i data-v-5f6cdb54="" class="iconfont"></i></span>
+            <div data-v-5f6cdb54="" class="headImgList">
+              <div data-v-5f6cdb54="" class="fixedHeadImgWidth fix" style="width: 90rem;"><img data-v-5f6cdb54="" data-id="30" title="陈冠希" src="http://imagess-google.com/system/common/headimg/7f02613f51d3b253.jpg"><img data-v-5f6cdb54="" data-id="29" title="扎克伯克" src="http://imagess-google.com/system/common/headimg/1cf127223f44d417.jpg"><img data-v-5f6cdb54="" data-id="28" title="迈克尔·杰克逊" src="http://imagess-google.com/system/common/headimg/67b487fa0ac81fa2.jpg"><img data-v-5f6cdb54="" data-id="27" title="杜特尔特" src="http://imagess-google.com/system/common/headimg/73ad0d4d5aa8c974.jpg"><img data-v-5f6cdb54="" data-id="26" title="特朗普" src="http://imagess-google.com/system/common/headimg/7debbc56b4b1e837.jpg"><img data-v-5f6cdb54="" data-id="25" title="杰森斯坦森" src="http://imagess-google.com/system/common/headimg/5C5A53823438F2CD.jpg"><img data-v-5f6cdb54="" data-id="24" title="宋仲基" src="http://imagess-google.com/system/common/headimg/367498B6A748D910.jpg"><img data-v-5f6cdb54="" data-id="23" title="宋承宪" src="http://imagess-google.com/system/common/headimg/C362F2B1E0EA389A.jpg"><img data-v-5f6cdb54="" data-id="22" title="朴信惠" src="http://imagess-google.com/system/common/headimg/C707188A6E10AED4.jpg"><img data-v-5f6cdb54="" data-id="21" title="宋慧乔" src="http://imagess-google.com/system/common/headimg/3578E1EB410B49C7.jpg"><img data-v-5f6cdb54="" data-id="20" title="林允儿" src="http://imagess-google.com/system/common/headimg/E6CA6EB9F492879E.jpg"><img data-v-5f6cdb54="" data-id="19" title="全智贤" src="http://imagess-google.com/system/common/headimg/D38F599DF12CD206.jpg"><img data-v-5f6cdb54="" data-id="18" title="科比" src="http://imagess-google.com/system/common/headimg/4A2E3EA214381904.jpg"><img data-v-5f6cdb54="" data-id="17" title="金正恩" src="http://imagess-google.com/system/common/headimg/4D73D09EC5D7BFE3.jpg"><img data-v-5f6cdb54="" data-id="16" title="萨达姆" src="http://imagess-google.com/system/common/headimg/831CA133362DE10D.jpg"><img data-v-5f6cdb54="" data-id="15" title="罗纳尔多" src="http://imagess-google.com/system/common/headimg/C7BB5088540C8040.jpg"><img data-v-5f6cdb54="" data-id="14" title="梅西" src="http://imagess-google.com/system/common/headimg/6EC9EDCC7B3BD70D.jpg"><img data-v-5f6cdb54="" data-id="13" title="李敏镐" src="http://imagess-google.com/system/common/headimg/9816F54B27A9BF48.jpg"><img data-v-5f6cdb54="" data-id="12" title="小女孩" src="http://imagess-google.com/system/common/headimg/1B6A214FF62BD91F.jpg"><img data-v-5f6cdb54="" data-id="11" title="小男孩" src="http://imagess-google.com/system/common/headimg/C6021F3486D2B2DB.jpg"><img data-v-5f6cdb54="" data-id="10" title="范冰冰" src="http://imagess-google.com/system/common/headimg/6F1A99A3D02A6DEC.jpg"><img data-v-5f6cdb54="" data-id="9" title="希拉里" src="http://imagess-google.com/system/common/headimg/CA64E00C3F9FD5F3.jpg"><img data-v-5f6cdb54="" data-id="8" title="波多野结衣" src="http://imagess-google.com/system/common/headimg/EF01C8BED7B70053.jpg"><img data-v-5f6cdb54="" data-id="7" title="泷泽萝拉" src="http://imagess-google.com/system/common/headimg/1EF6FC3ACCBCD762.jpg"><img data-v-5f6cdb54="" data-id="6" title="苍井空" src="http://imagess-google.com/system/common/headimg/F95FE943163DAF92.jpg"><img data-v-5f6cdb54="" data-id="5" title="贝克汉姆" src="http://imagess-google.com/system/common/headimg/F0E57CF931E45118.jpg"><img data-v-5f6cdb54="" data-id="4" title="普京" src="http://imagess-google.com/system/common/headimg/EED50A5799E76E58.jpg"><img data-v-5f6cdb54="" data-id="3" title="本拉登" src="http://imagess-google.com/system/common/headimg/9A9C9E1A719CE536.jpg"><img data-v-5f6cdb54="" data-id="2" title="比尔盖茨" src="http://imagess-google.com/system/common/headimg/A9734CC321C8B363.jpg"><img data-v-5f6cdb54="" data-id="1" title="奥巴马" src="http://imagess-google.com/system/common/headimg/0A472675E5E5AF50.jpg"></div>
+            </div>
+            <span data-v-5f6cdb54=""><i data-v-5f6cdb54="" class="iconfont"></i></span></div>
+          <div data-v-5f6cdb54="" class="changeBtn"><a data-v-5f6cdb54="" href="javascript:;" class="subBtn">保存头像</a> <a data-v-5f6cdb54="" class="subBtn cancel">取消</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

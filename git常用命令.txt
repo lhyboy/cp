@@ -1,0 +1,19 @@
+cd existing_folder
+git init
+git remote add origin https://github.com/lhyboy/cp.git
+git add .
+git commit -m "Initial commit"
+git push -u origin master
+
+devÉÏ´«
+=========
+
+git pull origin master
+git status
+git add -A
+git commit -m 'h5'
+git push origin master
+
+=========
+
+
