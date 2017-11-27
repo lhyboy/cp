@@ -32,31 +32,76 @@ class Usercenter extends Checkuser
         return view();
         
     }
+    
+    public function tixian(){
+        
+        $userinfo=Session::get('userinfo', 'www') ;
+        $ret = Loader::model('Bank')->getuserbankinfo( $userinfo['id'] );
+        if($ret){
+            return view();
+        }else{
+            $this->redirect( url('www/usercenter/setbankcard') );
+        }
+        
+        
+        
+    }
+    public function dotixian(){
+        
+            if( !Request::instance()->isAjax() ) {
+                return $this->success( lang('Request type error') );
+            }
+
+            $postData = input('post.');
+
+            $userinfo=Session::get('userinfo', 'www') ;
+                    if( !$userinfo['id'] ) {
+                    return $this->success( lang('Request type error') );
+            }
+            $Data = array(
+                    'Money'=>$postData['Money'],
+                    'userid'=>$userinfo['id']
+                   
+            );
+
+            $ret = Loader::model('Tixian')->Tixianadd( $Data );
+
+            if ($ret['code'] !== 1) {
+                    return $this->error( $ret['msg'] );
+            }
+            //return info(lang('Add succeed'), 1, '', 0);		
+            return $this->success($ret['msg'], url('www/usercenter/index'));
+        
+    }
     public function dosetbankcard(){
         
-        		if( !Request::instance()->isAjax() ) {
-			return $this->success( lang('Request type error') );
-		}
+            if( !Request::instance()->isAjax() ) {
+                return $this->success( lang('Request type error') );
+            }
 
-		$postData = input('post.');
-                
+            $postData = input('post.');
 
-		$Data = array(
-			'BankID'=>$postData['BankID'],
-			'Address_P'=>$postData['Address_P'],
-			'Address_C'=>$postData['Address_C'],
-			'RealName'=>$postData['RealName'],
-			'checkBankNum'=>$postData['checkBankNum'],
-			'BankNum'=>$postData['BankNum']
-		);
-                
-		$ret = Loader::model('Bank')->Bankadd( $Data );
-                
-		if ($ret['code'] !== 1) {
-			return $this->error( $ret['msg'] );
-		}
-		//return info(lang('Add succeed'), 1, '', 0);		
-		return $this->success($ret['msg'], url('www/usercenter/index'));
+            $userinfo=Session::get('userinfo', 'www') ;
+                    if( !$userinfo['id'] ) {
+                    return $this->success( lang('Request type error') );
+            }
+            $Data = array(
+                    'BankID'=>$postData['BankID'],
+                    'userid'=>$userinfo['id'],
+                    'Address_P'=>$postData['Address_P'],
+                    'Address_C'=>$postData['Address_C'],
+                    'RealName'=>$postData['RealName'],
+                    'checkBankNum'=>$postData['checkBankNum'],
+                    'BankNum'=>$postData['BankNum']
+            );
+
+            $ret = Loader::model('Bank')->Bankadd( $Data );
+
+            if ($ret['code'] !== 1) {
+                    return $this->error( $ret['msg'] );
+            }
+            //return info(lang('Add succeed'), 1, '', 0);		
+            return $this->success($ret['msg'], url('www/usercenter/index'));
         
     }
     
