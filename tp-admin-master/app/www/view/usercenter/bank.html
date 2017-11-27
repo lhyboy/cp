@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1">
+<meta name=viewport content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+<meta name=apple-touch-fullscreen content=yes>
+<link rel=apple-touch-icon href=/src/img/favicon.267ace1.png>
+<meta name=format-detection content="telephone=no">
+<meta name=format-detection content="email=no">
+<meta name=renderer content=webkit>
+<meta http-equiv=X-UA-Compatible content="IE=edge">
+<meta name=HandheldFriendly content=true>
+<meta name=MobileOptimized content=320>
+<meta name=screen-orientation content=portrait>
+<meta name=x5-orientation content=portrait>
+<meta name=full-screen content=yes>
+<meta name=x5-fullscreen content=true>
+<meta name=browsermode content=application>
+<meta name=x5-page-mode content=app>
+<meta name=msapplication-tap-highlight content=no>
+<link rel="shortcut icon" href=favicon.ico type=image/x-icon>
+{css href="__CSS__/login.css" /}
+{js href="__JS__/resize.js" /}
+{js href="__JS__/jquery.js" /}
+{js href="__JS__/recharge.js" /}
+<script type="text/javascript">
+function copyUrl2(thisId)
+{
+var Url2=document.getElementById(thisId);
+Url2.select(); // 选择对象
+document.execCommand("Copy"); // 执行浏览器复制命令
+alert("已复制好，可贴粘。");
+}
+</script>
+
+</head>
+<body>
+<div id="app">
+<header class="top"><span>银行转账</span> <!---->
+    <a href="javascript :;" onClick="javascript :history.back(-1)" class="iconfont back" style=""></a></header>  
+  <div data-v-06ff19ac="" s="[object Object]" class="">
+    <div data-v-06ff19ac="" class="main">
+      <table data-v-06ff19ac="">
+        <tr data-v-06ff19ac="">
+          <td data-v-06ff19ac="">选择银行</td>
+          <td data-v-06ff19ac=""><select data-v-06ff19ac="">
+              <option data-v-06ff19ac="" value="ICBC">招商银行</option>
+            </select>
+            <i data-v-06ff19ac="" class="iconfont unfold"></i></td>
+        </tr>
+        <tr data-v-06ff19ac="">
+          <td data-v-06ff19ac="">收款户名</td>
+          <td data-v-06ff19ac=""><input data-v-06ff19ac="" type="text" readonly class="cGold" id="name" value="王志宾">
+            <i data-v-06ff19ac="" class="iconfont copy" onclick="copyUrl2('name')">复制</i></td>
+        </tr>
+        <tr data-v-06ff19ac="">
+          <td data-v-06ff19ac="">收款账号</td>
+          <td data-v-06ff19ac="" style='position:relative;'><input data-v-06ff19ac="" type="text" readonly class="cGold" id='card' value="6225 8801 1291 8512">
+            <input data-v-06ff19ac="" type="text" readonly class="cGold" id='card2' value="6225880112918512" style='position: absolute;left:0;top:0;opacity: 0;'>
+            <i data-v-06ff19ac="" class="iconfont copy" onclick="copyUrl2('card2')">复制</i></td>
+        </tr>
+        <tr data-v-06ff19ac="">
+          <td data-v-06ff19ac="">开户支行</td>
+          <td data-v-06ff19ac=""><input data-v-06ff19ac="" type="text" readonly class="cGold" id="code" value='上地支行'>
+            <i data-v-06ff19ac="" class="iconfont copy" onclick="copyUrl2('code')">复制</i></td>
+        </tr>
+        <tr data-v-06ff19ac="">
+          <td data-v-06ff19ac="">充值金额</td>
+          <td data-v-06ff19ac=""><input data-v-06ff19ac="" type="tel" tag="充值金额" placeholder="请输入充值金额" class="va36" name="Money" id="Money"></td>
+        </tr>
+        <tr data-v-06ff19ac="">
+          <td data-v-06ff19ac="">转账户名</td>
+          <td data-v-06ff19ac=""><input data-v-06ff19ac="" type="text" tag="转账户名" placeholder="请输入付款人的银行卡姓名" class="va36" id="PayUser" name="PayUser"></td>
+        </tr>
+      </table>
+      <div data-v-06ff19ac="" class="loginBtn BTN"><a data-v-06ff19ac="">确定</a></div>
+      <div data-v-06ff19ac="" class="tips"> 1、请转账到以上收款银行账户。<br data-v-06ff19ac="">
+        2、请正确填写转账银行卡的持卡人姓名和充值金额，以便及时核对。<br data-v-06ff19ac="">
+        3、转账1笔提交1次，请勿重复提交订单。<br data-v-06ff19ac="">
+        4、请务必转账后再提交订单,否则无法及时查到您的款项！ </div>
+    </div>
+    <!----> <!----> <!----> <!----></div>
+</div>
+</body>
+</html>
