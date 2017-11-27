@@ -107,6 +107,47 @@ class Usercenter extends Checkuser
         
     }
     
+    public function bank(){
+        
+        return view();
+        
+    }
+        
+    public function wechat(){
+        
+        return view();
+        
+    }   
+    public function alipay(){
+        
+        return view();
+        
+    }
+    
+    
+        public function dosetrecharge(){
+        
+        		if( !Request::instance()->isAjax() ) {
+			return $this->success( lang('Request type error') );
+		}
+
+		$postData = input('post.');
+                
+
+		$Data = array(
+			'Money'=>$postData['Money'],
+			'PayUser'=>$postData['PayUser']			
+		);
+                
+		$ret = Loader::model('recharge')->rechargeadd( $Data );
+                
+		if ($ret['code'] !== 1) {
+			return $this->error( $ret['msg'] );
+		}
+		//return info(lang('Add succeed'), 1, '', 0);		
+		return $this->success($ret['msg'], url('www/usercenter/index'));
+        
+    }
     
     
 }

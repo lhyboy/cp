@@ -24,7 +24,7 @@ $(function(){
                 alert('注册成功，请登陆！');
                 window.location.href = o.url;
             } else {
-                $(".msgerr").html(o.msg);
+                alert(o.msg);
             }
         })
     })

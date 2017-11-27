@@ -8,11 +8,10 @@ use think\Request;
 use think\Url;
 use think\Session;
 
-class Index extends Checkuser
+class Index extends Common
 {
     public function index(){
-        $data['ip'] = Loader::model('LogRecord')->UniqueIpCount();
-        $this->assign('data', $data);
+        
         return view();
         
     }
