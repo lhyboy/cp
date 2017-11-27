@@ -7,7 +7,7 @@ use think\Loader;
 use think\Model;
 use traits\model\SoftDelete;
 
-class Bank extends Checkuser
+class Tixian extends Checkuser
 {
 	use SoftDelete;
     protected $deleteTime = 'delete_time';
@@ -43,12 +43,12 @@ class Bank extends Checkuser
 		return $result;
 	}
 
-	public function Bankadd(array $data = [])
+	public function Tixianadd(array $data = [])
 	{ 		
-		if($data['checkBankNum'] != $data['BankNum']){
+		if($data['Money'] != $data['Money']){
                     return info(lang('The card is not the same twice'), 0);
                 }
-		unset($data['checkBankNum']);		
+				
 		$data['create_time'] = time();
 		$this->allowField(true)->save($data);
 		if($this->id > 0){

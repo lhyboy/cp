@@ -20,16 +20,10 @@
 <meta name=x5-page-mode content=app>
 <meta name=msapplication-tap-highlight content=no>
 <link rel="shortcut icon" href=favicon.ico type=image/x-icon>
-<<<<<<< HEAD
-{js href="__JS__/jquery.js" /}
-{js href="__JS__/jquery.cookie.js" /}
 {css href="__CSS__/login.css" /}
 {js href="__JS__/resize.js" /}
+{js href="__JS__/jquery.js" /}
 {js href="__JS__/recharge.js" /}
-=======
-<link href=css/login.css rel=stylesheet>
-<script src="js/resize.js"></script>
->>>>>>> 000adbbc6809ebd1ec2406cf065d44ad1026a504
 <script type="text/javascript">
 function copyUrl2(thisId)
 {
@@ -44,11 +38,7 @@ alert("已复制好，可贴粘。");
 <body>
 <div id="app">
 <header class="top"><span>银行转账</span> <!---->
-<<<<<<< HEAD
     <a href="javascript :;" onClick="javascript :history.back(-1)" class="iconfont back" style=""></a></header>  
-=======
-    <a href="rechargeWay.html" class="iconfont back" style=""></a></header>  
->>>>>>> 000adbbc6809ebd1ec2406cf065d44ad1026a504
   <div data-v-06ff19ac="" s="[object Object]" class="">
     <div data-v-06ff19ac="" class="main">
       <table data-v-06ff19ac="">
@@ -77,19 +67,11 @@ alert("已复制好，可贴粘。");
         </tr>
         <tr data-v-06ff19ac="">
           <td data-v-06ff19ac="">充值金额</td>
-<<<<<<< HEAD
           <td data-v-06ff19ac=""><input data-v-06ff19ac="" type="tel" tag="充值金额" placeholder="请输入充值金额" class="va36" name="Money" id="Money"></td>
         </tr>
         <tr data-v-06ff19ac="">
           <td data-v-06ff19ac="">转账户名</td>
           <td data-v-06ff19ac=""><input data-v-06ff19ac="" type="text" tag="转账户名" placeholder="请输入付款人的银行卡姓名" class="va36" id="PayUser" name="PayUser"></td>
-=======
-          <td data-v-06ff19ac=""><input data-v-06ff19ac="" type="tel" tag="充值金额" placeholder="请输入充值金额" class="va36" name="Money"></td>
-        </tr>
-        <tr data-v-06ff19ac="">
-          <td data-v-06ff19ac="">转账户名</td>
-          <td data-v-06ff19ac=""><input data-v-06ff19ac="" type="text" tag="转账户名" placeholder="请输入付款人的银行卡姓名" class="va36" name="PayUser"></td>
->>>>>>> 000adbbc6809ebd1ec2406cf065d44ad1026a504
         </tr>
       </table>
       <div data-v-06ff19ac="" class="loginBtn BTN"><a data-v-06ff19ac="">确定</a></div>
