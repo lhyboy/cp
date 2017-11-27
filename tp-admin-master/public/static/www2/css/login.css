@@ -1225,7 +1225,7 @@ table[data-v-4d86226c] {
 }
 table tr[data-v-4d86226c] {
 	height: 2.5em;
-	font-size: 1.2em;
+	font-size: .8em;
 	line-height: 2.5em
 }
 table input[data-v-4d86226c] {
@@ -30237,8 +30237,8 @@ table[data-v-3060be5c] {
 }
 table tr[data-v-3060be5c] {
 	height: 2.5em;
-	font-size: 1.1em;
-	line-height: 2.7em
+	font-size: .8em;
+	line-height: 2.5em
 }
 table input[data-v-3060be5c] {
 	width: 98%;
