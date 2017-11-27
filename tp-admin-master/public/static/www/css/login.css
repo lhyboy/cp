@@ -353,7 +353,7 @@ body {
 }
 .main {
 	font-size: inherit;
-	padding-top: 2.3em;
+	padding-top:2.2em;
 	padding-bottom: 2.5em
 }
 .main .innerWrap {
@@ -1572,8 +1572,8 @@ table[data-v-06ff19ac] {
 }
 table tr[data-v-06ff19ac] {
 	height: 2.5em;
-	font-size: .8em;
-	line-height: 2.5em
+	font-size:1.1em;
+	line-height: 2.7em
 }
 table input[data-v-06ff19ac] {
 	width: 98%;
@@ -25326,8 +25326,8 @@ table[data-v-37e217f7] {
 }
 table tr[data-v-37e217f7] {
 	height: 2.5em;
-	font-size: .8em;
-	line-height: 2.5em
+	font-size: 1.1em;
+	line-height: 2.7em
 }
 table input[data-v-37e217f7] {
 	width: 98%;

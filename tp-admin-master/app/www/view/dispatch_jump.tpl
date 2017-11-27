@@ -25,14 +25,11 @@
         <tr>
             <td style="text-align:center;">
                 <div style="width:100%; margin:0 auto;">
-                      <h3>{$Think.lang.JumpPrompt}</h3>
-                          <?php switch ($code) {?>
-                                <?php case 1:?>
-                                <h2>:)</h2>
+                      <!-- <h3>{$Think.lang.JumpPrompt}</h3> -->
+                          <?php switch ($code) {?><?php case 1:?>                               
                                 <p class="success"><?php echo(strip_tags($msg));?></p>
                                 <?php break;?>
-                                <?php case 0:?>
-                                <h2>:(</h2>
+                                <?php case 0:?>                                
                                 <p class="error"><?php echo(strip_tags($msg));?></p>
                                 <?php break;?>
                             <?php } ?>

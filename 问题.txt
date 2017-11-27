@@ -24,3 +24,7 @@
 
    alipay.html 支付宝充值
 
+   forgetPwd.html 忘记密码
+
+   ModifyPwd.html 修改密码
+

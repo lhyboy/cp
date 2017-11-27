@@ -20,17 +20,17 @@
 <meta name=x5-page-mode content=app>
 <meta name=msapplication-tap-highlight content=no>
 <link rel="shortcut icon" href=favicon.ico type=image/x-icon>
-<script type="text/javascript" src="js/jquery2.js"></script>
-<script type="text/javascript" src="jquery.cityselect.js"></script>
 {css href="__CSS__/login.css" /}
-{js href="__JS__/resize.js" /}
 {js href="__JS__/jquery.js" /}
+{js href="__JS__/jquery.cookie.js" /}
+{js href="__JS__/jquery.cityselect.js" /}
+{js href="__JS__/resize.js" /}
 {js href="__JS__/bankcard.js" /}
 <script>
 $(function(){
   $("#city_3").citySelect({
-      prov: "江苏",
-      city: "南京"
+      prov: "福建",
+      city: "厦门"
   });
 })
 </script>
@@ -69,17 +69,15 @@ $(function(){
           <td data-v-37e217f7="">开户省</td>
           <td data-v-37e217f7="">
           <select data-v-37e217f7="" class="prov va271" name="Address_P" id="Address_P" tag="开户省">
-          <option data-v-37e217f7="" value="0">北京</option>
-              <option data-v-37e217f7="" value="1">东京</option>
-              </select> 
-            <i data-v-37e217f7="" class="iconfont unfold"></i></td>
+                <option data-v-37e217f7="" value="0">请选择</option>
+          </select> 
+           <i data-v-37e217f7="" class="iconfont unfold"></i></td>
         </tr>
         <tr data-v-37e217f7="">
           <td data-v-37e217f7="">开户市</td>
           <td data-v-37e217f7=""> 
               <select data-v-37e217f7="" class="city va271" disabled="disabled" name="Address_C" id="Address_C">
-                  <option data-v-37e217f7="" value="0">北京</option>
-              <option data-v-37e217f7="" value="1">东京</option>
+                  <option data-v-37e217f7="" value="0">请选择</option>
               
               </select>
             <i data-v-37e217f7="" class="iconfont unfold"></i></td>

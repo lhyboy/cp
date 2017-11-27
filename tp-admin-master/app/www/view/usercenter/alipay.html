@@ -21,7 +21,11 @@
 <meta name=msapplication-tap-highlight content=no>
 <link rel="shortcut icon" href=favicon.ico type=image/x-icon>
 <link href=css/login.css rel=stylesheet>
-<script src="js/resize.js"></script>
+{css href="__CSS__/login.css" /}
+{js href="__JS__/jquery.js" /}
+{js href="__JS__/jquery.cookie.js" /}
+{js href="__JS__/resize.js" /}
+{js href="__JS__/alipay.js" /}
 <script type="text/javascript">
 function copyUrl2(thisId)
 {
@@ -38,7 +42,7 @@ alert("已复制好，可贴粘。");
   <div id="shadow" style="display: none;"></div>
   <header class="top"><span>支付宝</span> <!---->
     <div class="iconfont back" style="display: none;"></div>
-    <a href="/rechargeWay" class="iconfont back" style=""></a> <a href="/service" class="right" style="display: none;">客服</a></header>
+    <a href="javascript :;" onClick="javascript :history.back(-1)" class="iconfont back" style=""></a></header>
   <nav class="bottom" style="display: none;"><a href="/index" class=""><i class="iconfont"></i>
     <p>购彩大厅</p>
     </a> <a href="/activity" class=""><i class="iconfont"></i>

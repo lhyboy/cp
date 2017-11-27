@@ -2,10 +2,15 @@ $(function(){
     
     $('.loginBtn').click(function(){        
         var Money = $("#Money").val();
-        var PayUser = $("#PayUser").val();
-        
-        
-        
+        var PayUser = $("#PayUser").val();     
+        if(Money==''){
+            alert('请输入充值金额！');
+            return false;
+        }
+        if(PayUser==''){
+            alert('请输入转账户名');
+            return false;
+        }
         $.post('dosetrecharge',{Money:Money,PayUser:PayUser},function(o){
             if(o.code == 1) {    
                 alert('提交成功！');

@@ -21,7 +21,7 @@
 
         // 默认值
         settings = $.extend({
-            url: "js/city.min.js",
+            url: "http://www.yuletest.com/static/www/js/city.min.js",
             prov: null,
             city: null,
             dist: null,
@@ -94,20 +94,20 @@
             ;
 
             // 遍历赋值市级下拉列表
-            temp_html = "<option value='请选择开户省'>请选择开户省</option>";
+            temp_html = select_prehtml;
             $.each(city_json.citylist[prov_id].c[city_id].a, function(i, dist) {
                 temp_html += "<option value='" + dist.s + "'>" + dist.s + "</option>";
             });
-           // dist_obj.html(temp_html).attr("disabled", false).css({"display": "", "visibility": ""});
+            dist_obj.html(temp_html).attr("disabled", false).css({"display": "", "visibility": ""});
         };
 
         var init = function() {
             // 遍历赋值省份下拉列表
-             temp_html = "<option value='请选择开户省'>请选择开户省</option>";
+            temp_html = select_prehtml;
             $.each(city_json.citylist, function(i, prov) {
                 temp_html += "<option value='" + prov.p + "'>" + prov.p + "</option>";
             });
-           // prov_obj.html(temp_html);
+            prov_obj.html(temp_html);
 
             // 若有传入省份与市级的值，则选中。（setTimeout为兼容IE6而设置）
             setTimeout(function() {

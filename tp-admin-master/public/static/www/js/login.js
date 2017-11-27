@@ -11,13 +11,14 @@ $(function(){
             return false;
         }
         $.post('doLogin',{username:name,password:password},function(o){
+            //console.log(o);
+            //return false;
             if(o.code == 1) {
                 window.location.href = o.url;
             } else {
                 $(".msgerr").html(o.msg);
             }
-        },'json')
-        
+        },'json')        
     	
         return false;
     })
