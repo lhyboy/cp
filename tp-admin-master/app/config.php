@@ -232,6 +232,27 @@ return [
         'var_page'  => 'page',
         'list_rows' => 15,
     ],
+    
+        //验证码
+
+    'captcha'  => [
+        // 验证码字符集合
+        //'codeSet'  => '2345678abcdefhijkmnpqrstuvwxyzABCDEFGHJKLMNPQRTUVWXY', 
+        'codeSet'  => '2345678', 
+        // 验证码字体大小(px)
+        'fontSize' => 50,
+        // 是否画混淆曲线
+        'useCurve' => false,
+        'useNoise' => false,
+         // 验证码图片高度
+        'imageH'   => 0,//设置为0为自动计算
+        // 验证码图片宽度
+        'imageW'   => 0,//设置为0为自动计算
+        // 验证码位数
+        'length'   => 4,
+        // 验证成功后是否重置        
+        'reset'    => true
+    ],
 
     //写安装程序的时候随即生成authId
     'user_auth_key' => 'authId',

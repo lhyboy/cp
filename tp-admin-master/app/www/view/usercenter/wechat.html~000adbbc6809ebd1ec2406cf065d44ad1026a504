@@ -20,15 +20,10 @@
 <meta name=x5-page-mode content=app>
 <meta name=msapplication-tap-highlight content=no>
 <link rel="shortcut icon" href=favicon.ico type=image/x-icon>
-
-{js href="__JS__/jquery.js" /}
-{js href="__JS__/jquery.cookie.js" /}
 {css href="__CSS__/login.css" /}
 {js href="__JS__/resize.js" /}
+{js href="__JS__/jquery.js" /}
 {js href="__JS__/recharge.js" /}
-
-
-
 <script type="text/javascript">
 function copyUrl2(thisId)
 {
@@ -44,7 +39,6 @@ alert("已复制好，可贴粘。");
 <div id="app">
 <header class="top"><span>银行转账</span> <!---->
     <a href="javascript :;" onClick="javascript :history.back(-1)" class="iconfont back" style=""></a></header>  
-
   <div data-v-06ff19ac="" s="[object Object]" class="">
     <div data-v-06ff19ac="" class="main">
       <table data-v-06ff19ac="">
@@ -58,7 +52,6 @@ alert("已复制好，可贴粘。");
         <tr data-v-06ff19ac="">
           <td data-v-06ff19ac="">收款户名</td>
           <td data-v-06ff19ac=""><input data-v-06ff19ac="" type="text" readonly class="cGold" id="name" value="王志宾">
-              <input  type="hidden"  name="playtype" id="playtype"  value="bank">
             <i data-v-06ff19ac="" class="iconfont copy" onclick="copyUrl2('name')">复制</i></td>
         </tr>
         <tr data-v-06ff19ac="">
@@ -74,15 +67,12 @@ alert("已复制好，可贴粘。");
         </tr>
         <tr data-v-06ff19ac="">
           <td data-v-06ff19ac="">充值金额</td>
-
           <td data-v-06ff19ac=""><input data-v-06ff19ac="" type="tel" tag="充值金额" placeholder="请输入充值金额" class="va36" name="Money" id="Money"></td>
         </tr>
         <tr data-v-06ff19ac="">
           <td data-v-06ff19ac="">转账户名</td>
           <td data-v-06ff19ac=""><input data-v-06ff19ac="" type="text" tag="转账户名" placeholder="请输入付款人的银行卡姓名" class="va36" id="PayUser" name="PayUser"></td>
-
-          </tr>
-     
+        </tr>
       </table>
       <div data-v-06ff19ac="" class="loginBtn BTN"><a data-v-06ff19ac="">确定</a></div>
       <div data-v-06ff19ac="" class="tips"> 1、请转账到以上收款银行账户。<br data-v-06ff19ac="">

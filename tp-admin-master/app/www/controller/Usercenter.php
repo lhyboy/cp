@@ -180,6 +180,7 @@ class Usercenter extends Checkuser
                 
 
 		$Data = array(
+			'playtype'=>$postData['playtype'],
 			'Money'=>$postData['Money'],
 			'PayUser'=>$postData['PayUser']			
 		);
