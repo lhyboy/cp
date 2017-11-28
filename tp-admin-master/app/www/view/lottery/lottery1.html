@@ -24,6 +24,7 @@
 {js href="__JS__/jquery.cookie.js" /}
 {css href="__CSS__/login.css" /}
 {js href="__JS__/resize.js" /}
+{js href="__JS__/lottery.js" /}
 </head>
 <body>
 <div id="app">
@@ -44,63 +45,21 @@
       <header data-v-5dbc8cc5="" class="top">
         <div data-v-5dbc8cc5="">
           <p data-v-5dbc8cc5="">玩法</p>
-          <span data-v-5dbc8cc5="" id="MethodStr" class=""> 和值<i data-v-5dbc8cc5="" class="iconfont xiala"></i></span></div>        
-        <a href="{:url('www/index/index')}" class="iconfont back" data-v-5dbc8cc5=""></a>
-        <ul data-v-5dbc8cc5="" class="betTopDetail" style="display: none;">
-          <li data-v-5dbc8cc5="" class="checked">
-            <p data-v-5dbc8cc5="" class="p0">和值</p>
-            <p data-v-5dbc8cc5="" class="p1">1.93-186.84倍</p>
-            <p data-v-5dbc8cc5="" class="p2"><span data-v-5dbc8cc5="" class="Dice Dice1"></span> <span data-v-5dbc8cc5="" class="Dice Dice2"></span> <span data-v-5dbc8cc5="" class="Dice Dice3"></span></p>
-          </li>
-          <li data-v-5dbc8cc5="" class="">
-            <p data-v-5dbc8cc5="" class="p0">三同号通选</p>
-            <p data-v-5dbc8cc5="" class="p1">赔率31.14倍</p>
-            <p data-v-5dbc8cc5="" class="p2"><span data-v-5dbc8cc5="" class="Dice Dice1"></span> <span data-v-5dbc8cc5="" class="Dice Dice1"></span> <span data-v-5dbc8cc5="" class="Dice Dice1"></span></p>
-          </li>
-          <li data-v-5dbc8cc5="" class="">
-            <p data-v-5dbc8cc5="" class="p0">三同号单选</p>
-            <p data-v-5dbc8cc5="" class="p1">赔率186.84倍</p>
-            <p data-v-5dbc8cc5="" class="p2"><span data-v-5dbc8cc5="" class="Dice Dice1"></span> <span data-v-5dbc8cc5="" class="Dice Dice1"></span> <span data-v-5dbc8cc5="" class="Dice Dice1"></span></p>
-          </li>
-          <li data-v-5dbc8cc5="" class="">
-            <p data-v-5dbc8cc5="" class="p0">三不同号</p>
-            <p data-v-5dbc8cc5="" class="p1">赔率31.14倍</p>
-            <p data-v-5dbc8cc5="" class="p2"><span data-v-5dbc8cc5="" class="Dice Dice2"></span> <span data-v-5dbc8cc5="" class="Dice Dice3"></span> <span data-v-5dbc8cc5="" class="Dice Dice5"></span></p>
-          </li>
-          <li data-v-5dbc8cc5="" class="">
-            <p data-v-5dbc8cc5="" class="p0">三连号通选</p>
-            <p data-v-5dbc8cc5="" class="p1">赔率7.78倍</p>
-            <p data-v-5dbc8cc5="" class="p2"><span data-v-5dbc8cc5="" class="Dice Dice1"></span> <span data-v-5dbc8cc5="" class="Dice Dice2"></span> <span data-v-5dbc8cc5="" class="Dice Dice3"></span></p>
-          </li>
-          <li data-v-5dbc8cc5="" class="">
-            <p data-v-5dbc8cc5="" class="p0">二同号复选</p>
-            <p data-v-5dbc8cc5="" class="p1">赔率12.45倍</p>
-            <p data-v-5dbc8cc5="" class="p2"><span data-v-5dbc8cc5="" class="Dice Dice1"></span> <span data-v-5dbc8cc5="" class="Dice Dice1"></span> <span data-v-5dbc8cc5="" class="Dice Dice3"></span></p>
-          </li>
-          <li data-v-5dbc8cc5="" class="">
-            <p data-v-5dbc8cc5="" class="p0">二同号单选</p>
-            <p data-v-5dbc8cc5="" class="p1">赔率62.28倍</p>
-            <p data-v-5dbc8cc5="" class="p2"><span data-v-5dbc8cc5="" class="Dice Dice1"></span> <span data-v-5dbc8cc5="" class="Dice Dice1"></span> <span data-v-5dbc8cc5="" class="Dice Dice3"></span></p>
-          </li>
-          <li data-v-5dbc8cc5="" class="">
-            <p data-v-5dbc8cc5="" class="p0">二不同号</p>
-            <p data-v-5dbc8cc5="" class="p1">赔率6.22倍</p>
-            <p data-v-5dbc8cc5="" class="p2"><span data-v-5dbc8cc5="" class="Dice Dice1"></span> <span data-v-5dbc8cc5="" class="Dice Dice4"></span> <span data-v-5dbc8cc5="" class="Dice Dice4"></span></p>
-          </li>
-          <li data-v-5dbc8cc5=""></li>
-        </ul>
+          <span data-v-5dbc8cc5="" id="MethodStr" class=""> 和值</span></div>        
+          <a href="{:url('www/index/index')}" class="iconfont back" data-v-5dbc8cc5=""></a>
+          <div id='balance'>余额:100000</div>
       </header>
       <section data-v-5dbc8cc5="" class="State">
         <div data-v-5dbc8cc5="">
           <p data-v-5dbc8cc5="">1018012期开奖号码</p>
           <div data-v-5dbc8cc5="" style="display: block;" class="DiceImg">
-            <div data-v-5dbc8cc5="" class="Dice Dice3"></div>
-            <div data-v-5dbc8cc5="" class="Dice Dice3"></div>
-            <div data-v-5dbc8cc5="" class="Dice Dice3"></div>
+            <div data-v-5dbc8cc5="" class="Dice Dice3 Sieve"></div>
+            <div data-v-5dbc8cc5="" class="Dice Dice3 Sieve"></div>
+            <div data-v-5dbc8cc5="" class="Dice Dice3 Sieve"></div>
             <i data-v-5dbc8cc5="" class="iconfont xiala"></i></div>
           <div data-v-5dbc8cc5="" style="display: block;" class="DiceText">
-            <div data-v-5dbc8cc5="" class="Dice">3</div>
-            <div data-v-5dbc8cc5="" class="Dice">3</div>
+            <div data-v-5dbc8cc5="" class="Dice">1</div>
+            <div data-v-5dbc8cc5="" class="Dice">2</div>
             <div data-v-5dbc8cc5="" class="Dice">3</div>
             <i data-v-5dbc8cc5="" class="iconfont xiala"></i></div>
         </div>
@@ -305,64 +264,83 @@
           <div data-v-5dbc8cc5="" class="Method Method0">
             <p data-v-5dbc8cc5="" class="MethodMsg">猜3个开奖号相加的和，3-10为小，11-18为大。</p>
             <ul data-v-5dbc8cc5="">
-              <li data-v-5dbc8cc5="" class="">大
+              <li data-v-5dbc8cc5="" class=""><span>大</span>
                 <p data-v-5dbc8cc5="">赔率1.93</p>
               </li>
-              <li data-v-5dbc8cc5="" class="">小
+              <li data-v-5dbc8cc5="" class="">
+                <span>小</span>
                 <p data-v-5dbc8cc5="">赔率1.93</p>
               </li>
-              <li data-v-5dbc8cc5="" class="">单
+              <li data-v-5dbc8cc5="" class="">
+                <span>单</span>
                 <p data-v-5dbc8cc5="">赔率1.93</p>
               </li>
-              <li data-v-5dbc8cc5="" class="">双
+              <li data-v-5dbc8cc5="" class="">
+                <span>双</span>
                 <p data-v-5dbc8cc5="">赔率1.93</p>
               </li>
-              <li data-v-5dbc8cc5="" class="">3
+              <li data-v-5dbc8cc5="" class="">
+                <span>3</span>
                 <p data-v-5dbc8cc5="">赔186.84</p>
               </li>
-              <li data-v-5dbc8cc5="" class="">4
+              <li data-v-5dbc8cc5="" class="">
+                <span>4</span>
                 <p data-v-5dbc8cc5="">赔62.28</p>
               </li>
-              <li data-v-5dbc8cc5="" class="">5
+              <li data-v-5dbc8cc5="" class="">
+                <span>5</span>
                 <p data-v-5dbc8cc5="">赔31.14</p>
               </li>
-              <li data-v-5dbc8cc5="" class="">6
+              <li data-v-5dbc8cc5="" class="">
+                <span>6</span>
                 <p data-v-5dbc8cc5="">赔18.68</p>
               </li>
-              <li data-v-5dbc8cc5="" class="">7
+              <li data-v-5dbc8cc5="" class="">
+                <span>7</span>
                 <p data-v-5dbc8cc5="">赔12.45</p>
               </li>
-              <li data-v-5dbc8cc5="" class="">8
+              <li data-v-5dbc8cc5="" class="">
+                <span>8</span>
                 <p data-v-5dbc8cc5="">赔8.89</p>
               </li>
-              <li data-v-5dbc8cc5="" class="">9
+              <li data-v-5dbc8cc5="" class="">
+                <span>9</span>
                 <p data-v-5dbc8cc5="">赔7.47</p>
               </li>
-              <li data-v-5dbc8cc5="" class="">10
+              <li data-v-5dbc8cc5="" class="">
+                <span>10</span>
                 <p data-v-5dbc8cc5="">赔6.92</p>
               </li>
-              <li data-v-5dbc8cc5="" class="">11
+              <li data-v-5dbc8cc5="" class="">
+                <span>11</span>
                 <p data-v-5dbc8cc5="">赔6.92</p>
               </li>
-              <li data-v-5dbc8cc5="" class="">12
+              <li data-v-5dbc8cc5="" class="">
+                <span>12</span>
                 <p data-v-5dbc8cc5="">赔7.47</p>
               </li>
-              <li data-v-5dbc8cc5="" class="">13
+              <li data-v-5dbc8cc5="" class="">
+                <span>13</span>
                 <p data-v-5dbc8cc5="">赔8.89</p>
               </li>
-              <li data-v-5dbc8cc5="" class="">14
+              <li data-v-5dbc8cc5="" class="">
+                <span>14</span>
                 <p data-v-5dbc8cc5="">赔12.45</p>
               </li>
-              <li data-v-5dbc8cc5="" class="">15
+              <li data-v-5dbc8cc5="" class="">
+                <span>15</span>
                 <p data-v-5dbc8cc5="">赔18.68</p>
               </li>
-              <li data-v-5dbc8cc5="" class="">16
+              <li data-v-5dbc8cc5="" class="">
+                <span>16</span>
                 <p data-v-5dbc8cc5="">赔31.14</p>
               </li>
-              <li data-v-5dbc8cc5="" class="">17
+              <li data-v-5dbc8cc5="" class="">
+                <span>17</span>
                 <p data-v-5dbc8cc5="">赔62.28</p>
               </li>
-              <li data-v-5dbc8cc5="" class="">18
+              <li data-v-5dbc8cc5="" class="">
+                <span>18</span>
                 <p data-v-5dbc8cc5="">赔186.84</p>
               </li>
             </ul>
@@ -378,15 +356,14 @@
             </tr>
             <tr data-v-5dbc8cc5="">
               <td data-v-5dbc8cc5="">每注金额</td>
-              <td data-v-5dbc8cc5=""><input data-v-5dbc8cc5="" type="tel" maxlength="7">
-                <div data-v-5dbc8cc5="">请输入要投注的金额</div>
-                <div data-v-5dbc8cc5="" style="display: none;">最高可中<span data-v-5dbc8cc5="">0.00</span>元</div></td>
+              <td data-v-5dbc8cc5=""><input data-v-5dbc8cc5="" type="number" name='tel' maxlength="7">
+                <div data-v-5dbc8cc5="" class='showText'>请输入要投注的金额</div>
+                <div data-v-5dbc8cc5="" style="display: none;" class='showText'>最高可中<span data-v-5dbc8cc5="" id='totalNumber'>0.00</span>元</div></td>
             </tr>
           </tbody>
         </table>
         <div data-v-5dbc8cc5="" class="ft0">
           <div data-v-5dbc8cc5="" class="fl">清空</div>
-          <p data-v-5dbc8cc5="" class="fl"> </p>
           <div data-v-5dbc8cc5="" class="fr">马上投注</div>
         </div>
       </footer>

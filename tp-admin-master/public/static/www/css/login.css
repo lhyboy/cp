@@ -4447,7 +4447,7 @@ footer table[data-v-5dbc8cc5] {
 	color: #fff
 }
 footer table tr[data-v-5dbc8cc5] {
-	font-size: .8em;
+	font-size: 1.1em;
 	height: 2em;
 	line-height: 2em
 }
@@ -4471,7 +4471,7 @@ footer table tr td[data-v-5dbc8cc5]:nth-of-type(1) {
 footer table tr div[data-v-5dbc8cc5] {
 	color: #caebda;
 	display: inline-block;
-	font-size: .8em
+	font-size:.8em
 }
 footer table tr span[data-v-5dbc8cc5] {
 	color: #f4c829
@@ -33254,3 +33254,4 @@ em[data-v-a2fe7c9c], i[data-v-a2fe7c9c] {
 .scrollBox li:nth-child(2){width:26%; text-align: center;}
 .scrollBox li:nth-child(3){width:30%; text-align: center;}
 .ds{display:block;}
+#balance{ position: absolute; right: 5px;top:0; font-size: .7em; }
