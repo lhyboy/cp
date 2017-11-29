@@ -57,14 +57,14 @@ alert("已复制好，可贴粘。");
       <table data-v-06ff19ac="">
         <tr data-v-06ff19ac="">
           <td data-v-06ff19ac="">支付宝姓名</td>
-          <td data-v-06ff19ac=""><input data-v-06ff19ac="" type="text" readonly class="cGold" value="王志宾">
+          <td data-v-06ff19ac=""><input data-v-06ff19ac="" type="text" readonly class="cGold" id="name" value="王志宾">
               <input  type="hidden"  name="playtype" id="playtype"  value="alipaly">
-            <i data-v-06ff19ac="" class="iconfont copy">复制</i></td>
+            <i data-v-06ff19ac="" class="iconfont copy" onclick="copyUrl2('name')">复制</i></td>
         </tr>
         <tr data-v-06ff19ac="">
           <td data-v-06ff19ac="">支付宝账号</td>
-          <td data-v-06ff19ac=""><input data-v-06ff19ac="" type="text" readonly class="cGold" value="kris816">
-            <i data-v-06ff19ac="" class="iconfont copy">复制</i></td>
+          <td data-v-06ff19ac=""><input data-v-06ff19ac="" type="text" readonly class="cGold" id="zfb" value="kris816@126.com">
+            <i data-v-06ff19ac="" class="iconfont copy"  onclick="copyUrl2('zfb')">复制</i></td>
         </tr>
         <tr data-v-06ff19ac="">
           <td data-v-06ff19ac="">充值金额</td>
@@ -74,14 +74,10 @@ alert("已复制好，可贴粘。");
           <td data-v-06ff19ac="">支付宝姓名</td>
           <td data-v-06ff19ac=""><input data-v-06ff19ac="" type="text" tag="支付宝姓名" placeholder="请输入您的支付宝姓名" class="va81" name="PayUser"></td>
         </tr>
-        <tr data-v-06ff19ac="">
-          <td data-v-06ff19ac="">扫码支付</td>
-          <td data-v-06ff19ac=""><img data-v-06ff19ac="" alt="" class="barcode" src="http://imagess-google.com/yfcp/UploadImages/20171125053936421438.png"></td>
-        </tr>
         <tr data-v-06ff19ac=""></tr>
       </table>
       <div data-v-06ff19ac="" class="loginBtn BTN"><a data-v-06ff19ac="">确定</a></div>
-      <div data-v-06ff19ac="" class="tips"> 1、请转账到以上支付宝或扫码支付。<br data-v-06ff19ac="">
+      <div data-v-06ff19ac="" class="tips"> 1、请转账到以上支付宝。<br data-v-06ff19ac="">
         2、若提供的是银行账号，请使用支付宝转账到银行卡的方式进行转账。<br data-v-06ff19ac="">
         3、请正确填写您的姓名和充值金额。<br data-v-06ff19ac="">
         4、设置了支付宝昵称的请直接填写昵称。<br data-v-06ff19ac="">

@@ -33248,10 +33248,12 @@ em[data-v-a2fe7c9c], i[data-v-a2fe7c9c] {
 	color: #eb0002
 }
 .qq{padding-top:20px;height: 80px; font-size: 14px;}
-.scrollBox{display:none;}
+/*.scrollBox{display:none;}
 .scrollBox li{float:left; font-size: .7em;padding:10px 0; border-bottom:1px solid #f3f3f3;}
 .scrollBox li:first-child{width:44%; text-align: center;}
 .scrollBox li:nth-child(2){width:26%; text-align: center;}
-.scrollBox li:nth-child(3){width:30%; text-align: center;}
-.ds{display:block;}
+.scrollBox li:nth-child(3){width:30%; text-align: center;}*/
+.ds{display:none;}
 #balance{ position: absolute; right: 5px;top:0; font-size: .7em; }
+
+.scrollBox li{float:left; font-size: .5em;padding:10px 0; border-bottom:1px solid #f3f3f3;text-align: center;width:20%;}

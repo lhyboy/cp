@@ -17,8 +17,7 @@ $(function(){
                 alert('提交成功！');
                 window.location.href = o.url;
             } else {
-                alert(o.msg);
-                
+                alert(o.msg);                
             }
         })
     })
