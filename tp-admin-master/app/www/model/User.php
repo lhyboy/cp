@@ -154,5 +154,15 @@ class User extends Checkuser
 
 		return $data;
 	}
+        
+        public function useredit($data) {
+            if(isset($data['id']) && !empty($data['id'])) {
+                $this->allowField(true)->save($data, ['id' => $data['id']]);
+                return info(lang('edit succeed'), 1, '', $this->id);
+            }else{
+                return info(lang('Add failed') ,0);
+            }
+            
+        }
 
 }

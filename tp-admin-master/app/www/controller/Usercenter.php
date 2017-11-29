@@ -117,8 +117,42 @@ class Usercenter extends Checkuser
         
     }
     public function personalinfo(){
+        $userinfo=Session::get('userinfo', 'www') ;
         
+        $data = model('User')->get(['id'=>$userinfo['id']]);
+        
+        $this->assign('data',$data);
         return view();
+        
+    }
+    
+    public function savepersonalinfo(){
+        $userinfo=Session::get('userinfo', 'www') ;
+        
+        
+        
+        if(!request()->isAjax()) {
+            return info(lang('Request type error'));
+        }
+
+        $postData = input('post.');
+        $Data = array(
+                    'nickname'=>$postData['nickname'],  
+                    'id'=>$userinfo['id'],
+                    'mobile'=>$postData['mobile'],
+                    'email'=>$postData['email'],
+                    'Gender'=>$postData['Gender'],
+                    'BirthDay'=>$postData['BirthDay']
+            );
+
+            $ret = Loader::model('User')->Bankadd( $Data );
+
+            if ($ret['code'] !== 1) {
+                    return $this->error( $ret['msg'] );
+            }
+            //return info(lang('Add succeed'), 1, '', 0);		
+            return $this->success($ret['msg'], url('www/usercenter/index'));        
+        
         
     }
     

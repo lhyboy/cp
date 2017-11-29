@@ -52,32 +52,32 @@
       </li>
       <li data-v-df275b96="">
         <div data-v-df275b96=""><span data-v-df275b96="">昵称</span> <i data-v-df275b96="" class="iconfont right"></i> <em data-v-df275b96="">
-          <input data-v-df275b96="" va-para="NickName" regmsg="请使用五位以内的汉字" tag="昵称" type="text" placeholder="请设置昵称" class="va131" name="NickName">
+          <input data-v-df275b96="" va-para="NickName" regmsg="请使用五位以内的汉字" tag="昵称" type="text" placeholder="请设置昵称" class="va131" name="NickName" value="{$data.nickname}">
           </em> </div>
       </li>
       <li data-v-df275b96="">
-        <div data-v-df275b96=""><span data-v-df275b96="">账号</span><em data-v-df275b96="">kris123</em></div>
+        <div data-v-df275b96=""><span data-v-df275b96="">账号</span><em data-v-df275b96="">{$data.username}</em></div>
       </li>
     </ul>
     <ul data-v-df275b96="">
       <li data-v-df275b96="">
-        <div data-v-df275b96=""><span data-v-df275b96="">手机</span><i data-v-df275b96="" class="iconfont right"></i><em data-v-df275b96=""><input data-v-df275b96="" va-para="NickPhone" regmsg="请使用正确的手机号" tag="手机" type="text" placeholder="请设置手机" class="va131" name="NickPhone"></em></div>
+        <div data-v-df275b96=""><span data-v-df275b96="">手机</span><i data-v-df275b96="" class="iconfont right"></i><em data-v-df275b96=""><input data-v-df275b96="" va-para="NickPhone" regmsg="请使用正确的手机号" tag="手机" type="text" placeholder="请设置手机" class="va131" name="NickPhone" value="{$data.mobile}"></em></div>
       </li>
       <li data-v-df275b96="">
-        <div data-v-df275b96=""><span data-v-df275b96="">邮箱</span><i data-v-df275b96="" class="iconfont right"></i><em data-v-df275b96=""><input data-v-df275b96="" va-para="NickEmail" regmsg="请使用正确的邮箱" tag="邮箱" type="text" placeholder="请设置邮箱" class="va131" name="NickEmail"></em></div>
+        <div data-v-df275b96=""><span data-v-df275b96="">邮箱</span><i data-v-df275b96="" class="iconfont right"></i><em data-v-df275b96=""><input data-v-df275b96="" va-para="NickEmail" regmsg="请使用正确的邮箱" tag="邮箱" type="text" placeholder="请设置邮箱" class="va131" name="NickEmail" value="{$data.email}"></em></div>
       </li>
       <li data-v-df275b96="">
         <div data-v-df275b96=""><span data-v-df275b96="">性别</span><i data-v-df275b96="" class="iconfont right"></i><em data-v-df275b96="">
           <select data-v-df275b96="" tag="性别" va-para="Sex" class="va131" name="Sex" id='sex'>
             <option data-v-df275b96="" value="保密">保密</option>
-            <option data-v-df275b96="" value="男">男</option>
-            <option data-v-df275b96="" value="女">女</option>
+            <option data-v-df275b96="" value="男" {$data['Gender']=='男' ? 'selected' : ''}>男</option>
+            <option data-v-df275b96="" value="女" {$data['Gender']=='女' ? 'selected' : ''}>女</option>
           </select>
           </em></div>
       </li>
       <li data-v-df275b96="">
         <div data-v-df275b96=""><span data-v-df275b96="">生日</span> <i data-v-df275b96="" class="iconfont right"></i> <em data-v-df275b96="">
-          <input data-v-df275b96="" tag="生日" va-para="BirthDay" type="date" class="va131" name="BirthDay">
+          <input data-v-df275b96="" tag="生日" va-para="BirthDay" type="date" class="va131" name="BirthDay" >
           </em></div>
       </li>
     </ul>
