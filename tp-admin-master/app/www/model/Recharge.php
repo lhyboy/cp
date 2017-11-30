@@ -78,19 +78,32 @@ class Recharge extends Checkuser
         }   
 	}
 
-	//格式化数据
-	private function _fmtData( $data )
-	{
-		if(empty($data) && is_array($data)) {
-			return $data;
-		}
 
-		foreach ($data as $key => $value) {
-			$data[$key]['create_time'] = date('Y-m-d H:i:s',$value['create_time']);
-			$data[$key]['status'] = $value['status'] == 1 ? lang('Start') : lang('Off');
-		}
+        
+    //今天的充值金额 返点金额
+    public function getRecharge( $userid )
+    {
+        
+        $data = $this->where( array('userid'=>1 ))->whereTime('create_time', 'today')->select();
+        return $this->_fmtData( $data );
+    }
+    
+    //格式化数据
+    private function _fmtData( $data )
+    {
+            if(empty($data) && is_array($data)) {
+                    return array('Rebate'=>0,'Money'=>0);
+            }
+            $Rebate=0;
+            $Money=0;
+            foreach ($data as $key => $value) {
+                $Rebate=$Rebate+$value['Rebate'];
+                $Money=$Money+$value['Money'];
+                    //$data[$key]['create_time'] = date('Y-m-d H:i:s',$value['create_time']);
+                    //$data[$key]['status'] = $value['status'] == 1 ? lang('Start') : lang('Off');
+            }
 
-		return $data;
-	}
+            return array('Rebate'=>$Rebate,'Money'=>$Money);
+    }
 
 }

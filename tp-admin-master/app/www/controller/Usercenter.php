@@ -11,7 +11,12 @@ use think\Session;
 class Usercenter extends Checkuser
 {
     public function index(){
+        $userinfo=Session::get('userinfo', 'www') ;
         
+        $data = model('User')->get(['id'=>$userinfo['id']]);
+        $this->assign('data',$data);
+        
+        //var_dump($data);die;
         return view();
         
     }
@@ -105,7 +110,17 @@ class Usercenter extends Checkuser
         
     }
     
+    //交易记录
     public function billrecord(){
+        $userinfo=Session::get('userinfo', 'www') ;
+            if( !$userinfo['id'] ) {
+            return $this->success( lang('Request type error') );
+        }
+        
+        //获取充值记录
+        $Rechargedata = model('Recharge')->get(['userid'=>$userinfo['id']]);
+        //获取提现记录
+        $Tixiandata = model('Tixian')->get(['userid'=>$userinfo['id']]);
         
         return view();
         
@@ -156,8 +171,43 @@ class Usercenter extends Checkuser
         
     }
     
+    //今日盈亏
     public function plstatement(){
         
+        $userinfo=Session::get('userinfo', 'www') ;
+            if( !$userinfo['id'] ) {
+            return $this->success( lang('Request type error') );
+        }
+       
+        
+       
+        //投注金额     
+        $data['bettingmoney'] = Loader::model('UserLottery')->getbettingmoney( $userinfo['id'] );
+        
+        
+        //中奖金额
+        $data['winningmoney'] = Loader::model('UserLotteryWinning')->getwinning( $userinfo['id'] );
+        
+        //var_dump($data['winningmoney']);die;
+        
+        //活动礼金
+        $data['hdlj'] = 0;
+        
+        
+        //充值金额 返点金额
+        $result = Loader::model('Recharge')->getRecharge( $userinfo['id'] );
+        $data['Rebate']=$result['Rebate'];
+        $data['Money']=$result['Money'];
+        
+                
+        //提现金额
+        $data['Tixian'] = Loader::model('Tixian')->getTixian( $userinfo['id'] );
+        
+        //今日盈亏
+        $data['allmoney']=$data['winningmoney']-$data['bettingmoney']+$data['hdlj']+$data['Rebate'];
+        
+        
+        $this->assign('data',$data);
         return view();
         
     }
