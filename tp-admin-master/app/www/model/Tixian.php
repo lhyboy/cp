@@ -91,6 +91,13 @@ class Tixian extends Checkuser
             return info(lang('Delete succeed'), 1);
         }   
 	}
+        
+    //体现记录
+    public function getTixianlist( $userid )
+    {        
+        return $data = $this->where( array('userid'=>1 ))->order('create_time desc')->select();
+         
+    }
 
     //今天的提现
     public function getTixian( $userid )

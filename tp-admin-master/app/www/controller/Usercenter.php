@@ -118,10 +118,69 @@ class Usercenter extends Checkuser
         }
         
         //获取充值记录
-        $Rechargedata = model('Recharge')->get(['userid'=>$userinfo['id']]);
-        //获取提现记录
-        $Tixiandata = model('Tixian')->get(['userid'=>$userinfo['id']]);
+        $Rechargelist = Loader::model('Recharge')->getRechargelist( $userinfo['id'] );
+        //格式化数据
+        if(empty($Rechargelist) && is_array($Rechargelist)) {            
+            $Rechargelist='';
+        }else{
+            foreach ($Rechargelist as $key => $value) {                
+                $Recharge[$key]['create_time'] = date('Y-m-d H:i:s',$value['create_time']);
+                $Recharge[$key]['playtype']  =  $value['playtype'] == 1 ? '银行卡' : $value['playtype'] == 2 ? '微信' : '支付宝';//1银行卡，2微信，3，支付宝
+                $Recharge[$key]['state']  = '充值';
+                $Recharge[$key]['money']  = $value['Money'];
+                $Recharge[$key]['status']  = $value['status'] == 1 ? '成功' : '失败';//0失败，1成功
+            }
+        }
         
+        //获取提现记录       
+        $Tixianlist = Loader::model('Tixian')->getTixianlist( $userinfo['id'] );
+        //格式化数据
+        if(empty($Tixianlist) && is_array($Tixianlist)) {            
+            $Tixianlist='';
+        }else{
+            foreach ($Tixianlist as $key => $value) {                
+                $Tixian[$key]['addtime'] = $value['create_time'];
+                $Tixian[$key]['create_time'] = date('Y-m-d H:i:s',$value['create_time']);                
+                $Tixian[$key]['playtype']  = $value['playtype'] == 1 ? '银行卡' : $value['playtype'] == 2 ? '微信' : '支付宝';//1银行卡，2微信，3，支付宝
+                $Tixian[$key]['state']  = '提现';
+                $Tixian[$key]['money']  = $value['Money'];
+                $Tixian[$key]['status']  = $value['status'] == 1 ? '成功' : '失败';//0失败，1成功
+            }
+        }
+        
+        
+        //混合排序
+        if($Tixian && $Recharge){
+            $all = array_merge($Tixian, $Recharge); 
+            //var_dump($all);die;
+//            $len=count($all);
+//            for($i=1;$i<$len;$i++)
+//            { //该层循环用来控制每轮 冒出一个数 需要比较的次数
+//              for($k=0;$k<$len-$i;$k++)
+//              {
+//                  $aa=$all[$k]['addtime'];
+//                  $bb=$all[$k+1]['addtime'];
+//                 if($aa>$bb)
+//                  {
+//                      $tmp=$all[$k+1];
+//                      $all[$k+1]=$all[$k];
+//                      $all[$k]=$tmp;
+//                  }
+//              }
+//            }
+            //var_dump($all);die;
+        }else if($Tixian){
+            $all = $Tixian;
+        }else if($Recharge){
+            $all = $Recharge;
+        }else{
+            $all ='';
+        }
+        
+        
+        $this->assign('all',$all);
+        $this->assign('Tixian',$Tixian);
+        $this->assign('Recharge',$Recharge);
         return view();
         
     }

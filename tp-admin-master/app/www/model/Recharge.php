@@ -78,8 +78,13 @@ class Recharge extends Checkuser
         }   
 	}
 
-
+    //获取充值记录  
+    public function getRechargelist( $userid )
+    {
         
+        return $this->where( array('userid'=>1 ))->order('create_time desc')->select();
+       
+    }    
     //今天的充值金额 返点金额
     public function getRecharge( $userid )
     {

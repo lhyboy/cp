@@ -55,42 +55,30 @@
       <div data-v-1558f0ab="" class="bd dontSelect">
         <!-- 所有类型 -->
         <div data-v-1558f0ab="" class="scrollBox">  
+            <!--判断是否有记录-->
+            {notempty name="all"}
             <ul>
                <li>操作时间</li>
                <li>操作类型</li>
                <li>操作状态</li>
                <li>金额</li>
                <li>状态</li>
-            </ul>        
-            <ul>
-               <li>2017/11/28</li>
-               <li>银行卡</li>
-               <li>提现</li>
-               <li>500</li>
-               <li>成功</li>
-            </ul>
-            <ul>
-               <li>2017/11/28</li>
-               <li>微信</li>
-               <li>充值</li>
-               <li>500</li>
-               <li>成功</li>
-            </ul>
-            <ul>
-               <li>2017/11/28</li>
-               <li>支付宝</li>
-               <li>充值</li>
-               <li>500</li>
-               <li>成功</li>
-            </ul>
-            <ul>
-               <li>2017/11/28</li>
-               <li>银行卡</li>
-               <li>提现</li>
-               <li>500</li>
-               <li>成功</li>
-            </ul>
-          <!-- 暂无记录 -->
+            </ul> 
+            <!--循环列表-->
+            {volist name="all" id="vo"}
+                <ul>
+                <li>{$vo.create_time}</li>
+                <li>{$vo.playtype}</li>
+                <li>{$vo.state}</li>
+                <li>{$vo.money}</li>
+                <li>{$vo.status}</li>
+                </ul>
+            {/volist}
+           <!--循环列表结束-->
+           
+           {else/}
+           
+           <!-- 暂无记录 -->
           <div data-v-1558f0ab="" class="touchScroll" style='display: none;'>
             <div data-v-1558f0ab="" class="fullPageMsg">
               <div data-v-1558f0ab="" class="fullPageIcon iconfont"></div>
@@ -98,10 +86,17 @@
             </div>
           </div>
           <!-- 暂无记录 -->
+          
+           {/notempty}
+          
         </div>
         <!-- 所有类型 -->
+        
+        
         <!-- 提现记录 -->
         <div data-v-1558f0ab="" class="scrollBox ds">
+            <!--判断是否有记录-->
+            {notempty name="Tixian"}
             <ul>
                <li>操作时间</li>
                <li>操作类型</li>
@@ -109,27 +104,19 @@
                <li>金额</li>
                <li>状态</li>
             </ul>        
-            <ul>
-               <li>2017/11/28</li>
-               <li>银行卡</li>
-               <li>提现</li>
-               <li>500</li>
-               <li>成功</li>
-            </ul>
-            <ul>
-               <li>2017/11/28</li>
-               <li>银行卡</li>
-               <li>提现</li>
-               <li>500</li>
-               <li>成功</li>
-            </ul>
-            <ul>
-               <li>2017/11/28</li>
-               <li>银行卡</li>
-               <li>提现</li>
-               <li>500</li>
-               <li>成功</li>
-            </ul>
+            <!--循环列表-->
+            {volist name="Tixian" id="tvo"}
+                <ul>
+                <li>{$tvo.create_time}</li>
+                <li>{$tvo.playtype}</li>
+                <li>{$tvo.state}</li>
+                <li>{$tvo.money}</li>
+                <li>{$tvo.status}</li>
+                </ul>
+            {/volist}
+           <!--循环列表结束-->
+           
+           {else /}
             <!-- 暂无记录 -->
             <div data-v-1558f0ab="" class="touchScroll" style='display: none;'>
               <div data-v-1558f0ab="" class="fullPageMsg">
@@ -138,10 +125,13 @@
               </div>
             </div>
             <!-- 暂无记录 -->
+            {/notempty}
         </div>
         <!-- 提现记录 -->
         <!-- 充值记录 -->
         <div data-v-1558f0ab="" class="scrollBox ds">
+            <!--判断是否有记录-->
+            {notempty name="Tixian"}
             <ul>
                <li>操作时间</li>
                <li>操作类型</li>
@@ -149,27 +139,19 @@
                <li>金额</li>
                <li>状态</li>
             </ul>        
-            <ul>
-               <li>2017/11/28</li>
-               <li>银行卡</li>
-               <li>充值</li>
-               <li>500</li>
-               <li>成功</li>
-            </ul>
-            <ul>
-               <li>2017/11/28</li>
-               <li>支付宝</li>
-               <li>充值</li>
-               <li>500</li>
-               <li>成功</li>
-            </ul>
-            <ul>
-               <li>2017/11/28</li>
-               <li>微信</li>
-               <li>充值</li>
-               <li>500</li>
-               <li>成功</li>
-            </ul>
+            <!--循环列表-->
+            {volist name="Recharge" id="rvo"}
+                <ul>
+                <li>{$rvo.create_time}</li>
+                <li>{$rvo.playtype}</li>
+                <li>{$rvo.state}</li>
+                <li>{$rvo.money}</li>
+                <li>{$rvo.status}</li>
+                </ul>
+            {/volist}
+           <!--循环列表结束-->
+           
+           {else /}
             <!-- 暂无记录 -->
             <div data-v-1558f0ab="" class="touchScroll" style='display: none;'>
               <div data-v-1558f0ab="" class="fullPageMsg">
@@ -178,6 +160,7 @@
               </div>
             </div>
             <!-- 暂无记录 -->
+            {/notempty}
         </div>
         <!-- 充值记录 -->
       </div>
