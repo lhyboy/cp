@@ -20,6 +20,13 @@ class UserLotteryWinning extends Checkuser
     }
     
     
+     //昨天的中奖榜单
+    public function getwinningyesterdaylist(  )
+    {
+        return $this->alias('ulw')->field('sum(ulw.winningmoney) allwinningmoney,User.username ')->join('ta_user User ',' User.id = ulw.userid','LEFT')->order('allwinningmoney desc')->whereTime('ulw.create_time', 'yesterday')->group('User.id')->select();            
+   
+        
+    }
     //今天的中奖金额
     public function getwinning( $userid )
     {
