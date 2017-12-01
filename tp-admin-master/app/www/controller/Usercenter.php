@@ -203,8 +203,6 @@ class Usercenter extends Checkuser
     public function savepersonalinfo(){
         $userinfo=Session::get('userinfo', 'www') ;
         
-        
-        
         if(!request()->isAjax()) {
             return info(lang('Request type error'));
         }
@@ -219,7 +217,7 @@ class Usercenter extends Checkuser
                     'BirthDay'=>$postData['BirthDay']
             );
 
-            $ret = Loader::model('User')->Bankadd( $Data );
+            $ret = Loader::model('User')->useredit( $Data );
 
             if ($ret['code'] !== 1) {
                     return $this->error( $ret['msg'] );
