@@ -47,7 +47,7 @@ class Login extends Common
 		unset($ret['data']['password']);
 		Session::set('userinfo', $ret['data'], 'www');
 		Loader::model('LogRecord')->record( lang('Login succeed') );
-		return $this->success($ret['msg'], url('www/index/index'));
+		return $this->success($ret['msg'], url('www/index/index'),$ret['data']['balance']);
 	}
         
         

@@ -11,7 +11,13 @@ class UserLotteryWinning extends Checkuser
 {
 	use SoftDelete;
     protected $deleteTime = 'delete_time';
+  
 
+    //中奖列表
+    public function getwinninglist( )
+    {        
+        return $this->alias('ulw')->join('ta_user User ',' User.id = ulw.userid','LEFT')->join( 'Lottery Lottery ',' Lottery.id=ulw.lotteryid' ,'LEFT' )->order('ulw.create_time desc')->select();         
+    }
     
     
     //今天的中奖金额

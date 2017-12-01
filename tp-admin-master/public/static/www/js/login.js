@@ -14,6 +14,7 @@ $(function(){
             //console.log(o);
             //return false;
             if(o.code == 1) {
+                alert('用户余额'+o.data);
                 window.location.href = o.url;
             } else {
                 $(".msgerr").html(o.msg);
