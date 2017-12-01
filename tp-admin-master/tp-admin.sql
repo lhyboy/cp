@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-11-27 17:22:44
+Date: 2017-12-01 17:14:13
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -74,7 +74,7 @@ CREATE TABLE `ta_bank` (
   `update_time` int(11) DEFAULT NULL COMMENT '账户最后更新时间',
   `delete_time` int(11) DEFAULT NULL COMMENT '软删除',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COMMENT='用户表';
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COMMENT='用户提现账户表';
 
 -- ----------------------------
 -- Records of ta_bank
@@ -97,7 +97,7 @@ CREATE TABLE `ta_log_record` (
   `create_time` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=96 DEFAULT CHARSET=utf8 COMMENT='后台操作日志记录';
+) ENGINE=MyISAM AUTO_INCREMENT=99 DEFAULT CHARSET=utf8 COMMENT='后台操作日志记录';
 
 -- ----------------------------
 -- Records of ta_log_record
@@ -197,12 +197,46 @@ INSERT INTO `ta_log_record` VALUES ('92', '1', '127.0.0.1', 'Windows 10', 'chrom
 INSERT INTO `ta_log_record` VALUES ('93', '1', '127.0.0.1', 'Mac OS X', 'safari-601', '登录成功', '1511402666');
 INSERT INTO `ta_log_record` VALUES ('94', '1', '127.0.0.1', 'Mac OS X', 'safari-601', '登录成功', '1511423589');
 INSERT INTO `ta_log_record` VALUES ('95', '1', '127.0.0.1', 'Mac OS X', 'safari-601', '登录成功', '1511753115');
+INSERT INTO `ta_log_record` VALUES ('96', '1', '127.0.0.1', 'Mac OS X', 'safari-601', '登录成功', '1511841139');
+INSERT INTO `ta_log_record` VALUES ('97', '1', '127.0.0.1', 'Mac OS X', 'safari-601', '登录成功', '1511856541');
+INSERT INTO `ta_log_record` VALUES ('98', '1', '127.0.0.1', 'Mac OS X', 'safari-601', '登录成功', '1512035880');
 
 -- ----------------------------
 -- Table structure for ta_lottery
 -- ----------------------------
 DROP TABLE IF EXISTS `ta_lottery`;
 CREATE TABLE `ta_lottery` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `lotteryname` varchar(16) DEFAULT NULL COMMENT '账号',
+  `status` int(11) DEFAULT '1' COMMENT '状态 （0禁止 1可用）',
+  `create_time` int(11) DEFAULT NULL COMMENT '帐号创建时间',
+  `update_time` int(11) DEFAULT NULL COMMENT '账户最后更新时间',
+  `delete_time` int(11) DEFAULT NULL COMMENT '软删除',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COMMENT='彩票表';
+
+-- ----------------------------
+-- Records of ta_lottery
+-- ----------------------------
+INSERT INTO `ta_lottery` VALUES ('1', '大乐透', '1', '1478252401', '1484214600', null);
+INSERT INTO `ta_lottery` VALUES ('3', '双色球', '1', '1483423025', '1483423039', '1483423039');
+INSERT INTO `ta_lottery` VALUES ('2', '管理员', '1', '1482835627', '1484148776', null);
+INSERT INTO `ta_lottery` VALUES ('4', 'aierui', '1', '1484448977', '1484448977', null);
+INSERT INTO `ta_lottery` VALUES ('5', 'test', '1', '1484449210', '1484449239', '1484449239');
+INSERT INTO `ta_lottery` VALUES ('6', '111', '0', '1511418621', '1511418621', null);
+INSERT INTO `ta_lottery` VALUES ('7', '123', '1', '1511418813', '1511418813', null);
+INSERT INTO `ta_lottery` VALUES ('8', '1231', '1', '1511419152', '1511419152', null);
+INSERT INTO `ta_lottery` VALUES ('9', '1232', '1', '1511419171', '1511419171', null);
+INSERT INTO `ta_lottery` VALUES ('10', '234', '1', '1511419211', '1511419211', null);
+INSERT INTO `ta_lottery` VALUES ('11', '222', '1', '1511419454', '1511419454', null);
+INSERT INTO `ta_lottery` VALUES ('12', '115', '1', '1511419550', '1511419550', null);
+INSERT INTO `ta_lottery` VALUES ('13', '1154', '1', '1511419580', '1511419580', null);
+
+-- ----------------------------
+-- Table structure for ta_lottery_winning
+-- ----------------------------
+DROP TABLE IF EXISTS `ta_lottery_winning`;
+CREATE TABLE `ta_lottery_winning` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(16) DEFAULT NULL COMMENT '账号',
   `mobile` varchar(12) DEFAULT NULL COMMENT '手机号',
@@ -214,24 +248,24 @@ CREATE TABLE `ta_lottery` (
   `update_time` int(11) DEFAULT NULL COMMENT '账户最后更新时间',
   `delete_time` int(11) DEFAULT NULL COMMENT '软删除',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COMMENT='用户表';
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COMMENT='彩票开奖表';
 
 -- ----------------------------
--- Records of ta_lottery
+-- Records of ta_lottery_winning
 -- ----------------------------
-INSERT INTO `ta_lottery` VALUES ('1', '石金融', '13330613321', '4c3c8afaf91b4dd81bcf68ba519fa2f6', '1', '1478252401', '1', '2', '1484214600', null);
-INSERT INTO `ta_lottery` VALUES ('3', '程斌', '15116041105', '4c3c8afaf91b4dd81bcf68ba519fa2f6', '1', '1483423025', '0', '0', '1483423039', '1483423039');
-INSERT INTO `ta_lottery` VALUES ('2', '管理员', '15100000000', '4c3c8afaf91b4dd81bcf68ba519fa2f6', '1', '1482835627', '1', '2', '1484148776', null);
-INSERT INTO `ta_lottery` VALUES ('4', 'aierui', '13330613322', '4c3c8afaf91b4dd81bcf68ba519fa2f6', '1', '1484448977', '0', '2', '1484448977', null);
-INSERT INTO `ta_lottery` VALUES ('5', 'test', '13330613012', '4c3c8afaf91b4dd81bcf68ba519fa2f6', '1', '1484449210', '0', '2', '1484449239', '1484449239');
-INSERT INTO `ta_lottery` VALUES ('6', '111', null, '298ee882980e7bd803f8fe1ba43ecaac', '0', '1511418621', '0', '0', '1511418621', null);
-INSERT INTO `ta_lottery` VALUES ('7', '123', null, '298ee882980e7bd803f8fe1ba43ecaac', '1', '1511418813', '0', '0', '1511418813', null);
-INSERT INTO `ta_lottery` VALUES ('8', '1231', null, 'f17f492d0353f4a021e967c4e6861407', '1', '1511419152', '0', '0', '1511419152', null);
-INSERT INTO `ta_lottery` VALUES ('9', '1232', null, '298ee882980e7bd803f8fe1ba43ecaac', '1', '1511419171', '0', '0', '1511419171', null);
-INSERT INTO `ta_lottery` VALUES ('10', '234', null, '8b8c64b8c8727b08b910249429239f63', '1', '1511419211', '0', '0', '1511419211', null);
-INSERT INTO `ta_lottery` VALUES ('11', '222', null, '8b8c64b8c8727b08b910249429239f63', '1', '1511419454', '0', '0', '1511419454', null);
-INSERT INTO `ta_lottery` VALUES ('12', '115', null, '298ee882980e7bd803f8fe1ba43ecaac', '1', '1511419550', '0', '0', '1511419550', null);
-INSERT INTO `ta_lottery` VALUES ('13', '1154', null, '298ee882980e7bd803f8fe1ba43ecaac', '1', '1511419580', '0', '0', '1511419580', null);
+INSERT INTO `ta_lottery_winning` VALUES ('1', '石金融', '13330613321', '4c3c8afaf91b4dd81bcf68ba519fa2f6', '1', '1478252401', '1', '2', '1484214600', null);
+INSERT INTO `ta_lottery_winning` VALUES ('3', '程斌', '15116041105', '4c3c8afaf91b4dd81bcf68ba519fa2f6', '1', '1483423025', '0', '0', '1483423039', '1483423039');
+INSERT INTO `ta_lottery_winning` VALUES ('2', '管理员', '15100000000', '4c3c8afaf91b4dd81bcf68ba519fa2f6', '1', '1482835627', '1', '2', '1484148776', null);
+INSERT INTO `ta_lottery_winning` VALUES ('4', 'aierui', '13330613322', '4c3c8afaf91b4dd81bcf68ba519fa2f6', '1', '1484448977', '0', '2', '1484448977', null);
+INSERT INTO `ta_lottery_winning` VALUES ('5', 'test', '13330613012', '4c3c8afaf91b4dd81bcf68ba519fa2f6', '1', '1484449210', '0', '2', '1484449239', '1484449239');
+INSERT INTO `ta_lottery_winning` VALUES ('6', '111', null, '298ee882980e7bd803f8fe1ba43ecaac', '0', '1511418621', '0', '0', '1511418621', null);
+INSERT INTO `ta_lottery_winning` VALUES ('7', '123', null, '298ee882980e7bd803f8fe1ba43ecaac', '1', '1511418813', '0', '0', '1511418813', null);
+INSERT INTO `ta_lottery_winning` VALUES ('8', '1231', null, 'f17f492d0353f4a021e967c4e6861407', '1', '1511419152', '0', '0', '1511419152', null);
+INSERT INTO `ta_lottery_winning` VALUES ('9', '1232', null, '298ee882980e7bd803f8fe1ba43ecaac', '1', '1511419171', '0', '0', '1511419171', null);
+INSERT INTO `ta_lottery_winning` VALUES ('10', '234', null, '8b8c64b8c8727b08b910249429239f63', '1', '1511419211', '0', '0', '1511419211', null);
+INSERT INTO `ta_lottery_winning` VALUES ('11', '222', null, '8b8c64b8c8727b08b910249429239f63', '1', '1511419454', '0', '0', '1511419454', null);
+INSERT INTO `ta_lottery_winning` VALUES ('12', '115', null, '298ee882980e7bd803f8fe1ba43ecaac', '1', '1511419550', '0', '0', '1511419550', null);
+INSERT INTO `ta_lottery_winning` VALUES ('13', '1154', null, '298ee882980e7bd803f8fe1ba43ecaac', '1', '1511419580', '0', '0', '1511419580', null);
 
 -- ----------------------------
 -- Table structure for ta_recharge
@@ -239,21 +273,28 @@ INSERT INTO `ta_lottery` VALUES ('13', '1154', null, '298ee882980e7bd803f8fe1ba4
 DROP TABLE IF EXISTS `ta_recharge`;
 CREATE TABLE `ta_recharge` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `status` int(10) DEFAULT '1' COMMENT '0失败，1成功',
+  `userid` int(20) DEFAULT NULL COMMENT '用户id',
+  `Rebate` varchar(20) DEFAULT '0' COMMENT '返点',
   `Money` varchar(50) DEFAULT NULL COMMENT '充值金额',
   `PayUser` varchar(100) DEFAULT '1' COMMENT '姓名',
   `create_time` int(11) DEFAULT NULL COMMENT '帐号创建时间',
   `update_time` int(11) DEFAULT NULL COMMENT '账户最后更新时间',
   `delete_time` int(11) DEFAULT NULL COMMENT '软删除',
+  `playtype` varchar(20) DEFAULT '1' COMMENT '充值渠道1银行卡，2微信，3，支付宝',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COMMENT='用户表';
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COMMENT='充值表';
 
 -- ----------------------------
 -- Records of ta_recharge
 -- ----------------------------
-INSERT INTO `ta_recharge` VALUES ('14', '1', '112', '1511430665', '1511430665', null);
-INSERT INTO `ta_recharge` VALUES ('15', '1', '112', '1511430702', '1511430702', null);
-INSERT INTO `ta_recharge` VALUES ('16', '1', '1', '1511430883', '1511430883', null);
-INSERT INTO `ta_recharge` VALUES ('17', '123', '456ssdd方法', '1511754831', '1511754831', null);
+INSERT INTO `ta_recharge` VALUES ('14', '1', '1', '234', '693', '112', '1512028136', '1511430665', null, '1');
+INSERT INTO `ta_recharge` VALUES ('15', '1', '1', '0', '23', '112', '1512028136', '1511430702', null, '1');
+INSERT INTO `ta_recharge` VALUES ('16', '1', '1', '0', '456', '1', '1512028136', '1511430883', null, '1');
+INSERT INTO `ta_recharge` VALUES ('17', '1', '1', '0', '12', '456ssdd方法', '1512028136', '1511754831', null, '1');
+INSERT INTO `ta_recharge` VALUES ('18', '1', '1', '0', '123', '345', '1511837793', '1511837793', null, 'wechat');
+INSERT INTO `ta_recharge` VALUES ('19', '1', '1', '0', '232', '22', '1511837820', '1511837820', null, 'bank');
+INSERT INTO `ta_recharge` VALUES ('20', '1', '1', '0', '22', '123', '1511837839', '1511837839', null, 'alipaly');
 
 -- ----------------------------
 -- Table structure for ta_role
@@ -288,16 +329,18 @@ CREATE TABLE `ta_tixian` (
   `Money` varchar(50) DEFAULT NULL COMMENT '账号',
   `create_time` int(11) DEFAULT NULL COMMENT '帐号创建时间',
   `update_time` int(11) DEFAULT NULL COMMENT '账户最后更新时间',
+  `status` int(10) DEFAULT '1' COMMENT '0失败，1成功',
+  `playtype` varchar(10) DEFAULT '1' COMMENT '体现渠道1银行卡，2微信，3，支付宝',
   `delete_time` int(11) DEFAULT NULL COMMENT '软删除',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COMMENT='用户表';
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COMMENT='用户体现申请表';
 
 -- ----------------------------
 -- Records of ta_tixian
 -- ----------------------------
-INSERT INTO `ta_tixian` VALUES ('14', '1', '1', '1511430665', '1511430665', null);
-INSERT INTO `ta_tixian` VALUES ('15', null, '1', '1511430702', '1511430702', null);
-INSERT INTO `ta_tixian` VALUES ('16', null, '1', '1511430883', '1511430883', null);
+INSERT INTO `ta_tixian` VALUES ('14', '1', '1239', '1512028136', '1511430665', '1', '1', null);
+INSERT INTO `ta_tixian` VALUES ('15', '1', '1', '1511430702', '1511430702', '1', '1', null);
+INSERT INTO `ta_tixian` VALUES ('16', '1', '1', '1511430883', '1511430883', '1', '1', null);
 
 -- ----------------------------
 -- Table structure for ta_user
@@ -305,7 +348,11 @@ INSERT INTO `ta_tixian` VALUES ('16', null, '1', '1511430883', '1511430883', nul
 DROP TABLE IF EXISTS `ta_user`;
 CREATE TABLE `ta_user` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `nickname` varchar(50) DEFAULT NULL COMMENT '昵称',
+  `balance` double(50,0) DEFAULT '0' COMMENT '余额',
   `username` varchar(16) DEFAULT NULL COMMENT '账号',
+  `Gender` varchar(10) DEFAULT NULL COMMENT '性别',
+  `email` varchar(50) DEFAULT NULL,
   `mobile` varchar(12) DEFAULT NULL COMMENT '手机号',
   `password` varchar(32) DEFAULT NULL COMMENT '密码',
   `status` int(11) DEFAULT '1' COMMENT '状态 （0禁止 1可用）',
@@ -314,25 +361,20 @@ CREATE TABLE `ta_user` (
   `role_id` int(11) unsigned NOT NULL DEFAULT '0',
   `update_time` int(11) DEFAULT NULL COMMENT '账户最后更新时间',
   `delete_time` int(11) DEFAULT NULL COMMENT '软删除',
+  `BirthDay` varchar(50) DEFAULT NULL COMMENT '生日',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COMMENT='用户表';
 
 -- ----------------------------
 -- Records of ta_user
 -- ----------------------------
-INSERT INTO `ta_user` VALUES ('1', '石金融', '13330613321', '4c3c8afaf91b4dd81bcf68ba519fa2f6', '1', '1478252401', '1', '2', '1484214600', null);
-INSERT INTO `ta_user` VALUES ('3', '程斌', '15116041105', '4c3c8afaf91b4dd81bcf68ba519fa2f6', '1', '1483423025', '0', '0', '1483423039', '1483423039');
-INSERT INTO `ta_user` VALUES ('2', '管理员', '15100000000', '4c3c8afaf91b4dd81bcf68ba519fa2f6', '1', '1482835627', '1', '2', '1484148776', null);
-INSERT INTO `ta_user` VALUES ('4', 'aierui', '13330613322', '4c3c8afaf91b4dd81bcf68ba519fa2f6', '1', '1484448977', '0', '2', '1484448977', null);
-INSERT INTO `ta_user` VALUES ('5', 'test', '13330613012', '4c3c8afaf91b4dd81bcf68ba519fa2f6', '1', '1484449210', '0', '2', '1484449239', '1484449239');
-INSERT INTO `ta_user` VALUES ('6', '111', null, '298ee882980e7bd803f8fe1ba43ecaac', '0', '1511418621', '0', '0', '1511418621', null);
-INSERT INTO `ta_user` VALUES ('7', '123', null, '298ee882980e7bd803f8fe1ba43ecaac', '1', '1511418813', '0', '0', '1511418813', null);
-INSERT INTO `ta_user` VALUES ('8', '1231', null, 'f17f492d0353f4a021e967c4e6861407', '1', '1511419152', '0', '0', '1511419152', null);
-INSERT INTO `ta_user` VALUES ('9', '1232', null, '298ee882980e7bd803f8fe1ba43ecaac', '1', '1511419171', '0', '0', '1511419171', null);
-INSERT INTO `ta_user` VALUES ('10', '234', null, '8b8c64b8c8727b08b910249429239f63', '1', '1511419211', '0', '0', '1511419211', null);
-INSERT INTO `ta_user` VALUES ('11', '222', null, '8b8c64b8c8727b08b910249429239f63', '1', '1511419454', '0', '0', '1511419454', null);
-INSERT INTO `ta_user` VALUES ('12', '115', null, '298ee882980e7bd803f8fe1ba43ecaac', '1', '1511419550', '0', '0', '1511419550', null);
-INSERT INTO `ta_user` VALUES ('13', '1154', null, '298ee882980e7bd803f8fe1ba43ecaac', '1', '1511419580', '0', '0', '1511419580', null);
+INSERT INTO `ta_user` VALUES ('1', '123', '9999', '石金融', '女', '111@qq.com', '1380001380', '4c3c8afaf91b4dd81bcf68ba519fa2f6', '1', '1478252401', '1', '2', '1511862413', null, '2017-11-18');
+INSERT INTO `ta_user` VALUES ('3', '33', '0', '程斌', null, null, '15116041105', '4c3c8afaf91b4dd81bcf68ba519fa2f6', '1', '1483423025', '0', '0', '1483423039', '1483423039', null);
+INSERT INTO `ta_user` VALUES ('2', '22', '0', '管理员', null, null, '15100000000', '4c3c8afaf91b4dd81bcf68ba519fa2f6', '1', '1482835627', '1', '2', '1484148776', null, null);
+INSERT INTO `ta_user` VALUES ('4', '33', '0', 'aierui', null, null, '13330613322', '4c3c8afaf91b4dd81bcf68ba519fa2f6', '1', '1484448977', '0', '2', '1484448977', null, null);
+INSERT INTO `ta_user` VALUES ('5', '55', '0', 'test', null, null, '13330613012', '4c3c8afaf91b4dd81bcf68ba519fa2f6', '1', '1484449210', '0', '2', '1484449239', '1484449239', null);
+INSERT INTO `ta_user` VALUES ('6', '66', '0', '111', null, null, null, '298ee882980e7bd803f8fe1ba43ecaac', '0', '1511418621', '0', '0', '1511418621', null, null);
+INSERT INTO `ta_user` VALUES ('7', '77', '0', '123', null, null, null, '298ee882980e7bd803f8fe1ba43ecaac', '1', '1511418813', '0', '0', '1511418813', null, null);
 
 -- ----------------------------
 -- Table structure for ta_user_lottery
@@ -340,31 +382,62 @@ INSERT INTO `ta_user` VALUES ('13', '1154', null, '298ee882980e7bd803f8fe1ba43ec
 DROP TABLE IF EXISTS `ta_user_lottery`;
 CREATE TABLE `ta_user_lottery` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `username` varchar(16) DEFAULT NULL COMMENT '账号',
-  `mobile` varchar(12) DEFAULT NULL COMMENT '手机号',
-  `password` varchar(32) DEFAULT NULL COMMENT '密码',
+  `userid` int(20) DEFAULT NULL COMMENT '用户id',
+  `lotteryid` int(20) DEFAULT NULL COMMENT '彩票期数',
+  `bettingmoney` double(32,0) DEFAULT NULL COMMENT '投注金额',
   `status` int(11) DEFAULT '1' COMMENT '状态 （0禁止 1可用）',
   `create_time` int(11) DEFAULT NULL COMMENT '帐号创建时间',
-  `administrator` int(1) DEFAULT '0' COMMENT '是否超级管理员，1是 0否',
-  `role_id` int(11) unsigned NOT NULL DEFAULT '0',
   `update_time` int(11) DEFAULT NULL COMMENT '账户最后更新时间',
   `delete_time` int(11) DEFAULT NULL COMMENT '软删除',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COMMENT='用户表';
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COMMENT='用户购彩记录表';
 
 -- ----------------------------
 -- Records of ta_user_lottery
 -- ----------------------------
-INSERT INTO `ta_user_lottery` VALUES ('1', '石金融', '13330613321', '4c3c8afaf91b4dd81bcf68ba519fa2f6', '1', '1478252401', '1', '2', '1484214600', null);
-INSERT INTO `ta_user_lottery` VALUES ('3', '程斌', '15116041105', '4c3c8afaf91b4dd81bcf68ba519fa2f6', '1', '1483423025', '0', '0', '1483423039', '1483423039');
-INSERT INTO `ta_user_lottery` VALUES ('2', '管理员', '15100000000', '4c3c8afaf91b4dd81bcf68ba519fa2f6', '1', '1482835627', '1', '2', '1484148776', null);
-INSERT INTO `ta_user_lottery` VALUES ('4', 'aierui', '13330613322', '4c3c8afaf91b4dd81bcf68ba519fa2f6', '1', '1484448977', '0', '2', '1484448977', null);
-INSERT INTO `ta_user_lottery` VALUES ('5', 'test', '13330613012', '4c3c8afaf91b4dd81bcf68ba519fa2f6', '1', '1484449210', '0', '2', '1484449239', '1484449239');
-INSERT INTO `ta_user_lottery` VALUES ('6', '111', null, '298ee882980e7bd803f8fe1ba43ecaac', '0', '1511418621', '0', '0', '1511418621', null);
-INSERT INTO `ta_user_lottery` VALUES ('7', '123', null, '298ee882980e7bd803f8fe1ba43ecaac', '1', '1511418813', '0', '0', '1511418813', null);
-INSERT INTO `ta_user_lottery` VALUES ('8', '1231', null, 'f17f492d0353f4a021e967c4e6861407', '1', '1511419152', '0', '0', '1511419152', null);
-INSERT INTO `ta_user_lottery` VALUES ('9', '1232', null, '298ee882980e7bd803f8fe1ba43ecaac', '1', '1511419171', '0', '0', '1511419171', null);
-INSERT INTO `ta_user_lottery` VALUES ('10', '234', null, '8b8c64b8c8727b08b910249429239f63', '1', '1511419211', '0', '0', '1511419211', null);
-INSERT INTO `ta_user_lottery` VALUES ('11', '222', null, '8b8c64b8c8727b08b910249429239f63', '1', '1511419454', '0', '0', '1511419454', null);
-INSERT INTO `ta_user_lottery` VALUES ('12', '115', null, '298ee882980e7bd803f8fe1ba43ecaac', '1', '1511419550', '0', '0', '1511419550', null);
-INSERT INTO `ta_user_lottery` VALUES ('13', '1154', null, '298ee882980e7bd803f8fe1ba43ecaac', '1', '1511419580', '0', '0', '1511419580', null);
+INSERT INTO `ta_user_lottery` VALUES ('1', '1', '2147483647', '4', '1', '1512028133', '1484214600', null);
+INSERT INTO `ta_user_lottery` VALUES ('3', '1', '2147483647', '8', '1', '1483423025', '1483423039', null);
+INSERT INTO `ta_user_lottery` VALUES ('2', '1', '2147483647', '6', '1', '1512028136', '1484148776', null);
+INSERT INTO `ta_user_lottery` VALUES ('4', '1', '2147483647', '4', '1', '1484448977', '1484448977', null);
+INSERT INTO `ta_user_lottery` VALUES ('5', '1', '2147483647', '4', '1', '1484449210', '1484449239', '1484449239');
+INSERT INTO `ta_user_lottery` VALUES ('6', '1', null, '298', '0', '1511418621', '1511418621', null);
+INSERT INTO `ta_user_lottery` VALUES ('7', '123', null, '298', '1', '1511418813', '1511418813', null);
+INSERT INTO `ta_user_lottery` VALUES ('8', '1231', null, '0', '1', '1511419152', '1511419152', null);
+INSERT INTO `ta_user_lottery` VALUES ('9', '1232', null, '298', '1', '1511419171', '1511419171', null);
+INSERT INTO `ta_user_lottery` VALUES ('10', '234', null, '8', '1', '1511419211', '1511419211', null);
+INSERT INTO `ta_user_lottery` VALUES ('11', '222', null, '8', '1', '1511419454', '1511419454', null);
+INSERT INTO `ta_user_lottery` VALUES ('12', '115', null, '298', '1', '1511419550', '1511419550', null);
+INSERT INTO `ta_user_lottery` VALUES ('13', '1154', null, '298', '1', '1511419580', '1511419580', null);
+
+-- ----------------------------
+-- Table structure for ta_user_lottery_winning
+-- ----------------------------
+DROP TABLE IF EXISTS `ta_user_lottery_winning`;
+CREATE TABLE `ta_user_lottery_winning` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `userid` int(20) DEFAULT NULL COMMENT '用户id',
+  `lotteryid` int(20) DEFAULT NULL COMMENT '彩票期数',
+  `bettingmoney` double(32,0) DEFAULT '0' COMMENT '投注金额',
+  `winningmoney` double(20,0) DEFAULT '0' COMMENT '中奖金额',
+  `create_time` int(11) DEFAULT NULL COMMENT '帐号创建时间',
+  `update_time` int(11) DEFAULT NULL COMMENT '账户最后更新时间',
+  `delete_time` int(11) DEFAULT NULL COMMENT '软删除',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COMMENT='用户购彩记录表';
+
+-- ----------------------------
+-- Records of ta_user_lottery_winning
+-- ----------------------------
+INSERT INTO `ta_user_lottery_winning` VALUES ('1', '1', '1', '4', '11', '1512032139', '1484214600', null);
+INSERT INTO `ta_user_lottery_winning` VALUES ('3', '1', '1', '4', '22', '1512032139', '1483423039', null);
+INSERT INTO `ta_user_lottery_winning` VALUES ('2', '1', '1', '4', '33', '1512032139', '1484148776', null);
+INSERT INTO `ta_user_lottery_winning` VALUES ('4', '1', '1', '4', '44', '1512032139', '1484448977', null);
+INSERT INTO `ta_user_lottery_winning` VALUES ('5', '1', '1', '4', '55', '1512032139', '1484449239', null);
+INSERT INTO `ta_user_lottery_winning` VALUES ('6', '1', '1', '298', '63', '1512032139', '1511418621', null);
+INSERT INTO `ta_user_lottery_winning` VALUES ('7', '2', '1', '298', '66', '1512032139', '1511418813', null);
+INSERT INTO `ta_user_lottery_winning` VALUES ('8', '3', '1', '0', '77', '1512032139', '1511419152', null);
+INSERT INTO `ta_user_lottery_winning` VALUES ('9', '4', '1', '298', '88', '1512032139', '1511419171', null);
+INSERT INTO `ta_user_lottery_winning` VALUES ('10', '5', '1', '8', '123', '1512032139', '1511419211', null);
+INSERT INTO `ta_user_lottery_winning` VALUES ('11', '6', '1', '8', '345', '1512032139', '1511419454', null);
+INSERT INTO `ta_user_lottery_winning` VALUES ('12', '7', '1', '298', '567', '1512032139', '1511419550', null);
+INSERT INTO `ta_user_lottery_winning` VALUES ('13', '8', '1', '298', '789', '1512032139', '1511419580', null);
