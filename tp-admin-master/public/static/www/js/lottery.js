@@ -41,6 +41,9 @@ var Odds8 = 7.47;   //9  12
 var Odds9 = 6.92;   //10 11
 var Betting_status=true; //投注状态，true可投注 false不可投注
 $(function(){   
+   var money=$.cookie('userInfo');
+   console.log(money)
+   //$('#balance').html('余额:'+$.cookie('userInfo'));
    //下注
    $('.Method li').click(function(){
        var lotteryText='';
