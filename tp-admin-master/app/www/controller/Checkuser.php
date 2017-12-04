@@ -28,9 +28,7 @@ class Checkuser extends Common
 		$rule_val = $request->module().'/'.$request->controller().'/'.$request->action();
 		$this->uid = $userRow['id'];
 		$this->role_id = $userRow['role_id'];
-		if($userRow['administrator']!=1 && !$this->checkRule($this->uid, $rule_val)) {
-			$this->error(lang('Without the permissions page'));
-		}
+		
 	}
 
 	public function goLogin()

@@ -41,9 +41,7 @@ var Odds8 = 7.47;   //9  12
 var Odds9 = 6.92;   //10 11
 var Betting_status=true; //投注状态，true可投注 false不可投注
 $(function(){   
-   var money=$.cookie('userInfo');
-   console.log(money)
-   //$('#balance').html('余额:'+$.cookie('userInfo'));
+   $('#balance span').html($.cookie("userInfo"));
    //下注
    $('.Method li').click(function(){
        var lotteryText='';
@@ -72,16 +70,22 @@ $(function(){
    })
    //确定投注
    $('.fr').click(function(){
+        //Betting_status=true;  投注时候可以用，改成true就可以下注  false是开奖进行时
         if(Betting_status){
-            var Multiple=$('input[name=tel]').val(); 
+            var Multiple=$('input[name=tel]').val(); //当前下注金额
+            var balance=$('#balance span').html();
             if(lotteryArr.length<1){
                 alert('请至少选择一组号码投注!')
                 return false;
             } 
             if(Multiple<1){
-                alert('请天下您要投注的金额!')
+                alert('请填写您要投注的金额!')
                 return false;
             } 
+            if(parseInt(Multiple)>parseInt(balance)){
+                alert('您的余额是'+balance+'不够本次投注！');
+                return false;
+            }
             //投注
             $.post('test',{lotteryArr:lotteryArr,Multiple:Multiple},function(o){  //lotteryArr  投注的选项数组   Multiple  投注的倍数
                 if(o.code==1){
