@@ -12,14 +12,12 @@ $(function(){
         }
         $.post('doLogin',{username:name,password:password},function(o){
             if(o.code == 1) {
-                alert('用户余额'+o.data);
                 $.cookie("userInfo",o.data,{path:"/"});
                 window.location.href = o.url;
             } else {
                 $(".msgerr").html(o.msg);
             }
         },'json')        
-    	
         return false;
     })
 })
