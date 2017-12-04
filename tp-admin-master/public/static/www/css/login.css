@@ -11744,7 +11744,7 @@ body[data-v-1558f0ab], html[data-v-1558f0ab] {
 }
 .bd[data-v-1558f0ab] {
 	width: 100%;
-	height: 100%
+	height:auto;
 }
 .touchScroll[data-v-1558f0ab] {
 	position: relative;
@@ -33248,12 +33248,9 @@ em[data-v-a2fe7c9c], i[data-v-a2fe7c9c] {
 	color: #eb0002
 }
 .qq{padding-top:20px;height: 80px; font-size: 14px;}
-/*.scrollBox{display:none;}
-.scrollBox li{float:left; font-size: .7em;padding:10px 0; border-bottom:1px solid #f3f3f3;}
-.scrollBox li:first-child{width:44%; text-align: center;}
-.scrollBox li:nth-child(2){width:26%; text-align: center;}
-.scrollBox li:nth-child(3){width:30%; text-align: center;}*/
 .ds{display:none;}
 #balance{ position: absolute; right: 5px;top:0; font-size: .7em; }
 
 .scrollBox li{float:left; font-size: .5em;padding:10px 0; border-bottom:1px solid #f3f3f3;text-align: center;width:20%;}
+.scrollBox ul{width:100%;float:left;}
+ul.cont{height:50px;}
