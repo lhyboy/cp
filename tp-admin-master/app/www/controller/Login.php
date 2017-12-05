@@ -65,6 +65,7 @@ class Login extends Common
 		};
 		$loginData = array(
 			'username'=>$postData['username'],
+			'head_pic'=>rand(1,10),
 			'password'=>$postData['password']
 		);
                 

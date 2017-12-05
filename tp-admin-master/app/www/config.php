@@ -63,6 +63,7 @@ return [
         '__CSS__'    => STATIC_PATH . 'www/css',
         '__JS__'     => STATIC_PATH . 'www/js',
         '__IMG__'    => STATIC_PATH . 'www/img',
+        '__HEADIMG__'    => STATIC_PATH . 'www/img2',
         '__LIB__'    => STATIC_PATH . 'www/lib'
     ],
 
