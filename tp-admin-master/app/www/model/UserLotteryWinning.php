@@ -12,6 +12,24 @@ class UserLotteryWinning extends Checkuser
 	use SoftDelete;
     protected $deleteTime = 'delete_time';
   
+   
+    
+    
+    //获取用户自己的中奖列表
+    public function getmywinninglist($userid )
+    {        
+        $data=  $this->alias('ulw')->where( array('ulw.userid'=>1 ))->join('ta_user_lottery ul ',' ul.userid = ulw.userid','LEFT')->join( 'Lottery Lottery ',' Lottery.id=ulw.lotteryid' ,'LEFT' )->order('ulw.create_time desc')->select();         
+        if(empty($data) && is_array($data)) {
+                return 0;
+        }
+         
+        foreach ($data as $key => $value) {
+            $data[$key]['create_time'] = date('Y/m/d',$value['create_time']);
+            
+        }
+
+        return $data;
+    }
 
     //中奖列表
     public function getwinninglist( )

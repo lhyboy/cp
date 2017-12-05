@@ -54,6 +54,8 @@
       <div data-v-1558f0ab="" class="bd dontSelect">
         <!-- 全部 -->
         <div data-v-1558f0ab="" class="scrollBox">
+            <!--判断是否有记录-->
+            {notempty name="data"}
           <ul>
             <li>投注时间</li>
             <li>投注类型</li>
@@ -61,20 +63,20 @@
             <li>投注钱数</li>
             <li>中奖金额</li>
           </ul>
+            <!--循环列表-->
+            {volist name="data" id="vo"}
           <ul>
-            <li>2017/11/28</li>
-            <li>大发快3</li>
-            <li>单</li>
-            <li>2元</li>
-            <li>4元</li>
+            <li>{$vo.create_time}</li>
+            <li>{$vo.lotteryname}</li>
+            <li>{$vo.lottery_number}</li>
+            <li>{$vo.bettingmoney}元</li>
+            <li>{$vo.winningmoney}元</li>
           </ul>
-          <ul>
-            <li>2017/11/28</li>
-            <li>大发快3</li>
-            <li>8</li>
-            <li>2元</li>
-            <li>未中奖</li>
-          </ul>
+            {/volist}
+           <!--循环列表结束-->
+           
+           {else/}
+         
           <!-- 暂无记录 -->
           <div data-v-1558f0ab="" class="touchScroll" style='display:none;'>
             <div data-v-1558f0ab="" class="fullPageMsg">
@@ -83,10 +85,13 @@
             </div>
           </div>
           <!-- 暂无记录 -->
+          {/notempty}
         </div>
         <!-- 全部 -->
         <!-- 已中奖 -->
         <div data-v-1558f0ab="" class="scrollBox ds">
+            <!--判断是否有记录-->
+            {notempty name="datawinning"}
           <ul>
             <li>投注时间</li>
             <li>投注类型</li>
@@ -94,20 +99,18 @@
             <li>投注钱数</li>
             <li>中奖状态</li>
           </ul>
+            <!--循环列表-->
+            {volist name="datawinning" id="voa"}
           <ul>
-            <li>2017/11/28</li>
-            <li>大发快3</li>
-            <li>单</li>
-            <li>2元</li>
-            <li>4元</li>
+            <li>{$voa.create_time}</li>
+            <li>{$voa.lotteryname}</li>
+            <li>{$voa.lottery_number}</li>
+            <li>{$voa.bettingmoney}元</li>
+            <li>{$voa.winningmoney}元</li>
           </ul>
-          <ul>
-            <li>2017/11/28</li>
-            <li>大发快3</li>
-            <li>8</li>
-            <li>2元</li>
-            <li>6元</li>
-          </ul>
+            {/volist}
+          
+            {else/}
           <!-- 暂无记录 -->
           <div data-v-1558f0ab="" class="touchScroll" style='display:none;'>
             <div data-v-1558f0ab="" class="fullPageMsg">
@@ -116,10 +119,13 @@
             </div>
           </div>
           <!-- 暂无记录 -->
+          {/notempty}
         </div>
         <!-- 已中奖 -->
         <!-- 未中奖 -->
         <div data-v-1558f0ab="" class="scrollBox ds">
+            <!--判断是否有记录-->
+            {notempty name="datanowinning"}
             <ul>
             <li>投注时间</li>
             <li>投注类型</li>
@@ -127,20 +133,17 @@
             <li>投注钱数</li>
             <li>中奖状态</li>
           </ul>
+             <!--循环列表-->
+            {volist name="datanowinning" id="vob"}
           <ul>
-            <li>2017/11/28</li>
-            <li>大发快3</li>
-            <li>单</li>
-            <li>2元</li>
-            <li>未中奖</li>
+            <li>{$vob.create_time}</li>
+            <li>{$vob.lotteryname}</li>
+            <li>{$vob.lottery_number}</li>
+            <li>{$vob.bettingmoney}元</li>
+            <li>{$vob.winningmoney}元</li>
           </ul>
-          <ul>
-            <li>2017/11/28</li>
-            <li>大发快3</li>
-            <li>8</li>
-            <li>2元</li>
-            <li>未中奖</li>
-          </ul>
+            {/volist}         
+            {else/}
           <!-- 暂无记录 -->
           <div data-v-1558f0ab="" class="touchScroll" style='display:none;'>
             <div data-v-1558f0ab="" class="fullPageMsg">
@@ -149,10 +152,14 @@
             </div>
           </div>
           <!-- 暂无记录 -->
+          {/notempty}
         </div>
         <!-- 未中奖 -->
+        
         <!-- 等待开奖 -->
         <div data-v-1558f0ab="" class="scrollBox ds">
+             <!--判断是否有记录-->
+            {notempty name="datano"}
           <ul>
             <li>投注时间</li>
             <li>投注类型</li>
@@ -160,20 +167,17 @@
             <li>投注钱数</li>
             <li>中奖状态</li>
           </ul>
+             <!--循环列表-->
+            {volist name="datano" id="voc"}
           <ul>
-            <li>2017/11/28</li>
-            <li>大发快3</li>
-            <li>单</li>
-            <li>2元</li>
-            <li>等待开奖</li>
+            <li>{$voc.create_time}</li>
+            <li>{$voc.lotteryname}</li>
+            <li>{$voc.lottery_number}</li>
+            <li>{$voc.bettingmoney}元</li>
+            <li>{$voc.winningmoney}元</li>
           </ul>
-          <ul>
-            <li>2017/11/28</li>
-            <li>大发快3</li>
-            <li>8</li>
-            <li>2元</li>
-            <li>等待开奖</li>
-          </ul>
+            {/volist}         
+            {else/}          
           <!-- 暂无记录 -->
           <div data-v-1558f0ab="" class="touchScroll" style='display:none;'>
             <div data-v-1558f0ab="" class="fullPageMsg">
@@ -181,6 +185,8 @@
               <p data-v-1558f0ab="">暂无记录</p>
             </div>
           </div>
+          <!-- 暂无记录 -->
+          {/notempty}
           <!-- 暂无记录 -->
         </div>
         <!-- 等待开奖 -->

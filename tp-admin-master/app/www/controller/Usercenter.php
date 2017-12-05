@@ -20,9 +20,21 @@ class Usercenter extends Checkuser
         return view();
         
     }
-    
-     public function betrecord(){
+    //投注记录
+    public function betrecord(){
+        //获取投注记录
+        $userinfo=Session::get('userinfo', 'www') ;
+        $UserLotterylist = Loader::model('UserLottery')->getUserLotterylist( $userinfo['id'] );
+        //获取中奖记录
+        $UserLotterywinninglist = Loader::model('UserLotteryWinning')->getmywinninglist( $userinfo['id'] );
         
+        //获取未中奖记录
+        $UserLotterynowinninglist = Loader::model('UserLottery')->getmynowinninglist( $userinfo['id'] );
+        $this->assign('data',$UserLotterylist);        
+        $this->assign('datawinning',$UserLotterywinninglist);        
+        $this->assign('datanowinning',$UserLotterynowinninglist);        
+        $this->assign('datano','');        
+        //var_dump($UserLotterylist);die;
         return view();
         
     }

@@ -3,9 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/WWW/tp-admin-master/app/www/model/User.php</file>
+            <file>file:/D:/WWW/tp-admin-master/public/static/www/js/info.js</file>
+            <file>file:/D:/WWW/tp-admin-master/app/www/view/usercenter/personalinfo.html</file>
+            <file>file:/D:/WWW/tp-admin-master/app/www/model/AuthRule.php</file>
             <file>file:/D:/WWW/tp-admin-master/app/www/controller/Index.php</file>
-            <file>file:/D:/WWW/tp-admin-master/app/www/controller/Login.php</file>
-            <file>file:/D:/WWW/tp-admin-master/app/www/controller/Lottery.php</file>
+            <file>file:/D:/WWW/tp-admin-master/app/www/model/Checkuser.php</file>
+            <file>file:/D:/WWW/tp-admin-master/app/www/controller/Usercenter.php</file>
+            <file>file:/D:/WWW/tp-admin-master/app/www/view/usercenter/betrecord.html</file>
+            <file>file:/D:/WWW/tp-admin-master/app/www/controller/Checkuser.php</file>
         </group>
     </open-files>
 </project-private>
