@@ -15,7 +15,7 @@ $(function(){
                 $.cookie("userInfo",o.data,{path:"/"});
                 window.location.href = o.url;
             } else {
-                $(".msgerr").html(o.msg);
+                alert(o.msg);
             }
         },'json')        
         return false;
