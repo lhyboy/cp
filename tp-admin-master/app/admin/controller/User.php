@@ -61,9 +61,7 @@ class User extends Admin
         if(intval($id) < 0){
             return info(lang('Data ID exception'), 0);
         }
-        if (intval($id == 1)) {
-            return info(lang('Edit without authorization'), 0);
-        }
+        
         $roleData = model('role')->getKvData();
         $this->assign('roleData', $roleData);
         $data = model('User')->get(['id'=>$id]);
@@ -85,7 +83,7 @@ class User extends Admin
         }
 
         $data = input('post.');
-        var_dump($data);die;
+         
         return model('User')->saveData( $data );
     }
 
@@ -97,7 +95,7 @@ class User extends Admin
         if(empty($id)){
             return info(lang('Data ID exception'), 0);
         }
-        if (intval($id == 1 || in_array(1, explode(',', $id)))) {
+        if (intval($id == 1 )) {
             return info(lang('Delete without authorization'), 0);
         }
         return Loader::model('User')->deleteById($id);
