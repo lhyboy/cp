@@ -135,17 +135,4 @@ class Index extends Admin
         return Loader::model('Tixian')->deletetixianById($id);
     }
     
-            /**
-     * 删除
-     * @param  string $id 数据ID（主键）
-     */
-    public function deleterecharge($id = 0){
-        if(empty($id)){
-            return info(lang('Data ID exception'), 0);
-        }
-        if (intval($id == 1 || in_array(1, explode(',', $id)))) {
-            return info(lang('Delete without authorization'), 0);
-        }
-        return Loader::model('Recharge')->deleterechargeById($id);
-    }
 }
