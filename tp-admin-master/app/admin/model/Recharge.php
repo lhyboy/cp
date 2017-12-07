@@ -75,6 +75,25 @@ class Recharge extends Admin
             return info(lang('Delete succeed'), 1);
         }   
 	}
+      	public function saverecharge( $data )
+	{
+		if( isset( $data['id']) && !empty($data['id'])) {
+			$result = $this->edit( $data );
+                        
+		} else {
+			return FALSE;
+		}
+                
+		return $result;
+	}  
+        
+          public function deleterechargeById($id)
+    {
+            $result = Tixian::destroy($id);
+            if ($result > 0) {
+        return info(lang('Delete succeed'), 1);
+    }   
+    }
 
     //获取充值记录  
     public function Rechargelist()

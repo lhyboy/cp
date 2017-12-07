@@ -18,18 +18,23 @@
                 <!-- 表单内容 -->
                 <div class="ibox-content">
                     <!-- 用户控件（操作） -->
-                    
+                    {toolbar id="toolbar"}
+                        
+                    {/toolbar}
                     <!-- 表格数据 -->
                     <table id="table" data-toggle="gridview" class="table" data-url="{:url('admin/index/gettixian')}" data-toolbar="#toolbar" data-show-columns="true" data-page-size="10" data-page-list="[10, 25, 50, All]" data-unique-id="id" data-pagination="true" data-side-pagination="client" data-search="true" data-click-to-select="false">
                         <thead>
                             <tr>                                 
                                 <th data-width="50" data-field="username" >用户名</th>
+                                <th data-width="80" data-field="balance" data-align="center">余额</th>
                                 <th data-width="80" data-field="Money" data-align="center">提现金额</th>
                                 <th data-width="80" data-field="BankID" data-align="center">银行</th>
                                 <th data-width="80" data-field="RealName" data-align="center">开户人姓名</th>
                                 <th data-width="80" data-field="BankNum" data-align="center">银行卡号</th>
                                 <th data-width="80" data-field="Address_P" data-align="center">开户省</th>
-                                <th data-width="80" data-field="Address_C" data-align="center">开户市</th>                                
+                                <th data-width="80" data-field="Address_C" data-align="center">开户市</th>   
+                                <th data-width="80" data-field="operate"   data-align="center" data-formatter="operateFormatter" data-events="operateEvents">{:lang('Operate')}</th>
+                     
                             </tr>
                         </thead>
                     </table>
@@ -42,11 +47,11 @@
 <script type="text/javascript">
     function operateFormatter(value, row, index) {
         return [
-            '<a class="btn btn-xs edit" href="javascript:void(0)" title="{$Think.lang.Edit}">',
-            '<i class="fa fa-edit"></i>',
+            '<a class="btn btn-xs edit" href="javascript:void(0)" title="确定">',
+            '确定',
             '</a>  ',
-            '<a class="btn btn-xs delete" href="javascript:void(0)" title="{$Think.lang.Delete}">',
-            '<i class="fa fa-trash"></i>',
+            '<a class="btn btn-xs delete" href="javascript:void(0)" title="删除">',
+            '删除',
             '</a>'
         ].join('');
     }
@@ -54,7 +59,7 @@
     var operateEvents = {
         'click .edit': function (e, value, row, index) {
             var param = {
-                url: "{:url('admin/user/edit');}",
+                url: "{:url('admin/index/edittixian');}",
                 data: {id: row.id}
             }
             $("#table").gridView('loadModal', param.url,param.data)
