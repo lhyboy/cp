@@ -10,9 +10,11 @@ $(function(){
             alert('请输入验证码');
             return false;
         }
-        $.post('test',{username:name,code:code},function(o){            
-            if(o.code == 1) {                
+        $.post('checkusername',{UserName:name,captcha:code},function(o){            
+            if(o.code == 1) { 
+                //alert(o.url);
                 window.location.href = o.url;
+                
             } else {
                 alert(o.msg);
             }

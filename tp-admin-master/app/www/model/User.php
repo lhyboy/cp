@@ -107,6 +107,29 @@ class User extends Checkuser
         }
 	}
 
+        public function checkuser(array $data = [])
+	{
+		$user = User::get(['UserName' => $data['UserName']]);
+		if (empty($user)) {
+			return info('无此用户', 0);
+		}
+                return info('请设置新密码' ,1);
+		
+		
+	}
+        public function editpwd(array $data = [])
+	{
+		
+                $data['update_time'] = time();
+
+		$data['password'] = mduser($data['password']);
+		$res = $this->allowField(true)->save($data,['username'=>$data['username']]);
+		if($res == 1){
+            return info(lang('Edit succeed'), 1);
+        }else{
+            return info(lang('Edit failed'), 0);
+        }
+	}
 	public function edit(array $data = [])
 	{
 		$userValidate = validate('User');

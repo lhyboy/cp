@@ -85,8 +85,55 @@ class Login extends Common
             return view();
 	}
         
-        
+        public function doModifyPwd()
+	{
+		if( !Request::instance()->isAjax() ) {
+			return $this->success( lang('Request type error') );
+		}
+
+		$postData = input('post.');
+                
+		$username=Session::get('username', 'wwwfgwd') ;
+		$loginData = array(
+			'username'=>$username,			
+			'password'=>$postData['password']
+		);
+                
+		$ret = Loader::model('User')->editpwd( $loginData );
+                
+		if ($ret['code'] !== 1) {
+			return $this->error( $ret['msg'] );
+		}
+		//return info(lang('Add succeed'), 1, '', 0);		
+		return $this->success($ret['msg'], url('www/login/index'));
+	}
 	public function ModifyPwd()
+	{
+            return view();
+	}
+        
+        public function checkusername()
+	{
+            if( !Request::instance()->isAjax() ) {
+                    return $this->success( lang('Request type error') );
+            }
+
+            $postData = input('post.');
+
+            $captcha = $postData['captcha'];
+            if(!captcha_check($captcha)){
+                    return $this->error( lang('Captcha error') );
+            };
+            $ret = Loader::model('User')->checkuser( $postData );
+            if ($ret['code'] !== 1) {
+			return $this->error( $ret['msg'] );
+		}
+                Session::set('username', $postData['UserName'], 'wwwfgwd');
+             
+           return $this->success($ret['msg'], url('www/login/ModifyPwd'));
+	}
+        
+        public function forgetpwd()
 	{
             return view();
 	}
