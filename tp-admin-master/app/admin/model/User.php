@@ -44,8 +44,12 @@ class User extends Admin
 	public function getList( $request )
 	{
 		$request = $this->fmtRequest( $request );
-		$data = $this->order('create_time desc')->where( $request['map'] )->limit($request['offset'], $request['limit'])->select();
-		return $this->_fmtData( $data );
+		//$data = $this->order('create_time desc')->where( $request['map'] )->limit($request['offset'], $request['limit'])->select();
+		$data = $this->alias('u')->join('recharge r ',' u.id = r.userid','LEFT')->join('tixian t ',' u.id = t.userid','LEFT')->join('user_lottery_winning ulw ',' u.id = ulw.userid','LEFT')->where( $request['map'] )->order('u.create_time desc')->field('SUM(t.Money ) as alltixian , SUM(r.Money) as allrecharge ,SUM(ulw.winningmoney) as allwinning ,u.*')->limit($request['offset'], $request['limit'])->group('u.id')->select();
+		//return $this->alias('r')->where( array('r.status'=>0 ))->join('ta_user User ',' User.id = r.userid','LEFT')->order('r.create_time desc')->field('r.id as rid,r.*,User.*')->select();
+                //var_dump($data);die;
+//echo $this->getlastsql();
+                return $this->_fmtData( $data );
 	}
 
 	public function saveData( $data )

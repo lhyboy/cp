@@ -86,7 +86,7 @@ class Login extends Common
 	}
         
         
-	public function forgetpwd()
+	public function ModifyPwd()
 	{
             return view();
 	}
