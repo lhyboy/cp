@@ -10,9 +10,10 @@ $(function(){
             alert('请输入密码');
             return false;
         }
-        $.post('doLogin',{username:name,password:password},function(o){
+        $.post('doLogin',{username:name,password:password},function(o){            
             if(o.code == 1) {
                 $.cookie("userInfo",o.data,{path:"/"});
+                $.cookie("user",name,{path:"/"});
                 window.location.href = o.url;
             } else {
                 $(".msgerr").html(o.msg);
