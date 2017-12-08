@@ -61,7 +61,7 @@
             <li>投注类型</li>
             <li>投注号码</li>
             <li>投注钱数</li>
-            <li>开奖号码数</li>
+            <li>开奖号码</li>
             <li>中奖金额</li>
           </ul>
             <!--循环列表-->
@@ -99,6 +99,7 @@
             <li>投注类型</li>
             <li>投注号码</li>
             <li>投注钱数</li>
+            <li>开奖号码</li>
             <li>中奖状态</li>
           </ul>
             <!--循环列表-->
@@ -108,6 +109,7 @@
             <li>{$voa.lotteryname}</li>
             <li>{$voa.lottery_number}</li>
             <li>{$voa.bettingmoney}元</li>
+            <li>{$vo.lotterynumbers}</li>
             <li>{$voa.winningmoney}元</li>
           </ul>
             {/volist}
@@ -133,6 +135,7 @@
             <li>投注类型</li>
             <li>投注号码</li>
             <li>投注钱数</li>
+            <li>开奖号码</li>
             <li>中奖状态</li>
           </ul>
              <!--循环列表-->
@@ -142,6 +145,7 @@
             <li>{$vob.lotteryname}</li>
             <li>{$vob.lottery_number}</li>
             <li>{$vob.bettingmoney}元</li>
+            <li>{$vo.lotterynumbers}</li>
             <li>{$vob.winningmoney}元</li>
           </ul>
             {/volist}         
@@ -167,6 +171,7 @@
             <li>投注类型</li>
             <li>投注号码</li>
             <li>投注钱数</li>
+            <li>开奖号码</li>
             <li>中奖状态</li>
           </ul>
              <!--循环列表-->
@@ -176,6 +181,7 @@
             <li>{$voc.lotteryname}</li>
             <li>{$voc.lottery_number}</li>
             <li>{$voc.bettingmoney}元</li>
+            <li>未开奖</li>
             <li>{$voc.winningmoney}元</li>
           </ul>
             {/volist}         

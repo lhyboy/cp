@@ -33251,6 +33251,8 @@ em[data-v-a2fe7c9c], i[data-v-a2fe7c9c] {
 .ds{display:none;}
 #balance{ position: absolute; right: 5px;top:0; font-size: .7em; }
 
-.scrollBox li{float:left; font-size: .5em;padding:10px 0; border-bottom:1px solid #f3f3f3;text-align: center;width:20%;}
+.scrollBox li{float:left; font-size: .5em;padding:10px 0; border-bottom:1px solid #f3f3f3;text-align: center;width:16.6%;}
 .scrollBox ul{width:100%;float:left;}
+.scrollBox2 li{float:left; font-size: .5em;padding:10px 0; border-bottom:1px solid #f3f3f3;text-align: center;width:20%;}
+.scrollBox2 ul{width:100%;float:left;}
 ul.cont{height:50px;}
