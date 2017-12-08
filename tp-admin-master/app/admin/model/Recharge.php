@@ -62,14 +62,25 @@ class Recharge extends Admin
 	}
       	public function saverecharge( $data )
 	{
-		if( isset( $data['id']) && !empty($data['id'])) {
+            //Db::startTrans();
+            //try{
+                //充值金额入库
+                if( isset( $data['id']) && !empty($data['id'])) {
 			$result = $this->edit( $data );
                         
 		} else {
 			return FALSE;
 		}
+                //修改用户余额
                 
 		return $result;
+                // 提交事务
+               // Db::commit(); 
+            //}catch (\Exception $e) {
+                // 回滚事务
+             //   Db::rollback();
+           // }
+		
 	}  
         
           public function deleterechargeById($id)
@@ -112,5 +123,17 @@ class Recharge extends Admin
 
             return array('Rebate'=>$Rebate,'Money'=>$Money);
     }
+    
+    	public function getMoneybyid($id)
+	{
+		
+		$info = User::get(['id' =>$id]);
+		if (empty($info)) {
+			return FALSE;
+                }else{
+                    return $info;
+                }
+	
+	}
 
 }

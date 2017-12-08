@@ -64,7 +64,12 @@ class Recharge extends Admin
             return info(lang('Request type error'));
         }
  
+        
+        //查询充值金额
+        //$info=Loader::model('Recharge')->getMoneybyid( $id );
+        //$data = ['status' => 1,'id' => $id,'money' => $info['Money']];
         $data = ['status' => 1,'id' => $id];
+        //var_dump($data);die;
         return Loader::model('Recharge')->saverecharge( $data );
     }
     

@@ -77,7 +77,8 @@ class Usercenter extends Checkuser
             }
             $Data = array(
                     'Money'=>$postData['Money'],
-                    'userid'=>$userinfo['id']
+                    'userid'=>$userinfo['id'],
+                    'status'=>0
                    
             );
 
@@ -331,9 +332,14 @@ class Usercenter extends Checkuser
 
 		$postData = input('post.');
                 
-
+        $userinfo=Session::get('userinfo', 'www') ;
+                    if( !$userinfo['id'] ) {
+                    return $this->success( lang('Request type error') );
+                }
 		$Data = array(
 			'playtype'=>$postData['playtype'],
+			'userid'=>$userinfo['id'],
+			'status'=>0,
 			'Money'=>$postData['Money'],
 			'PayUser'=>$postData['PayUser']			
 		);
