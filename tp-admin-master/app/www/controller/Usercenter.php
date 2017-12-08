@@ -148,7 +148,7 @@ class Usercenter extends Checkuser
         $Tixianlist = Loader::model('Tixian')->getTixianlist( $userinfo['id'] );
         //格式化数据
         if(empty($Tixianlist) && is_array($Tixianlist)) {            
-            $Tixianlist='';
+            $Tixian='';
         }else{
             foreach ($Tixianlist as $key => $value) {                
                 $Tixian[$key]['addtime'] = $value['create_time'];
