@@ -38,7 +38,13 @@ class User extends Admin
         }
 
         $request = request()->param();
+        
+        //充值总额  提现总额       充值总额 
+
+        
+        
         $data = model('User')->getList( $request );
+        
         return $data;
     }
 
