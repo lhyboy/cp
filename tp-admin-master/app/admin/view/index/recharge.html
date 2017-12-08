@@ -27,7 +27,9 @@
                                 <th data-width="80" data-field="Rebate" data-align="center">返点</th>
                                 <th data-width="80" data-field="Money" data-align="center">充值金额</th>
                                 <th data-width="80" data-field="PayUser" data-align="center">姓名</th>
-                                <th data-width="80" data-field="playtype" data-align="center">充值渠道</th>                                
+                                <th data-width="80" data-field="playtype" data-align="center">充值渠道</th>        
+                                <th data-width="80" data-field="operate"   data-align="center" data-formatter="operateFormatter" data-events="operateEvents">{:lang('Operate')}</th>
+                     
                             </tr>
                         </thead>
                     </table>
@@ -40,11 +42,11 @@
 <script type="text/javascript">
     function operateFormatter(value, row, index) {
         return [
-            '<a class="btn btn-xs edit" href="javascript:void(0)" title="{$Think.lang.Edit}">',
-            '<i class="fa fa-edit"></i>',
+            '<a class="btn btn-xs edit" href="javascript:void(0)" title="确定">',
+            '确定',
             '</a>  ',
-            '<a class="btn btn-xs delete" href="javascript:void(0)" title="{$Think.lang.Delete}">',
-            '<i class="fa fa-trash"></i>',
+            '<a class="btn btn-xs delete" href="javascript:void(0)" title="删除">',
+            '删除',
             '</a>'
         ].join('');
     }
@@ -52,7 +54,7 @@
     var operateEvents = {
         'click .edit': function (e, value, row, index) {
             var param = {
-                url: "{:url('admin/user/edit');}",
+                url: "{:url('admin/index/edittixian');}",
                 data: {id: row.id}
             }
             $("#table").gridView('loadModal', param.url,param.data)

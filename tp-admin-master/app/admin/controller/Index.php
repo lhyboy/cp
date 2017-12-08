@@ -59,14 +59,17 @@ class Index extends Admin
     public function gettixian(){
         //获取提现记录       
         $Tixianlist = Loader::model('Tixian')->Tixianlist();
+        //var_dump($Tixianlist);die;
         if(empty($Tixianlist) && is_array($Tixianlist)) {            
             $Tixianlist='';
         }else{
             foreach ($Tixianlist as $key => $value) {                
                 $Tixian[$key]['create_time'] = date('Y-m-d H:i:s',$value['create_time']);
                 $Tixian[$key]['Money']  = $value['Money'];                
+                $Tixian[$key]['balance']  = $value['balance'];                
                 $Tixian[$key]['username']  = $value['username'];                
                 $Tixian[$key]['BankID']  = $value['BankID'];                
+                $Tixian[$key]['id']  = $value['id'];                
                 $Tixian[$key]['Address_P']  = $value['Address_P'];                
                 $Tixian[$key]['Address_C']  = $value['Address_C'];                
                 $Tixian[$key]['RealName']  = $value['RealName'];                
@@ -79,4 +82,57 @@ class Index extends Admin
         return $Tixian;
         
     }
+    
+        /**
+     * 编辑
+     * @param  string $id 数据ID（主键）
+     */
+    public function edittixian($id = 0)
+    {   
+        if(intval($id) < 0){
+            return info(lang('Data ID exception'), 0);
+        }
+        if(!request()->isAjax()) {
+            return info(lang('Request type error'));
+        }
+ 
+        $data = ['status' => 1,'id' => $id];
+        return Loader::model('Tixian')->savetixian( $data );
+    }
+    
+  
+ 
+    
+            /**
+     * 编辑
+     * @param  string $id 数据ID（主键）
+     */
+    public function editrecharge($id = 0)
+    {   
+        if(intval($id) < 0){
+            return info(lang('Data ID exception'), 0);
+        }
+        if(!request()->isAjax()) {
+            return info(lang('Request type error'));
+        }
+ 
+        $data = ['status' => 1,'id' => $id];
+        return Loader::model('Recharge')->saverecharge( $data );
+    }
+    
+    
+        /**
+     * 删除
+     * @param  string $id 数据ID（主键）
+     */
+    public function delete($id = 0){
+        if(empty($id)){
+            return info(lang('Data ID exception'), 0);
+        }
+        if (intval($id == 1 || in_array(1, explode(',', $id)))) {
+            return info(lang('Delete without authorization'), 0);
+        }
+        return Loader::model('Tixian')->deletetixianById($id);
+    }
+    
 }

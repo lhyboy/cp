@@ -32,13 +32,13 @@ class UserLottery extends Checkuser
      //获取投注记录
     public function getUserLotterylist( $userid )
     { 
-        $data= $this->alias('ul')->where( array('ul.userid'=>1 ))->join('ta_user_lottery_winning ulw ',' ul.userid = ulw.userid','LEFT')->join( 'Lottery Lottery ',' Lottery.id=ul.lotteryid' ,'LEFT' )->order('ul.create_time desc')->select();         
+        $data= $this->alias('ul')->where( array('ul.userid'=>1 ))->join('ta_user_lottery_winning ulw ',' ul.userid = ulw.userid','LEFT')->join( 'Lottery Lottery ',' Lottery.id=ul.lotteryid' ,'LEFT' )->join( 'lottery_winning Lw ',' Lottery.id=Lw.lotteryid' ,'LEFT' )->order('ul.create_time desc')->select();         
         if(empty($data) && is_array($data)) {
                 return 0;
         }
          
         foreach ($data as $key => $value) {
-            $data[$key]['create_time'] = date('Y/m/d',$value['create_time']);
+            $data[$key]['create_time'] =substr(Date("Y",$value['create_time']),-2,2). date('/m/d',$value['create_time']);
             
         }
 

@@ -33,43 +33,30 @@ class Tixian extends Admin
 		return $this->_fmtData( $data );
 	}
 
-	public function saveData( $data )
+	public function savetixian( $data )
 	{
 		if( isset( $data['id']) && !empty($data['id'])) {
 			$result = $this->edit( $data );
+                        
 		} else {
-			$result = $this->add( $data );
+			return FALSE;
 		}
+                
 		return $result;
 	}
 
 
 
 
-	public function edit(array $data = [])
-	{
-		$userValidate = validate('User');
-		if(!$userValidate->scene('edit')->check($data)) {
-			return info(lang($userValidate->getError()), 4001);
-		}
-		$moblie = $this->where(['mobile'=>$data['mobile']])->where('id', '<>', $data['id'])->value('mobile');
-		if (!empty($moblie)) {
-			return info(lang('Mobile already exists'), 0);
-		}
-
-		if($data['password2'] != $data['password']){
-            return info(lang('The two passwords No match!'),0);
-        }
+    public function edit(array $data = []){		
         $data['update_time'] = time();
-
-		$data['password'] = mduser($data['password']);
-		$res = $this->allowField(true)->save($data,['id'=>$data['id']]);
-		if($res == 1){
+        $res = $this->allowField(true)->save($data,['id'=>$data['id']]);
+        if($res == 1){
             return info(lang('Edit succeed'), 1);
         }else{
             return info(lang('Edit failed'), 0);
         }
-	}
+    }
 
 	public function deleteById($id)
 	{
@@ -82,7 +69,7 @@ class Tixian extends Admin
     //体现记录
     public function Tixianlist()
     {        
-        return $this->alias('t')->join('ta_user User ',' User.id = t.userid','LEFT')->join('ta_bank bank ',' bank.userid = t.userid','LEFT')->order('t.create_time desc')->select();
+        return $this->alias('t')->where( array('t.status'=>0 ))->join('ta_user User ',' User.id = t.userid','LEFT')->join('ta_bank bank ',' bank.userid = t.userid','LEFT')->order('t.create_time desc')->select();
     }
 
     //今天的提现
@@ -108,6 +95,14 @@ class Tixian extends Admin
             }
 
             return $Tixian;
+    }
+    
+    public function deletetixianById($id)
+    {
+            $result = Tixian::destroy($id);
+            if ($result > 0) {
+        return info(lang('Delete succeed'), 1);
+    }   
     }
 
 }

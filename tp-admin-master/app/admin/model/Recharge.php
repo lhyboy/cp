@@ -43,30 +43,15 @@ class Recharge extends Admin
 	}
 
 
-	public function edit(array $data = [])
-	{
-		$userValidate = validate('User');
-		if(!$userValidate->scene('edit')->check($data)) {
-			return info(lang($userValidate->getError()), 4001);
-		}
-		$moblie = $this->where(['mobile'=>$data['mobile']])->where('id', '<>', $data['id'])->value('mobile');
-		if (!empty($moblie)) {
-			return info(lang('Mobile already exists'), 0);
-		}
-
-		if($data['password2'] != $data['password']){
-            return info(lang('The two passwords No match!'),0);
-        }
+    public function edit(array $data = [])	{
         $data['update_time'] = time();
-
-		$data['password'] = mduser($data['password']);
-		$res = $this->allowField(true)->save($data,['id'=>$data['id']]);
-		if($res == 1){
+        $res = $this->save($data,['id'=>$data['id']]);
+        if($res == 1){
             return info(lang('Edit succeed'), 1);
         }else{
             return info(lang('Edit failed'), 0);
         }
-	}
+    }
 
 	public function deleteById($id)
 	{
@@ -75,11 +60,31 @@ class Recharge extends Admin
             return info(lang('Delete succeed'), 1);
         }   
 	}
+      	public function saverecharge( $data )
+	{
+		if( isset( $data['id']) && !empty($data['id'])) {
+			$result = $this->edit( $data );
+                        
+		} else {
+			return FALSE;
+		}
+                
+		return $result;
+	}  
+        
+          public function deleterechargeById($id)
+    {
+            $result = Recharge::destroy($id);
+            return info($result);
+            if ($result > 0) {
+        return info(lang('Delete succeed'), 1);
+            }   
+    }
 
     //获取充值记录  
     public function Rechargelist()
     {        
-        return $this->alias('r')->join('ta_user User ',' User.id = r.userid','LEFT')->order('r.create_time desc')->select();
+        return $this->alias('r')->where( array('r.status'=>0 ))->join('ta_user User ',' User.id = r.userid','LEFT')->order('r.create_time desc')->field('r.id as rid,r.*,User.*')->select();
        
     }    
     //今天的充值金额 返点金额
