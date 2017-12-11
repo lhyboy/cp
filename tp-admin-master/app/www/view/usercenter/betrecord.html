@@ -57,7 +57,7 @@
             <!--判断是否有记录-->
             {notempty name="data"}
           <ul>
-            <li>投注时间</li>
+            <li>开奖期数</li>
             <li>投注类型</li>
             <li>投注号码</li>
             <li>投注钱数</li>
@@ -67,12 +67,12 @@
             <!--循环列表-->
             {volist name="data" id="vo"}
           <ul>
-            <li>{$vo.create_time}</li>
+            <li>第{$vo.lotteryid}期</li>
             <li>{$vo.lotteryname}</li>
             <li>{$vo.lottery_number}</li>
-            <li>{$vo.bettingmoney}元</li>
+            <li>{$vo.bettingmoney}</li>
             <li>{$vo.lotterynumbers}</li>
-            <li>{$vo.winningmoney}元</li>
+            <li>{$vo.winningmoney}</li>
           </ul>
             {/volist}
            <!--循环列表结束-->
@@ -95,7 +95,7 @@
             <!--判断是否有记录-->
             {notempty name="datawinning"}
           <ul>
-            <li>投注时间</li>
+            <li>开奖期数</li>
             <li>投注类型</li>
             <li>投注号码</li>
             <li>投注钱数</li>
@@ -105,7 +105,7 @@
             <!--循环列表-->
             {volist name="datawinning" id="voa"}
           <ul>
-            <li>{$voa.create_time}</li>
+            <li>第{$vo.lotteryid}期</li>
             <li>{$voa.lotteryname}</li>
             <li>{$voa.lottery_number}</li>
             <li>{$voa.bettingmoney}元</li>
@@ -131,7 +131,7 @@
             <!--判断是否有记录-->
             {notempty name="datanowinning"}
             <ul>
-            <li>投注时间</li>
+            <li>开奖期数</li>
             <li>投注类型</li>
             <li>投注号码</li>
             <li>投注钱数</li>
@@ -141,7 +141,7 @@
              <!--循环列表-->
             {volist name="datanowinning" id="vob"}
           <ul>
-            <li>{$vob.create_time}</li>
+            <li>第{$vo.lotteryid}期</li>
             <li>{$vob.lotteryname}</li>
             <li>{$vob.lottery_number}</li>
             <li>{$vob.bettingmoney}元</li>
@@ -167,7 +167,7 @@
              <!--判断是否有记录-->
             {notempty name="datano"}
           <ul>
-            <li>投注时间</li>
+            <li>开奖期数</li>
             <li>投注类型</li>
             <li>投注号码</li>
             <li>投注钱数</li>
@@ -177,7 +177,7 @@
              <!--循环列表-->
             {volist name="datano" id="voc"}
           <ul>
-            <li>{$voc.create_time}</li>
+            <li>第{$vo.lotteryid}期</li>
             <li>{$voc.lotteryname}</li>
             <li>{$voc.lottery_number}</li>
             <li>{$voc.bettingmoney}元</li>
