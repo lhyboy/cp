@@ -20,7 +20,7 @@ function startGame(type){
     })
     game(0);
     //开奖
-    $.post('test.php',{type:type},function(o){ //type 开奖类型
+    $.post('openlottery',{type:type},function(o){ //type 开奖类型
         if(o.code=='1'){
             clearGame(o.arr[0],o.arr[1],o.arr[2]);
             Betting_status=true;
@@ -29,6 +29,20 @@ function startGame(type){
         }
     })    
 }
+//倒计时
+function doTimer(left_second){
+    var day=0, hour=0, minute=0, second=0;//时间默认值
+    if(left_second > 0){
+        day = Math.floor(left_second / (60 * 60 * 24));
+        hour = Math.floor(left_second / (60 * 60)) - (day * 24);
+        minute = Math.floor(left_second / 60) - (day * 24 * 60) - (hour * 60);
+        second = Math.floor(left_second) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+    }
+    return (day>0?('<i>'+day+'</i>天  '):'')+'<i>'+toDou(hour)+'</i>:<i>'+toDou(minute)+'</i>:<i>'+toDou(second)+'</i>';
+};
+function toDou(n){
+    return n>9?n:('0'+n);
+};
 var lotteryArr=[]; //投注的选项数组
 var Odds1 = 1.93;   //大 小 单 双
 var Odds2 = 186.84; //3  18
@@ -41,7 +55,24 @@ var Odds8 = 7.47;   //9  12
 var Odds9 = 6.92;   //10 11
 var Betting_status=true; //投注状态，true可投注 false不可投注
 $(function(){   
-   $('#balance span').html($.cookie("userInfo"));
+   $('#balance span').html($.cookie("userInfo")); //用户余额
+
+   //即将开售倒计时
+    var s = $('.timeP').attr('data-val1');
+    if(s){
+       //倒计时
+       timer = setInterval(function(){
+           if(s >= 0){
+               $('.timeP').html(doTimer(s));
+               s--;
+           }else{
+               //倒计时结束 开始开奖
+               Betting_status=false;
+               startGame(1);
+               clearInterval(timer);
+           }
+       },1000);
+    }
    //下注
    $('.Method li').click(function(){
        var lotteryText='';
@@ -86,11 +117,18 @@ $(function(){
                 alert('您的余额是'+balance+'不够本次投注！');
                 return false;
             }
+           // 备注：
+           // 1.userID       用户ID
+           // 2.cpType       彩票类型 既是1分钟 5分钟 10分钟
+           // 3.lotteryArr   投注的数组  （例如：用户购买了3 4 15 大 单）
+           // 4.Multiple     投注倍数
+            var userID='111';
+            var cpType='1';
             //投注
-            $.post('test',{lotteryArr:lotteryArr,Multiple:Multiple},function(o){  //lotteryArr  投注的选项数组   Multiple  投注的倍数
+            $.post('cathectic',{userID:userID,lotteryArr:lotteryArr,Multiple:Multiple,cpType:cpType},function(o){  //lotteryArr  投注的选项数组   Multiple  投注的倍数
                 if(o.code==1){
                     alert('投注成功');
-                    return false;
+                    window.location.href = o.url;
                 }else{
                     alert(o.msg);
                 }
@@ -99,20 +137,6 @@ $(function(){
             alert('开奖中，稍后投注!');
         }
    })
-   //60秒倒计时开奖
-   var timer =3;
-   function Countdown() {
-        if (timer >= 1) {
-            timer -= 1;
-            setTimeout(function() {
-                Countdown();
-            }, 1000);
-        }else{
-            Betting_status=false;
-            startGame('type');            
-        }
-   }
-   Countdown();
    //算金额
    function lotteryTotal(){
        var total=0; //总和
