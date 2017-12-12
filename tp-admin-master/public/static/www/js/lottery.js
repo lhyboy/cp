@@ -139,8 +139,6 @@ $(function(){
    //算金额
    function lotteryTotal(){
        var total=0; //总和
-       var totalA=0;
-       var totalB=0;
        //判断当前投注的是什么
        var num1 = $.inArray("大",lotteryArr);
        var num2 = $.inArray("小",lotteryArr);
