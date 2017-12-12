@@ -20,7 +20,7 @@ function startGame(type){
     })
     game(0);
     //开奖
-    $.post('test.php',{type:type},function(o){ //type 开奖类型
+    $.post('openlottery',{type:type},function(o){ //type 开奖类型
         if(o.code=='1'){
             clearGame(o.arr[0],o.arr[1],o.arr[2]);
             Betting_status=true;
@@ -124,10 +124,14 @@ $(function(){
             var userID='111';
             var cpType='1';
             //投注
+<<<<<<< HEAD
+            $.post('cathectic',{userID:userID,lotteryArr:lotteryArr,Multiple:Multiple,cpType:cpType},function(o){  //lotteryArr  投注的选项数组   Multiple  投注的倍数
+=======
             $.post('test',{userID:userID,lotteryArr:lotteryArr,Multiple:Multiple,cpType:cpType},function(o){  //lotteryArr  投注的选项数组   Multiple  投注的倍数
+>>>>>>> 43ad2075e4cb0f597d1e3cfcc0339f175b3938a5
                 if(o.code==1){
                     alert('投注成功');
-                    return false;
+                    window.location.href = o.url;
                 }else{
                     alert(o.msg);
                 }

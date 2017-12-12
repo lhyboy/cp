@@ -28,6 +28,21 @@ class UserLottery extends Checkuser
         return $data;
     }
     
+     //获取当前期彩票投注记录
+    public function getullistbylotteryid( $lotteryid )
+    { 
+        $data= $this->alias('ul')->where( array('ul.lotteryid'=> $lotteryid ))->select();         
+        if(empty($data) && is_array($data)) {
+                return 0;
+        }
+         
+        foreach ($data as $key => $value) {
+            $data[$key]['create_time'] =substr(Date("Y",$value['create_time']),-2,2). date('/m/d',$value['create_time']);
+            
+        }
+
+        return $data;
+    }
     
      //获取投注记录
     public function getUserLotterylist( $userid )
@@ -72,7 +87,16 @@ class UserLottery extends Checkuser
 	}
 
 
-	
+    public function UserLotteryadd(array $data = [])
+	{
+            $result=$this->allowField(true)->saveAll($data);
+            
+            if($result){
+                return info(lang('Add succeed'), 1);
+            }else{
+                return info(lang('Add failed') ,0);
+            }
+	}
 
 
 
