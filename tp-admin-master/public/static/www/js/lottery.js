@@ -22,6 +22,7 @@ function startGame(type){
     //开奖
     $.post('openlottery',{type:type},function(o){ //type 开奖类型
         if(o.code=='1'){
+            console.log(o.arr[0]+'=='+o.arr[1]+'=='+o.arr[2])
             clearGame(o.arr[0],o.arr[1],o.arr[2]);
             Betting_status=true;
         }else{
@@ -58,7 +59,7 @@ $(function(){
    $('#balance span').html($.cookie("userInfo")); //用户余额
 
    //即将开售倒计时
-    var s = $('.timeP').attr('data-val1');
+    var s = $('.timeP').attr('data-val1'); //这是获取页面里面data-val1这个参数的倒计时，data-val1里面的值是返回的服务器时间
     if(s){
        //倒计时
        timer = setInterval(function(){
@@ -124,16 +125,8 @@ $(function(){
             var userID='111';
             var cpType='1';
             //投注
-<<<<<<< HEAD
-<<<<<<< HEAD
-            $.post('cathectic',{userID:userID,lotteryArr:lotteryArr,Multiple:Multiple,cpType:cpType},function(o){  //lotteryArr  投注的选项数组   Multiple  投注的倍数
-=======
-            $.post('test',{userID:userID,lotteryArr:lotteryArr,Multiple:Multiple,cpType:cpType},function(o){  //lotteryArr  投注的选项数组   Multiple  投注的倍数
->>>>>>> 43ad2075e4cb0f597d1e3cfcc0339f175b3938a5
-=======
             $.post('cathectic',{userID:userID,lotteryArr:lotteryArr,Multiple:Multiple,cpType:cpType},function(o){  //lotteryArr  投注的选项数组   Multiple  投注的倍数
 
->>>>>>> a7a3caf74ba1a9891c4174ec6bf8ff2116422952
                 if(o.code==1){
                     alert('投注成功');
                     window.location.href = o.url;

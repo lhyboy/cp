@@ -39,12 +39,14 @@ class Lottery extends Checkuser
                 if( !$userinfo['id'] ) {
                 return $this->success( lang('Request type error') );
         }
+        //var_dump($postData);die;
         if(is_array($postData['lotteryArr']) && !empty($postData['lotteryArr'])){
             foreach ($postData['lotteryArr'] as $v){
                 $Data[] = array(
                 'lotteryid'=>$postData['cpType'],
                 'bettingmoney'=>$postData['Multiple'],
                 'lottery_number'=>$v,
+                'ifwining'=> $this->beilv($v)*$postData['Multiple'],
                 'userid'=>$userinfo['id'],
                 'status'=>0,
                 'create_time' => time()
@@ -58,6 +60,33 @@ class Lottery extends Checkuser
         }   
         
         
+    }
+    
+    public function beilv($nember){
+        $beilv=array(
+            '大'=>1.93,
+            '小'=>1.93,
+            '单'=>1.93,
+            '双'=>1.93,
+            '3'=>186.84,
+            '4'=>62.28,
+            '5'=>31.14,
+            '6'=>18.68,
+            '7'=>12.45,
+            '8'=>8.89,
+            '9'=>7.47,
+            '10'=>6.92,
+            '11'=>6.92,
+            '12'=>7.47,
+            '13'=>8.89,
+            '14'=>12.45,
+            '15'=>18.68,
+            '16'=>31.14,
+            '17'=>62.28,
+            '18'=>186.84,
+            
+        );
+        return $beilv["$nember"];
     }
     
     
