@@ -88,7 +88,6 @@ $(function(){
             lotteryArr[lotteryArr.length]=msg;            
             $('.bottom table').show();
        }       
-       console.log(lotteryArr)
        $.each(lotteryArr,function(i){
           lotteryText+=lotteryArr[i]+' ';
        })
@@ -121,15 +120,20 @@ $(function(){
            // 1.userID       用户ID
            // 2.cpType       彩票类型 既是1分钟 5分钟 10分钟
            // 3.lotteryArr   投注的数组  （例如：用户购买了3 4 15 大 单）
-           // 4.Multiple     投注倍数
+           // 4.Multiple     投注钱数
             var userID='111';
             var cpType='1';
             //投注
+<<<<<<< HEAD
 <<<<<<< HEAD
             $.post('cathectic',{userID:userID,lotteryArr:lotteryArr,Multiple:Multiple,cpType:cpType},function(o){  //lotteryArr  投注的选项数组   Multiple  投注的倍数
 =======
             $.post('test',{userID:userID,lotteryArr:lotteryArr,Multiple:Multiple,cpType:cpType},function(o){  //lotteryArr  投注的选项数组   Multiple  投注的倍数
 >>>>>>> 43ad2075e4cb0f597d1e3cfcc0339f175b3938a5
+=======
+            $.post('cathectic',{userID:userID,lotteryArr:lotteryArr,Multiple:Multiple,cpType:cpType},function(o){  //lotteryArr  投注的选项数组   Multiple  投注的倍数
+
+>>>>>>> a7a3caf74ba1a9891c4174ec6bf8ff2116422952
                 if(o.code==1){
                     alert('投注成功');
                     window.location.href = o.url;
@@ -165,47 +169,75 @@ $(function(){
        var num18 = $.inArray("16",lotteryArr);
        var num19 = $.inArray("17",lotteryArr);
        var num20 = $.inArray("18",lotteryArr);
-       //投注倍数
-       var Multiple = $('input[name=tel]').val();
-       $.each(lotteryArr,function(j){
-           //大 小 单 双
-           if(lotteryArr[j]=='大' || lotteryArr[j]=='小' || lotteryArr[j]=='单' || lotteryArr[j]=='双'){
-              total+=Multiple*Odds1;
-           } 
-           //3 18
-           if(lotteryArr[j]=='3' || lotteryArr[j]=='18'){
-              total+=Multiple*Odds2;
-           } 
-           //4 17
-           if(lotteryArr[j]=='4' || lotteryArr[j]=='17'){
-              total+=Multiple*Odds3;
-           }
-           //5 16
-           if(lotteryArr[j]=='5' || lotteryArr[j]=='16'){
-              total+=Multiple*Odds4;
-           }
-           //6 15
-           if(lotteryArr[j]=='6' || lotteryArr[j]=='15'){
-              total+=Multiple*Odds5;
-           }
-           //7 14
-           if(lotteryArr[j]=='7' || lotteryArr[j]=='14'){
-              total+=Multiple*Odds6;
-           }
-           //8 13
-           if(lotteryArr[j]=='8' || lotteryArr[j]=='13'){
-              total+=Multiple*Odds7;
-           }
-           //9 12
-           if(lotteryArr[j]=='9' || lotteryArr[j]=='12'){
-              total+=Multiple*Odds8;
-           }
-           //10 11
-           if(lotteryArr[j]=='10' || lotteryArr[j]=='11'){
-              total+=Multiple*Odds8;
-           }
-       })       
-       $('#totalNumber').html(total.toFixed(2));  
+       //投注钱数
+       var Multiple = $('input[name=tel]').val(); 
+       var money1=0;
+       var money2=0;
+       var money3=0;
+       var money4=0;
+       var money5=0;
+       var money6=0;
+       var money7=0;
+       var money8=0;
+       var money9=0;
+       var money10=0;
+       var money11=0;
+       var money12=0;
+       var money13=0;
+       var money14=0;
+       var money15=0;
+       var money16=0;
+       var money17=0;
+       var money18=0;
+       var money19=0;
+       var money20=0;
+       if(num1!=-1){money1=Multiple*Odds1}
+       if(num2!=-1){money2=Multiple*Odds1}
+       if(num3!=-1){money3=Multiple*Odds1}
+       if(num4!=-1){money4=Multiple*Odds1}
+       if(num5!=-1){money5=Multiple*Odds2}
+       if(num6!=-1){money6=Multiple*Odds3}
+       if(num7!=-1){money7=Multiple*Odds4}
+       if(num8!=-1){money8=Multiple*Odds5}
+       if(num9!=-1){money9=Multiple*Odds6}
+       if(num10!=-1){money10=Multiple*Odds7}
+       if(num11!=-1){money11=Multiple*Odds8}
+       if(num12!=-1){money12=Multiple*Odds9}
+       if(num13!=-1){money13=Multiple*Odds9}
+       if(num14!=-1){money14=Multiple*Odds8}
+       if(num15!=-1){money15=Multiple*Odds7}
+       if(num16!=-1){money16=Multiple*Odds6}
+       if(num17!=-1){money17=Multiple*Odds5}
+       if(num18!=-1){money18=Multiple*Odds4}
+       if(num19!=-1){money19=Multiple*Odds3}
+       if(num20!=-1){money20=Multiple*Odds2}
+       var moneyA1 = money3+money2;//单 小
+       var moneyA2 = money4+money1;//双 小
+       var moneyA3 = money3+money1;//单 大
+       var moneyA4 = money4+money2;//双 大
+       var moneyArr=[];
+       moneyArr[0]=money20+moneyA4;//18
+       moneyArr[1]=money19+moneyA3;//17
+       moneyArr[2]=money18+moneyA4;//16
+       moneyArr[3]=money17+moneyA3;//15
+       moneyArr[4]=money16+moneyA4;//14
+       moneyArr[5]=money15+moneyA3;//13
+       moneyArr[6]=money14+moneyA4;//12
+       moneyArr[7]=money13+moneyA3;//11
+       moneyArr[8]=money12+moneyA2;//10
+       moneyArr[9]=money11+moneyA1;//9
+       moneyArr[10]=money10+moneyA2;//8
+       moneyArr[11]=money9+moneyA1;//7
+       moneyArr[12]=money8+moneyA2;//6
+       moneyArr[13]=money7+moneyA1;//5
+       moneyArr[14]=money6+moneyA2;//4
+       moneyArr[15]=money5+moneyA1;//3
+       //执行排序 最后一个是最大值
+       moneyArr.sort(function(a, b) {
+            return a - b;
+       })
+       total=moneyArr[moneyArr.length-1];
+       $('#totalNumber').html(total.toFixed(2)); //输出最高中奖金额，保留2位小数点   
        if(total>0){
            $('.showText').not($('.showText').eq(1).show()).hide();
        }else{
@@ -217,6 +249,8 @@ $(function(){
         $('.Method li').removeClass('checked');
         $('input[name=tel]').val('');
         $('.bottom table').hide();
+        $('#choice').html('');
+        lotteryArr=[];
    })
    //查看历史开奖
    $('.xiala').click(function(){
