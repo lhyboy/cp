@@ -31,17 +31,38 @@ class UserLottery extends Checkuser
      //获取当前期彩票投注记录
     public function getullistbylotteryid( $lotteryid )
     { 
-        $data= $this->alias('ul')->where( array('ul.lotteryid'=> $lotteryid ))->select();         
+        //$data = $this->alias('u')->join('recharge r ',' u.id = r.userid','LEFT')->join('tixian t ',' u.id = t.userid','LEFT')->join('user_lottery_winning ulw ',' u.id = ulw.userid','LEFT')->where( $request['map'] )->order('u.create_time desc')->field('SUM(t.Money ) as alltixian , SUM(r.Money) as allrecharge ,SUM(ulw.winningmoney) as allwinning ,u.*')->limit($request['offset'], $request['limit'])->group('u.id')->select();
+        //本期收入
+        $data = $this->where( array('lotteryid'=> $lotteryid ,'status'=> 0 ))->field('SUM(bettingmoney ) as allbettingmoney ')->select();
+	//var_dump($data)	;die;
+		
+        //$data= $this->alias('ul')->where( array('ul.lotteryid'=> $lotteryid ))->select();         
         if(empty($data) && is_array($data)) {
-                return 0;
+            return FALSE;
+        }else{
+            $result['allbettingmoney']=$data[0]['allbettingmoney'];
         }
+        
+        //本期每个号码的支出
+        $data = $this->where( array('lotteryid'=> $lotteryid ,'status'=> 0 ))->field('SUM(ifwining ) as numsifwining ,lottery_number')->group('lottery_number')->select();
+	if(empty($data) && is_array($data)) {
+            return FALSE;
+        }else{
+            foreach ($data as $key => $value) {                 
+                $numslist[$value['lottery_number']]=$value['numsifwining'];
+            }
+            asort($numslist);
+            $result['numsmoneylist']=$numslist;
+            $result['nums']=array_keys($numslist);            
+        }
+        
          
-        foreach ($data as $key => $value) {
-            $data[$key]['create_time'] =substr(Date("Y",$value['create_time']),-2,2). date('/m/d',$value['create_time']);
-            
-        }
+//        foreach ($data as $key => $value) {
+//            $data[$key]['create_time'] =substr(Date("Y",$value['create_time']),-2,2). date('/m/d',$value['create_time']);
+//            
+//        }
 
-        return $data;
+        return $result;
     }
     
      //获取投注记录
