@@ -24,14 +24,14 @@ class Lottery extends Checkuser
     
     //开奖
     public function openlottery(){        
-         $data = input('post.');
+         $postData = input('post.');
          //获取当前投注记录
-         $postData['lotteryid']=1;
-         
+         $postData['lotteryid']=1;         
          $UserLotterylist = Loader::model('UserLottery')->getullistbylotteryid( $postData['lotteryid'] );
          //计算结果
          if($UserLotterylist){
              //本期号码
+             
              $lotterynumbers=$this->opennember($UserLotterylist);
              //var_dump($lotterynumbers);die;
              //验证不赔钱
@@ -42,8 +42,14 @@ class Lottery extends Checkuser
                   
                  return $this->success($threenumber[array_rand($threenumber)],url('www/index/index'));
              }else{
-                 //庄家通吃
-                 return $this->error( '庄家通吃！' );
+                //庄家通吃
+                //本期号码
+                $lotterynumbers=$this->openallinnember($UserLotterylist);
+                
+                //计算三个骰子的号码
+                 $threenumber=$this->getthreenumber($lotterynumbers['lotterynum']);
+                return $this->success($threenumber[array_rand($threenumber)],url('www/index/index'));                
+                
              }
          }else{
              return $this->error( '本期数据有人作弊！' );
@@ -112,7 +118,7 @@ class Lottery extends Checkuser
     
     //计算开奖号码
     public function opennember($UserLotterylist){
-        $nums=$UserLotterylist['nums'];
+        //$nums=$UserLotterylist['nums'];
         $numsmoneylist=$UserLotterylist['numsmoneylist'];            
         //$opennember=$numsmoneylist[$nums[0]];        
         $sumdan=0;
@@ -123,7 +129,7 @@ class Lottery extends Checkuser
         $shuang=FALSE;
         $da=FALSE;
         $xiao=FALSE;
-        foreach ($UserLotterylist['numsmoneylist'] as $k=>$v){
+        foreach ($numsmoneylist as $k=>$v){
             if($k=='双' ||$k=='单' ||$k=='大' ||$k=='小'){
                 continue;
             }else{
@@ -159,13 +165,27 @@ class Lottery extends Checkuser
             $da=true;
         }
         
-        
-        foreach ($UserLotterylist['numsmoneylist'] as $k=>$v){
+        if(!isset($numsmoneylist['大'])){
+            $numsmoneylist['大']=0;
+        }
+        if(!isset($numsmoneylist['小'])){
+            $numsmoneylist['小']=0;
+        }
+        if(!isset($numsmoneylist['单'])){
+            $numsmoneylist['单']=0;
+        }
+        if(!isset($numsmoneylist['双'])){
+            $numsmoneylist['双']=0;
+        }
+         $numsmoneylist['双']=0;
+         
+        foreach ($numsmoneylist as $k=>$v){
             if($k=='双' ||$k=='单' ||$k=='大' ||$k=='小'){
                 continue;
             }else{
                 if($xiao && $shuang){
                     if($k<=9 && !($k&1)){
+                        //die('aaa');
                         //$lresult['danshuang']=$sumshuang;
                         //$lresult['daxiao']=$sumxiao;
                         $lresult['lotterynum']=$k;
@@ -175,17 +195,20 @@ class Lottery extends Checkuser
                     }
                 }else{
                     if($k<=9 && ($k&1)){
+                        //die('bb');
                         //$lresult['danshuang']=$sumdan;
                         //$lresult['daxiao']=$sumxiao;
                         $lresult['lotterynum']=$k;
                         //$lresult['lotterymoney']=$v+$sumdan+$sumxiao;
                         $lresult['lotterymoney']=$v+$numsmoneylist['小']+$numsmoneylist['单'];
+                        var_dump($lresult);die;
                         return $lresult;
                     }
                 }
                 
                 if($da && $shuang){
                     if($k>9 && !($k&1)){
+                        //die('cc');
                         //$lresult['danshuang']=$sumshuang;
                         //$lresult['daxiao']=$sumda;
                         $lresult['lotterynum']=$k;
@@ -194,9 +217,7 @@ class Lottery extends Checkuser
                         return $lresult;
                     }
                 }else{
-                    if($k>9 && ($k&1)){
-                        //$lresult['danshuang']=$sumdan;
-                        //$lresult['daxiao']=$sumda;
+                    if($k>9 && ($k&1)){                        
                         $lresult['lotterynum']=$k;
                         //$lresult['lotterymoney']=$v+$sumda+$sumdan;
                         $lresult['lotterymoney']=$v+$numsmoneylist['大']+$numsmoneylist['单'];
@@ -205,7 +226,11 @@ class Lottery extends Checkuser
                 }
                  
             }
-        }
+           
+        }       
+         return $this->openallinnember($UserLotterylist);
+          
+          
     }  
     
     public function  checknember($lotterynumbers,$UserLotterylist){
@@ -238,8 +263,137 @@ class Lottery extends Checkuser
             '18'=>array([6,6,6]),
             
         );
+        
         return $threenumber["$lotterynum"];
     }
     
-    
+      //计算开奖号码,庄家通吃
+    public function openallinnember($UserLotterylist){
+        $allxiaodannumbers=array(
+            3,
+            5,
+            7,
+            9
+        );
+        $allxiaoshuangnumbers=array(
+            4,
+            6,
+            8,
+        );
+        $alldadannumbers=array(            
+            11,
+            13,
+            15,
+            17
+        );
+        $alldashuangnumbers=array(            
+            10,
+            12,
+            14,
+            16,
+            18
+        );
+        //$nums=$UserLotterylist['nums'];
+        $numsmoneylist=$UserLotterylist['numsmoneylist'];            
+        //$opennember=$numsmoneylist[$nums[0]];        
+        $sumdan=0;
+        $sumshuang=0;
+        $sumda=0;
+        $sumxiao=0;
+        $dan=FALSE;
+        $shuang=FALSE;
+        $da=FALSE;
+        $xiao=FALSE;
+        if(!isset($numsmoneylist['大'])){
+            $numsmoneylist['大']=0;
+        }
+        if(!isset($numsmoneylist['小'])){
+            $numsmoneylist['小']=0;
+        }
+        if(!isset($numsmoneylist['单'])){
+            $numsmoneylist['单']=0;
+        }
+        if(!isset($numsmoneylist['双'])){
+            $numsmoneylist['双']=0;
+        }
+        foreach ($numsmoneylist as $k=>$v){
+            if($k=='双' ||$k=='单' ||$k=='大' ||$k=='小'){
+                continue;
+            }else{
+                //判断单，双
+                if($k&1){
+                    //单数
+                    $sumdan=$sumdan+$v;
+                }else{
+                   //双数
+                    $sumshuang=$sumshuang+$v;
+                }
+                //判断大，小
+                if($k>9){
+                    //大
+                    $sumda=$sumda+$v;
+                }else{
+                   //小
+                    $sumxiao=$sumxiao+$v;
+                }
+            }
+        }
+        if($sumdan>$sumshuang){
+            $shuang=true;
+            
+        }else{
+            $dan=true;
+        }
+        
+        if($sumda>$sumxiao){
+            $xiao=true;
+            
+        }else{
+            $da=true;
+        }
+                
+        $numbers= array_keys($numsmoneylist);
+        
+        if($xiao && $shuang){
+                $als=array_diff($allxiaoshuangnumbers,$numbers);
+                $lresult['lotterynum']= $als[array_rand($als)];
+                if(empty($lresult['lotterynum'])){                     
+                    $keys=array_rand($allxiaoshuangnumbers);
+                    $lresult['lotterynum']= $allxiaoshuangnumbers[$keys]; 
+                }
+                $lresult['lotterymoney']=$numsmoneylist['小']+$numsmoneylist['双'];
+                return $lresult;           
+        }else{              
+                $als=array_diff($allxiaodannumbers,$numbers);
+                $lresult['lotterynum']= $als[array_rand($als)];                  
+                
+                if(empty($lresult['lotterynum'])){                     
+                    $keys=array_rand($allxiaodannumbers);
+                    $lresult['lotterynum']= $allxiaodannumbers[$keys]; 
+                }
+                $lresult['lotterymoney']=$numsmoneylist['小']+$numsmoneylist['单'];                
+                return $lresult;            
+        }
+
+        if($da && $shuang){ 
+                $als=array_diff($alldashuangnumbers,$numbers);
+                $lresult['lotterynum']= $als[array_rand($als)];
+                if(empty($lresult['lotterynum'])){                     
+                    $keys=array_rand($alldashuangnumbers);
+                    $lresult['lotterynum']= $alldashuangnumbers[$keys]; 
+                }
+                $lresult['lotterymoney']=$numsmoneylist['大']+$numsmoneylist['双'];
+                return $lresult;           
+        }else{  
+                $als=array_diff($alldadannumbers,$numbers);
+                $lresult['lotterynum']= $als[array_rand($als)];
+                if(empty($lresult['lotterynum'])){                     
+                    $keys=array_rand($alldadannumbers);
+                    $lresult['lotterynum']= $alldadannumbers[$keys]; 
+                }
+                $lresult['lotterymoney']=$numsmoneylist['大']+$numsmoneylist['单'];
+                return $lresult;            
+        }  
+        
+    } 
 }

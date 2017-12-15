@@ -12,6 +12,8 @@ function clearGame(n1,n2,n3){
     $('.Sieve').eq(0).addClass('Dice'+n1);
     $('.Sieve').eq(1).addClass('Dice'+n2);
     $('.Sieve').eq(2).addClass('Dice'+n3);
+    $('.timeP').attr('data-val1',10);
+    daojishi()
 }
 //滚动筛子控制
 function startGame(type){
@@ -22,8 +24,7 @@ function startGame(type){
     //开奖
     $.post('openlottery',{type:type},function(o){ //type 开奖类型
         if(o.code=='1'){
-            console.log(o.arr[0]+'=='+o.arr[1]+'=='+o.arr[2])
-            clearGame(o.arr[0],o.arr[1],o.arr[2]);
+            clearGame(o.msg[0],o.msg[1],o.msg[2]);
             Betting_status=true;
         }else{
             alert(o.msg);
@@ -44,6 +45,23 @@ function doTimer(left_second){
 function toDou(n){
     return n>9?n:('0'+n);
 };
+function daojishi(){
+  var s = $('.timeP').attr('data-val1'); //这是获取页面里面data-val1这个参数的倒计时，data-val1里面的值是返回的服务器时间
+    if(s){
+       //倒计时
+       timer = setInterval(function(){
+           if(s >= 0){
+               $('.timeP').html(doTimer(s));
+               s--;
+           }else{
+               //倒计时结束 开始开奖
+               Betting_status=false;
+               startGame(1);
+               clearInterval(timer);
+           }
+       },1000);
+    }
+}
 var lotteryArr=[]; //投注的选项数组
 var Odds1 = 1.93;   //大 小 单 双
 var Odds2 = 186.84; //3  18
@@ -59,21 +77,7 @@ $(function(){
    $('#balance span').html($.cookie("userInfo")); //用户余额
 
    //即将开售倒计时
-    var s = $('.timeP').attr('data-val1'); //这是获取页面里面data-val1这个参数的倒计时，data-val1里面的值是返回的服务器时间
-    if(s){
-       //倒计时
-       timer = setInterval(function(){
-           if(s >= 0){
-               $('.timeP').html(doTimer(s));
-               s--;
-           }else{
-               //倒计时结束 开始开奖
-               Betting_status=false;
-               startGame(1);
-               clearInterval(timer);
-           }
-       },1000);
-    }
+    daojishi()
    //下注
    $('.Method li').click(function(){
        var lotteryText='';

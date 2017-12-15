@@ -53,7 +53,7 @@ class UserLottery extends Checkuser
             }
             asort($numslist);
             $result['numsmoneylist']=$numslist;
-            $result['nums']=array_keys($numslist);            
+            //$result['nums']=array_keys($numslist);            
         }
         
          
