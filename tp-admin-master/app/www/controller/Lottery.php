@@ -26,7 +26,7 @@ class Lottery extends Checkuser
     public function openlottery(){        
          $data = input('post.');
          //获取当前投注记录
-         $postData['lotteryid']=6;
+         $postData['lotteryid']=1;
          
          $UserLotterylist = Loader::model('UserLottery')->getullistbylotteryid( $postData['lotteryid'] );
          //计算结果
