@@ -23,7 +23,7 @@ class Lottery extends Checkuser
     }
     
     //开奖
-    public function openlottery(){
+    public function openlottery(){        
          $data = input('post.');
          //获取当前投注记录
          $postData['lotteryid']=6;
@@ -39,7 +39,8 @@ class Lottery extends Checkuser
              if($check){
                  //计算三个骰子的号码
                  $threenumber=$this->getthreenumber($lotterynumbers['lotterynum']);
-                 
+                  
+                 return $this->success($threenumber[array_rand($threenumber)],url('www/index/index'));
              }else{
                  //庄家通吃
                  return $this->error( '庄家通吃！' );
@@ -218,14 +219,26 @@ class Lottery extends Checkuser
         }
     }
     public function  getthreenumber($lotterynum){
-        //收入大于支出
-        //if($UserLotterylist['allbettingmoney']>$lotterynumbers['lotterymoney']){
-        //支出小于收入的60%
-        if(($lotterynumbers['lotterymoney']/$UserLotterylist['allbettingmoney'])<0.6){
-            return TRUE;
-        }else{
-            return FALSE;
-        }
+        $threenumber=array(
+            '3'=>array([1,1,1]),
+            '4'=>array([1,2,1],[2,1,1],[1,1,2]),
+            '5'=>array([2,2,1],[1,2,2],[2,1,2],[1,3,1],[3,1,1],[1,1,3]),
+            '6'=>array([2,2,2],[2,3,1]),
+            '7'=>array([2,3,2],[3,2,2]),
+            '8'=>array([2,4,2],[4,2,2]),
+            '9'=>array([3,3,3],[3,4,2]),
+            '10'=>array([2,7,1],[1,7,2]),
+            '11'=>array([5,5,1],[1,5,5]),
+            '12'=>array([5,5,2],[2,5,5]),
+            '13'=>array([5,5,3],[3,5,5]),            
+            '14'=>array([5,5,4],[4,5,5]),
+            '15'=>array([5,5,5],[5,6,4]),
+            '16'=>array([6,5,5],[5,6,5]),
+            '17'=>array([6,6,5],[6,5,6]),
+            '18'=>array([6,6,6]),
+            
+        );
+        return $threenumber["$lotterynum"];
     }
     
     
