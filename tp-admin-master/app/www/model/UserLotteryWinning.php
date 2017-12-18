@@ -18,7 +18,7 @@ class UserLotteryWinning extends Checkuser
     //获取用户自己的中奖列表
     public function getmywinninglist($userid )
     {        
-        $data=  $this->alias('ulw')->where( array('ulw.userid'=>1 ))->join('ta_user_lottery ul ',' ul.userid = ulw.userid','LEFT')->join( 'Lottery Lottery ',' Lottery.id=ulw.lotteryid' ,'LEFT' )->order('ulw.create_time desc')->select();         
+        $data=  $this->alias('ulw')->where( array('ulw.userid'=>$userid ))->join( 'lottery_winning Lw ',' ulw.lotteryid=Lw.lotteryid' ,'LEFT' )->join('ta_user_lottery ul ',' ul.userid = ulw.userid','LEFT')->join( 'Lottery Lottery ',' Lottery.id=ulw.lotteryid' ,'LEFT' )->order('ulw.create_time desc')->select();         
         if(empty($data) && is_array($data)) {
                 return 0;
         }

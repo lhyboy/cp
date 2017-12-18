@@ -35,14 +35,45 @@ class Tixian extends Admin
 
 	public function savetixian( $data )
 	{
+            Db::startTrans();
+            try{
 		if( isset( $data['id']) && !empty($data['id'])) {
 			$result = $this->edit( $data );
                         
 		} else {
 			return FALSE;
 		}
+                //获取本次用户的提现金额
+                $map = [
+			'id' => $data['id']
+		];
+                $MoneyRow = $this->where($map)->find();
+                if( empty($MoneyRow) ) {
+			return info('金额异常');
+                }
+                    
+                //修改用户余额
+                if( isset( $MoneyRow['userid']) && !empty($MoneyRow['userid'])) {
+                        $user = User::get($MoneyRow['userid']);
+                        //判断余额是否大于等于提现金额
+                        if($user->balance<$MoneyRow['Money']){
+                            return info('提现金额大于余额');
+                        }
+                        $user->balance     = $user->balance-$MoneyRow['Money'];
+			$user->save();
+                        
+		} else {
+			return info('异常');
+		}    
                 
-		return $result;
+               // 提交事务
+               Db::commit(); 
+               return $result;
+            }catch (\Exception $e) {
+                // 回滚事务
+                Db::rollback();
+                return info('异常');
+           }
 	}
 
 
@@ -69,7 +100,7 @@ class Tixian extends Admin
     //体现记录
     public function Tixianlist()
     {        
-        return $this->alias('t')->where( array('t.status'=>0 ))->join('ta_user User ',' User.id = t.userid','LEFT')->join('ta_bank bank ',' bank.userid = t.userid','LEFT')->order('t.create_time desc')->select();
+        return $this->alias('t')->where( array('t.status'=>0 ))->join('ta_user User ',' User.id = t.userid','LEFT')->join('ta_bank bank ',' bank.userid = t.userid','LEFT')->order('t.create_time desc')->field('t.id as tid,t.*,bank.*,User.*')->select();
     }
 
     //今天的提现

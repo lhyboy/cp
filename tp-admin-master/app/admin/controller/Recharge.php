@@ -33,7 +33,8 @@ class Recharge extends Admin
         $Rechargelist = Loader::model('Recharge')->Rechargelist();
         //var_dump($Rechargelist);die;
         if(empty($Rechargelist) && is_array($Rechargelist)) {            
-            $Rechargelist='';
+             $Recharge='';
+             return $Recharge;
         }else{
             foreach ($Rechargelist as $key => $value) {                
                 $Recharge[$key]['create_time'] = date('Y-m-d H:i:s',$value['create_time']);

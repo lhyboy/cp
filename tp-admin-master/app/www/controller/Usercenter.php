@@ -25,15 +25,21 @@ class Usercenter extends Checkuser
         //获取投注记录
         $userinfo=Session::get('userinfo', 'www') ;
         $UserLotterylist = Loader::model('UserLottery')->getUserLotterylist( $userinfo['id'] );
+        //var_dump($UserLotterylist);die;
         //获取中奖记录
         $UserLotterywinninglist = Loader::model('UserLotteryWinning')->getmywinninglist( $userinfo['id'] );
         
         //获取未中奖记录
         $UserLotterynowinninglist = Loader::model('UserLottery')->getmynowinninglist( $userinfo['id'] );
-        $this->assign('data',$UserLotterylist);        
+        
+        //等待开奖
+        $UserLotterywaitlist = Loader::model('UserLottery')->getUserLotterywaitlist( $userinfo['id'] );
+        
+        $this->assign('data',$UserLotterylist);   
+        //var_dump($UserLotterynowinninglist);die;
         $this->assign('datawinning',$UserLotterywinninglist);        
         $this->assign('datanowinning',$UserLotterynowinninglist);        
-        $this->assign('datano','');        
+        $this->assign('datano',$UserLotterywaitlist);        
         //var_dump($UserLotterylist);die;
         return view();
         

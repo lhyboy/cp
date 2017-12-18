@@ -7,21 +7,22 @@ use think\Loader;
 use think\Model;
 use traits\model\SoftDelete;
 
-class UserLottery extends Checkuser
+class LotteryWinning extends Checkuser
 {
 	use SoftDelete;
     protected $deleteTime = 'delete_time';
 
-     //获取用户未中奖列表
-    public function getmynowinninglist($userid )
-    {        
-        $data=  $this->alias('ul')->where( array('ulw.userid'=>$userid))->join( 'lottery_winning Lw ',' ul.lotteryid=Lw.lotteryid' ,'LEFT' )->join('ta_user_lottery_winning ulw ',' ul.userid = ulw.userid','LEFT')->join( 'Lottery Lottery ',' Lottery.id=ulw.lotteryid' ,'LEFT' )->order('ulw.create_time desc')->select();         
+     //获取上期开奖号码
+    public function getlastnumbers($lotteryid,$lastperiodsid)
+    {      
+       
+        $data=  $this->where( array('lotteryid'=>$lotteryid,'periodsid'=>$lastperiodsid))->select();         
         if(empty($data) && is_array($data)) {
                 return 0;
         }
          
         foreach ($data as $key => $value) {
-            $data[$key]['create_time'] = date('Y/m/d',$value['create_time']);
+            $data['lotterynumbers'] = $value['lotterynumbers'];
             
         }
 
@@ -66,10 +67,9 @@ class UserLottery extends Checkuser
     }
     
      //获取投注记录
-    public function getUserLotterywaitlist( $userid )
+    public function getUserLotterylistaaaaa( $userid )
     { 
-        echo $userid;
-        $data= $this->alias('ul')->where( array('ul.userid'=>$userid,'Lw.status'=>0 ))->join('ta_user_lottery_winning ulw ',' ul.userid = ulw.userid','LEFT')->join( 'Lottery Lottery ',' Lottery.id=ul.lotteryid' ,'LEFT' )->join( 'lottery_winning Lw ',' Lottery.id=Lw.lotteryid' ,'LEFT' )->order('ul.create_time desc')->select();         
+        $data= $this->alias('ul')->where( array('ul.userid'=>1 ))->join('ta_user_lottery_winning ulw ',' ul.userid = ulw.userid','LEFT')->join( 'Lottery Lottery ',' Lottery.id=ul.lotteryid' ,'LEFT' )->join( 'lottery_winning Lw ',' Lottery.id=Lw.lotteryid' ,'LEFT' )->order('ul.create_time desc')->select();         
         if(empty($data) && is_array($data)) {
                 return 0;
         }
@@ -78,23 +78,7 @@ class UserLottery extends Checkuser
             $data[$key]['create_time'] =substr(Date("Y",$value['create_time']),-2,2). date('/m/d',$value['create_time']);
             
         }
-        //var_dump($data);die;
-        return $data;
-    }
-     //获取投注记录
-    public function getUserLotterylist( $userid )
-    { 
-        echo $userid;
-        $data= $this->alias('ul')->where( array('ul.userid'=>$userid ))->join('ta_user_lottery_winning ulw ',' ul.userid = ulw.userid','LEFT')->join( 'Lottery Lottery ',' Lottery.id=ul.lotteryid' ,'LEFT' )->join( 'lottery_winning Lw ',' Lottery.id=Lw.lotteryid' ,'LEFT' )->order('ul.create_time desc')->select();         
-        if(empty($data) && is_array($data)) {
-                return 0;
-        }
-         
-        foreach ($data as $key => $value) {
-            $data[$key]['create_time'] =substr(Date("Y",$value['create_time']),-2,2). date('/m/d',$value['create_time']);
-            
-        }
-        //var_dump($data);die;
+
         return $data;
     }
  

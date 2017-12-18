@@ -69,7 +69,7 @@ class Index extends Admin
                 $Tixian[$key]['balance']  = $value['balance'];                
                 $Tixian[$key]['username']  = $value['username'];                
                 $Tixian[$key]['BankID']  = $value['BankID'];                
-                $Tixian[$key]['id']  = $value['id'];                
+                $Tixian[$key]['id']  = $value['tid'];                
                 $Tixian[$key]['Address_P']  = $value['Address_P'];                
                 $Tixian[$key]['Address_C']  = $value['Address_C'];                
                 $Tixian[$key]['RealName']  = $value['RealName'];                

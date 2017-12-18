@@ -105,11 +105,11 @@
             <!--循环列表-->
             {volist name="datawinning" id="voa"}
           <ul>
-            <li>第{$vo.lotteryid}期</li>
+            <li>第{$voa.lotteryid}期</li>
             <li>{$voa.lotteryname}</li>
             <li>{$voa.lottery_number}</li>
             <li>{$voa.bettingmoney}元</li>
-            <li>{$vo.lotterynumbers}</li>
+            <li>{$voa.lotterynumbers}</li>
             <li>{$voa.winningmoney}元</li>
           </ul>
             {/volist}
@@ -141,11 +141,11 @@
              <!--循环列表-->
             {volist name="datanowinning" id="vob"}
           <ul>
-            <li>第{$vo.lotteryid}期</li>
+            <li>第{$vob.lotteryid}期</li>
             <li>{$vob.lotteryname}</li>
             <li>{$vob.lottery_number}</li>
             <li>{$vob.bettingmoney}元</li>
-            <li>{$vo.lotterynumbers}</li>
+            <li>{$vob.lotterynumbers}</li>
             <li>{$vob.winningmoney}元</li>
           </ul>
             {/volist}         

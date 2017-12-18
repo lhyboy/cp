@@ -62,8 +62,8 @@ class Recharge extends Admin
 	}
       	public function saverecharge( $data )
 	{
-            //Db::startTrans();
-            //try{
+            Db::startTrans();
+            try{
                 //充值金额入库
                 if( isset( $data['id']) && !empty($data['id'])) {
 			$result = $this->edit( $data );
@@ -71,15 +71,33 @@ class Recharge extends Admin
 		} else {
 			return FALSE;
 		}
-                //修改用户余额
                 
-		return $result;
+                //获取本次用户的充值金额
+                $map = [
+			'id' => $data['id']
+		];
+                $MoneyRow = $this->where($map)->find();
+                if( empty($MoneyRow) ) {
+			return info('金额异常');
+		}
+                //修改用户余额
+                if( isset( $MoneyRow['userid']) && !empty($MoneyRow['userid'])) {
+                        $user = User::get($MoneyRow['userid']);
+                        $user->balance     = $user->balance+$MoneyRow['Money'];
+			$user->save();
+                        
+		} else {
+			return info('异常');
+		}
+		
                 // 提交事务
-               // Db::commit(); 
-            //}catch (\Exception $e) {
+               Db::commit(); 
+               return $result;
+            }catch (\Exception $e) {
                 // 回滚事务
-             //   Db::rollback();
-           // }
+                Db::rollback();
+                return info('异常');
+           }
 		
 	}  
         
