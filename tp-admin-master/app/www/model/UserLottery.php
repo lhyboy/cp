@@ -136,6 +136,16 @@ class UserLottery extends Checkuser
             }
 	}
 
+    public function updateuserLottery( $data ){
+            
+            if( isset( $data['lotteryid']) && !empty($data['lotteryid'])) {
+                
+                
+                $res = $this->save($data,['periodsid'=>$data['periodsid'],'lotteryid'=>$data['lotteryid']]);
+                
+            }
+            
 
+    }
 
 }

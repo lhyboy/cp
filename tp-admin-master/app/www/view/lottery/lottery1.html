@@ -51,20 +51,20 @@
       </header>
       <section data-v-5dbc8cc5="" class="State">
         <div data-v-5dbc8cc5="">
-          <p data-v-5dbc8cc5="">1018012期开奖号码{$data.lotterynumbers}</p>
+          <p data-v-5dbc8cc5="">{$lastnumbers.periodsid}期开奖号码</p>
           <div data-v-5dbc8cc5="" style="display: block;" class="DiceImg">
             <div data-v-5dbc8cc5="" class="Dice Dice3 Sieve"></div>
             <div data-v-5dbc8cc5="" class="Dice Dice3 Sieve"></div>
             <div data-v-5dbc8cc5="" class="Dice Dice3 Sieve"></div>
             <i data-v-5dbc8cc5="" class="iconfont xiala"></i></div>
           <div data-v-5dbc8cc5="" style="display: block;" class="DiceText">
-            <div data-v-5dbc8cc5="" class="Dice">1</div>
-            <div data-v-5dbc8cc5="" class="Dice">2</div>
-            <div data-v-5dbc8cc5="" class="Dice">3</div>
+            <div data-v-5dbc8cc5="" class="Dice">{$lastnumbers.lotterynumbers.0}</div>
+            <div data-v-5dbc8cc5="" class="Dice">{$lastnumbers.lotterynumbers.1}</div>
+            <div data-v-5dbc8cc5="" class="Dice">{$lastnumbers.lotterynumbers.2}</div>
             <i data-v-5dbc8cc5="" class="iconfont xiala"></i></div>
         </div>
         <div data-v-5dbc8cc5="">
-          <p data-v-5dbc8cc5="">1018013期投注截止</p>
+          <p data-v-5dbc8cc5="">{$data.nowperiodsid}期投注截止</p>
           <div data-v-5dbc8cc5="" class="timeP" data-val1='59'></div>
         </div>
         <table data-v-5dbc8cc5="" style="display: none;" class="openPast">
@@ -74,167 +74,26 @@
             <td data-v-5dbc8cc5="">和值</td>
             <td data-v-5dbc8cc5="">大小</td>
             <td data-v-5dbc8cc5="">单双</td>
-          </tr>
+          </tr>  
+          {volist name="lotterynumbers" id="vo"}
           <tr data-v-5dbc8cc5="">
-            <td data-v-5dbc8cc5="">&nbsp;&nbsp;&nbsp;1018012<i data-v-5dbc8cc5="">—</i></td>
+            <td data-v-5dbc8cc5="">&nbsp;&nbsp;&nbsp;{$vo['periodsid']}<i data-v-5dbc8cc5="">—</i></td>
             <td data-v-5dbc8cc5="" style="position:relative;"><div data-v-5dbc8cc5="" class="openPastDiceImg">
-                <div data-v-5dbc8cc5="" class="Dice Dice3"></div>
-                <div data-v-5dbc8cc5="" class="Dice Dice3"></div>
-                <div data-v-5dbc8cc5="" class="Dice Dice3"></div>
+                <div data-v-5dbc8cc5="" class="Dice Dice1">{$vo.lotterynumbers['0']}</div>
+                <div data-v-5dbc8cc5="" class="Dice Dice3">{$vo.lotterynumbers['1']}</div>
+                <div data-v-5dbc8cc5="" class="Dice Dice4">{$vo.lotterynumbers['2']}</div>
               </div>
               <div data-v-5dbc8cc5="" class="openPastDiceText">
-                <div data-v-5dbc8cc5="" class="Dice">3</div>
-                <div data-v-5dbc8cc5="" class="Dice">3</div>
-                <div data-v-5dbc8cc5="" class="Dice">3</div>
+                <div data-v-5dbc8cc5="" class="Dice">{$vo.lotterynumbers['0']}</div>
+                <div data-v-5dbc8cc5="" class="Dice">{$vo.lotterynumbers['1']}</div>
+                <div data-v-5dbc8cc5="" class="Dice">{$vo.lotterynumbers['2']}</div>
               </div></td>
-            <td data-v-5dbc8cc5="">9</td>
-            <td data-v-5dbc8cc5=""><span data-v-5dbc8cc5="" class="light">小</span></td>
-            <td data-v-5dbc8cc5=""><span data-v-5dbc8cc5="" class="light">单</span></td>
+            <td data-v-5dbc8cc5="">{$vo.sumlotterynumbers}</td>
+            <td data-v-5dbc8cc5=""><span data-v-5dbc8cc5="" class="light">{$vo.daxiao}</span></td>
+            <td data-v-5dbc8cc5=""><span data-v-5dbc8cc5="" class="light">{$vo.danshuang}</span></td>
           </tr>
-          <tr data-v-5dbc8cc5="">
-            <td data-v-5dbc8cc5="">&nbsp;&nbsp;&nbsp;1018011<i data-v-5dbc8cc5="">—</i></td>
-            <td data-v-5dbc8cc5="" style="position:relative;"><div data-v-5dbc8cc5="" class="openPastDiceImg">
-                <div data-v-5dbc8cc5="" class="Dice Dice1"></div>
-                <div data-v-5dbc8cc5="" class="Dice Dice3"></div>
-                <div data-v-5dbc8cc5="" class="Dice Dice5"></div>
-              </div>
-              <div data-v-5dbc8cc5="" class="openPastDiceText">
-                <div data-v-5dbc8cc5="" class="Dice">1</div>
-                <div data-v-5dbc8cc5="" class="Dice">3</div>
-                <div data-v-5dbc8cc5="" class="Dice">5</div>
-              </div></td>
-            <td data-v-5dbc8cc5="">9</td>
-            <td data-v-5dbc8cc5=""><span data-v-5dbc8cc5="" class="light">小</span></td>
-            <td data-v-5dbc8cc5=""><span data-v-5dbc8cc5="" class="light">单</span></td>
-          </tr>
-          <tr data-v-5dbc8cc5="">
-            <td data-v-5dbc8cc5="">&nbsp;&nbsp;&nbsp;1018010<i data-v-5dbc8cc5="">—</i></td>
-            <td data-v-5dbc8cc5="" style="position:relative;"><div data-v-5dbc8cc5="" class="openPastDiceImg">
-                <div data-v-5dbc8cc5="" class="Dice Dice2"></div>
-                <div data-v-5dbc8cc5="" class="Dice Dice3"></div>
-                <div data-v-5dbc8cc5="" class="Dice Dice6"></div>
-              </div>
-              <div data-v-5dbc8cc5="" class="openPastDiceText">
-                <div data-v-5dbc8cc5="" class="Dice">2</div>
-                <div data-v-5dbc8cc5="" class="Dice">3</div>
-                <div data-v-5dbc8cc5="" class="Dice">6</div>
-              </div></td>
-            <td data-v-5dbc8cc5="">11</td>
-            <td data-v-5dbc8cc5=""><span data-v-5dbc8cc5="" class="light">大</span></td>
-            <td data-v-5dbc8cc5=""><span data-v-5dbc8cc5="" class="light">单</span></td>
-          </tr>
-          <tr data-v-5dbc8cc5="">
-            <td data-v-5dbc8cc5="">&nbsp;&nbsp;&nbsp;1018009<i data-v-5dbc8cc5="">—</i></td>
-            <td data-v-5dbc8cc5="" style="position:relative;"><div data-v-5dbc8cc5="" class="openPastDiceImg">
-                <div data-v-5dbc8cc5="" class="Dice Dice1"></div>
-                <div data-v-5dbc8cc5="" class="Dice Dice3"></div>
-                <div data-v-5dbc8cc5="" class="Dice Dice4"></div>
-              </div>
-              <div data-v-5dbc8cc5="" class="openPastDiceText">
-                <div data-v-5dbc8cc5="" class="Dice">1</div>
-                <div data-v-5dbc8cc5="" class="Dice">3</div>
-                <div data-v-5dbc8cc5="" class="Dice">4</div>
-              </div></td>
-            <td data-v-5dbc8cc5="">8</td>
-            <td data-v-5dbc8cc5=""><span data-v-5dbc8cc5="" class="light">小</span></td>
-            <td data-v-5dbc8cc5=""><span data-v-5dbc8cc5="" class="light">双</span></td>
-          </tr>
-          <tr data-v-5dbc8cc5="">
-            <td data-v-5dbc8cc5="">&nbsp;&nbsp;&nbsp;1018008<i data-v-5dbc8cc5="">—</i></td>
-            <td data-v-5dbc8cc5="" style="position:relative;"><div data-v-5dbc8cc5="" class="openPastDiceImg">
-                <div data-v-5dbc8cc5="" class="Dice Dice1"></div>
-                <div data-v-5dbc8cc5="" class="Dice Dice5"></div>
-                <div data-v-5dbc8cc5="" class="Dice Dice5"></div>
-              </div>
-              <div data-v-5dbc8cc5="" class="openPastDiceText">
-                <div data-v-5dbc8cc5="" class="Dice">1</div>
-                <div data-v-5dbc8cc5="" class="Dice">5</div>
-                <div data-v-5dbc8cc5="" class="Dice">5</div>
-              </div></td>
-            <td data-v-5dbc8cc5="">11</td>
-            <td data-v-5dbc8cc5=""><span data-v-5dbc8cc5="" class="light">大</span></td>
-            <td data-v-5dbc8cc5=""><span data-v-5dbc8cc5="" class="light">单</span></td>
-          </tr>
-          <tr data-v-5dbc8cc5="">
-            <td data-v-5dbc8cc5="">&nbsp;&nbsp;&nbsp;1018007<i data-v-5dbc8cc5="">—</i></td>
-            <td data-v-5dbc8cc5="" style="position:relative;"><div data-v-5dbc8cc5="" class="openPastDiceImg">
-                <div data-v-5dbc8cc5="" class="Dice Dice2"></div>
-                <div data-v-5dbc8cc5="" class="Dice Dice5"></div>
-                <div data-v-5dbc8cc5="" class="Dice Dice6"></div>
-              </div>
-              <div data-v-5dbc8cc5="" class="openPastDiceText">
-                <div data-v-5dbc8cc5="" class="Dice">2</div>
-                <div data-v-5dbc8cc5="" class="Dice">5</div>
-                <div data-v-5dbc8cc5="" class="Dice">6</div>
-              </div></td>
-            <td data-v-5dbc8cc5="">13</td>
-            <td data-v-5dbc8cc5=""><span data-v-5dbc8cc5="" class="light">大</span></td>
-            <td data-v-5dbc8cc5=""><span data-v-5dbc8cc5="" class="light">单</span></td>
-          </tr>
-          <tr data-v-5dbc8cc5="">
-            <td data-v-5dbc8cc5="">&nbsp;&nbsp;&nbsp;1018006<i data-v-5dbc8cc5="">—</i></td>
-            <td data-v-5dbc8cc5="" style="position:relative;"><div data-v-5dbc8cc5="" class="openPastDiceImg">
-                <div data-v-5dbc8cc5="" class="Dice Dice2"></div>
-                <div data-v-5dbc8cc5="" class="Dice Dice5"></div>
-                <div data-v-5dbc8cc5="" class="Dice Dice5"></div>
-              </div>
-              <div data-v-5dbc8cc5="" class="openPastDiceText">
-                <div data-v-5dbc8cc5="" class="Dice">2</div>
-                <div data-v-5dbc8cc5="" class="Dice">5</div>
-                <div data-v-5dbc8cc5="" class="Dice">5</div>
-              </div></td>
-            <td data-v-5dbc8cc5="">12</td>
-            <td data-v-5dbc8cc5=""><span data-v-5dbc8cc5="" class="light">大</span></td>
-            <td data-v-5dbc8cc5=""><span data-v-5dbc8cc5="" class="light">双</span></td>
-          </tr>
-          <tr data-v-5dbc8cc5="">
-            <td data-v-5dbc8cc5="">&nbsp;&nbsp;&nbsp;1018005<i data-v-5dbc8cc5="">—</i></td>
-            <td data-v-5dbc8cc5="" style="position:relative;"><div data-v-5dbc8cc5="" class="openPastDiceImg">
-                <div data-v-5dbc8cc5="" class="Dice Dice2"></div>
-                <div data-v-5dbc8cc5="" class="Dice Dice3"></div>
-                <div data-v-5dbc8cc5="" class="Dice Dice4"></div>
-              </div>
-              <div data-v-5dbc8cc5="" class="openPastDiceText">
-                <div data-v-5dbc8cc5="" class="Dice">2</div>
-                <div data-v-5dbc8cc5="" class="Dice">3</div>
-                <div data-v-5dbc8cc5="" class="Dice">4</div>
-              </div></td>
-            <td data-v-5dbc8cc5="">9</td>
-            <td data-v-5dbc8cc5=""><span data-v-5dbc8cc5="" class="light">小</span></td>
-            <td data-v-5dbc8cc5=""><span data-v-5dbc8cc5="" class="light">单</span></td>
-          </tr>
-          <tr data-v-5dbc8cc5="">
-            <td data-v-5dbc8cc5="">&nbsp;&nbsp;&nbsp;1018004<i data-v-5dbc8cc5="">—</i></td>
-            <td data-v-5dbc8cc5="" style="position:relative;"><div data-v-5dbc8cc5="" class="openPastDiceImg">
-                <div data-v-5dbc8cc5="" class="Dice Dice1"></div>
-                <div data-v-5dbc8cc5="" class="Dice Dice5"></div>
-                <div data-v-5dbc8cc5="" class="Dice Dice6"></div>
-              </div>
-              <div data-v-5dbc8cc5="" class="openPastDiceText">
-                <div data-v-5dbc8cc5="" class="Dice">1</div>
-                <div data-v-5dbc8cc5="" class="Dice">5</div>
-                <div data-v-5dbc8cc5="" class="Dice">6</div>
-              </div></td>
-            <td data-v-5dbc8cc5="">12</td>
-            <td data-v-5dbc8cc5=""><span data-v-5dbc8cc5="" class="light">大</span></td>
-            <td data-v-5dbc8cc5=""><span data-v-5dbc8cc5="" class="light">双</span></td>
-          </tr>
-          <tr data-v-5dbc8cc5="">
-            <td data-v-5dbc8cc5="">&nbsp;&nbsp;&nbsp;1018003<i data-v-5dbc8cc5="">—</i></td>
-            <td data-v-5dbc8cc5="" style="position:relative;"><div data-v-5dbc8cc5="" class="openPastDiceImg">
-                <div data-v-5dbc8cc5="" class="Dice Dice3"></div>
-                <div data-v-5dbc8cc5="" class="Dice Dice5"></div>
-                <div data-v-5dbc8cc5="" class="Dice Dice6"></div>
-              </div>
-              <div data-v-5dbc8cc5="" class="openPastDiceText">
-                <div data-v-5dbc8cc5="" class="Dice">3</div>
-                <div data-v-5dbc8cc5="" class="Dice">5</div>
-                <div data-v-5dbc8cc5="" class="Dice">6</div>
-              </div></td>
-            <td data-v-5dbc8cc5="">14</td>
-            <td data-v-5dbc8cc5=""><span data-v-5dbc8cc5="" class="light">大</span></td>
-            <td data-v-5dbc8cc5=""><span data-v-5dbc8cc5="" class="light">双</span></td>
-          </tr>
+          {/volist} 
+          
         </table>
         <table data-v-5dbc8cc5="" style="display: none;" class="myBet">
           <tr data-v-5dbc8cc5="">

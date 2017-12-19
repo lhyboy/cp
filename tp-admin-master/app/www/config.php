@@ -45,7 +45,11 @@ return [
     ],
 
     'app_debug'              => true,
-
+    
+    //是否关闭定时脚本
+    //'Crontab'              => false,
+    'Crontab'              => true,
+    
     'session'                => [
         'id'             => '',
         // SESSION_ID的提交变量,解决flash上传跨域

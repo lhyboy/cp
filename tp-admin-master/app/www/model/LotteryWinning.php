@@ -12,21 +12,46 @@ class LotteryWinning extends Checkuser
 	use SoftDelete;
     protected $deleteTime = 'delete_time';
 
-     //获取上期开奖号码
-    public function getlastnumbers($lotteryid,$lastperiodsid)
+    
+      //更具条件获取开奖号码
+    public function getnumbers($lotteryid,$periodsid)
+    {   
+        
+        $map = [
+                'periodsid' => $lotteryid,
+                'lotteryid' => $periodsid
+        ];
+        $resultRow = $this->where($map)->find();
+        if( empty($resultRow) ) {
+                return FALSE;
+        }
+        return $resultRow;
+      
+       
+    }
+    
+    
+    
+     //获取上11期的开奖号码
+    public function getlastnumbers($lotteryid)
     {      
        
-        $data=  $this->where( array('lotteryid'=>$lotteryid,'periodsid'=>$lastperiodsid))->select();         
+        $data=  $this->where( array('status'=>1,'lotteryid'=>$lotteryid))->limit(0, 10)->order('id desc')->select();         
         if(empty($data) && is_array($data)) {
-                return 0;
+                $rdata=array();
         }
-         
+       
         foreach ($data as $key => $value) {
-            $data['lotterynumbers'] = $value['lotterynumbers'];
+            // var_dump(unserialize($value['lotterynumbers']));die;
+            $rdata[$key]['periodsid'] = $value['periodsid'];
+            $rdata[$key]['lotterynumbers'] = explode(',',$value['lotterynumbers']);
+            $rdata[$key]['sumlotterynumbers'] = array_sum($rdata[$key]['lotterynumbers']);
+            $rdata[$key]['daxiao'] = $rdata[$key]['sumlotterynumbers']>9 ? '大':'小';
+            $rdata[$key]['danshuang'] = $rdata[$key]['sumlotterynumbers']&1 ? '单':'双';;
             
         }
-
-        return $data;
+ 
+        return $rdata;
     }
     
      //获取当前期彩票投注记录
@@ -121,5 +146,27 @@ class LotteryWinning extends Checkuser
 	}
 
 
+    public function savelotterywinning( $data ){
+            
+            if( isset( $data['lotteryid']) && !empty($data['lotteryid'])) {
+                
+                
+                $res = $this->save($data,['status'=>0,'periodsid'=>$data['periodsid'],'lotteryid'=>$data['lotteryid']]);
+                //var_dump($data);
+               //var_dump($res);
+                if($res == 1){
+                    //增加下期的数据
+                    $da['lotteryid']=$data['lotteryid'];
+                    $da['periodsid']=$data['periodsid']+1;              
+                    $da['lotterynumbers']= '';          
+                    $da['status'] = 0;
+                    $da['create_time'] = time();
+                     
+                    $abc=$this->isUpdate(false)->save( $da );
+                    //var_dump($abc);die;
+                }
+            }
+            
 
+    }
 }

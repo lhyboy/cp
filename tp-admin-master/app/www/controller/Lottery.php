@@ -23,9 +23,9 @@ class Lottery extends Checkuser
         //上一期的id
         $data['lastperiodsid']=date('ymdHi',strtotime('-1 Minute'));
         
-        //获取上一期的开奖号码
-        $data['lotterynumbers'] = Loader::model('LotteryWinning')->getlastnumbers( $lotteryid,$data['lastperiodsid'] );
-         
+        //获取上11期的开奖号码
+        $lotterynumbers = Loader::model('LotteryWinning')->getlastnumbers( $lotteryid );
+        // var_dump($lotterynumbers);die;
         //当前期数
         $data['nowperiodsid']=date('ymdHi',time());
         
@@ -42,18 +42,41 @@ class Lottery extends Checkuser
             $data['nowmin']=5-$i;
         }
         
-        //var_dump($data);die;
+        
+        $lastnumbers['periodsid']=$lotterynumbers[0]['periodsid'];
+        $lastnumbers['lotterynumbers']=$lotterynumbers[0]['lotterynumbers'];
+        $this->assign('lotterynumbers',$lotterynumbers);
+        $this->assign('lastnumbers',$lastnumbers);
         $this->assign('data',$data);
         return view('lottery1');
         
     }
     
     //开奖
-    public function openlottery(){        
-         $postData = input('post.');
-         //获取当前投注记录
-         $postData['lotteryid']=1;         
-         $UserLotterylist = Loader::model('UserLottery')->getullistbylotteryid( $postData['lotteryid'] );
+    public function openlottery(){   
+        
+        if (Request::instance()->isGet()){            
+            $getData = input('get.');
+        }elseif(Request::instance()->isPost()){
+            $getData = input('post.');
+            //获取开奖结果
+            $ret = Loader::model('LotteryWinning')->getnumbers( $getData['lotteryid'], $getData['periodsid']);
+            if($ret){
+                return $this->success( explode(',',$ret['lotterynumbers'])   );
+            }else{
+                return $this->success( '还没到开奖时间'   );
+            }
+            
+        }else{
+            die('缺少参数');           
+        }
+         
+        //获取当前投注记录
+        if($getData['lotteryid']){
+             
+                  
+        $UserLotterylist = Loader::model('UserLottery')->getullistbylotteryid( $getData['lotteryid'] );
+         
          //计算结果
          if($UserLotterylist){
              //本期号码
@@ -65,8 +88,7 @@ class Lottery extends Checkuser
              if($check){
                  //计算三个骰子的号码
                  $threenumber=$this->getthreenumber($lotterynumbers['lotterynum']);
-                  
-                 return $this->success($threenumber[array_rand($threenumber)],url('www/index/index'));
+                 //return $this->success($threenumber[array_rand($threenumber)],url('www/index/index'));
              }else{
                 //庄家通吃
                 //本期号码
@@ -74,15 +96,49 @@ class Lottery extends Checkuser
                 
                 //计算三个骰子的号码
                  $threenumber=$this->getthreenumber($lotterynumbers['lotterynum']);
-                return $this->success($threenumber[array_rand($threenumber)],url('www/index/index'));                
+                //return $this->success($threenumber[array_rand($threenumber)],url('www/index/index'));                
                 
              }
+             //更新数据库，把开奖号码写入开奖号码表，
+             $data=array();
+              $data['lotteryid']=$getData['lotteryid'];
+              $data['periodsid']=$getData['periodsid'];   
+              
+                $lotterynumbers= $threenumber[array_rand($threenumber)];          
+              $data['lotterynumbers']= implode(',',$lotterynumbers); 
+              //echo $data['lotterynumbers'];die;
+              $data['status'] = 1;
+                Loader::model('LotteryWinning')->savelotterywinning( $data );
+             //更新下注表当前期的的状态，
+                $data=array();
+              $data['lotteryid']=$getData['lotteryid'];
+              $data['periodsid']=$getData['periodsid'];                                    
+              $data['status'] = 1;
+             Loader::model('UserLottery')->updateuserLottery( $data );
+             //获取中奖人员写入中奖者表
+             $data=array();
+              $data['lotteryid']=$getData['lotteryid'];
+              $data['periodsid']=$getData['periodsid'];                                    
+              $data['sumlotterynumbers']= array_sum($lotterynumbers); 
+              $data['danshuang'] = $data['sumlotterynumbers']&1 ? '单':'双';
+              $data['daxiao'] = $data['sumlotterynumbers']>9 ? '大':'小';
+                      
+             Loader::model('UserLotteryWinning')->adduserLotteryWinning( $data );
+             //
+             
          }else{
-             return $this->error( '本期数据有人作弊！' );
+             //return $this->error( '本期数据有人作弊！' );
+             die(' 本期数据有人作弊！') ;
          }
-        var_dump($UserLotterylist);var_dump($lotterynumbers);die;
-        return view('lottery1');
-        
+         }else{
+             die('缺少参数');
+         }
+         //var_dump($threenumber);die;
+          die('成功');
+         //
+        //return view('lottery1');
+        //return $this->success($lotterynumbers);
+          
     }
     //投注
     public function cathectic(){        

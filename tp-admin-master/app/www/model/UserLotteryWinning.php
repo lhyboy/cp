@@ -70,7 +70,25 @@ class UserLotteryWinning extends Checkuser
 	}
 
 
-	
+        public function adduserLotteryWinning( $data ){
+
+            if( isset( $data['lotteryid']) && !empty($data['lotteryid'])) {
+                $UserLotterylist = UserLottery::all(['status'=>0,'lotteryid'=>$data['lotteryid'],'periodsid'=>$data['periodsid']]);
+                if(empty($UserLotterylist) && is_array($UserLotterylist)) {
+                    return 0;
+                }else{
+                    foreach ($UserLotterylist as $v){
+                        $adddata[]=array('userid'=>$v['userid'],'periodsid'=>$v['periodsid'],'lotteryid'=>$v['lotteryid'],'winningmoney'=>$v['ifwining'],'bettingmoney'=>$v['bettingmoney']);
+                    }
+                    $this->saveAll( $adddata );
+                }
+
+            
+            
+        }
+            
+
+    }
 
 
 
