@@ -12,6 +12,22 @@ class User extends Checkuser
 	use SoftDelete;
     protected $deleteTime = 'delete_time';
 
+    	/**
+	 *  用户登录
+	 */
+	public function getuser(array $data)
+	{
+		
+		
+		$userRow = $this->where($data)->find();
+		if( empty($userRow) ) {
+			return FALSE;
+                }else{
+                    return $userRow;
+                }
+	}
+    
+    
 	/**
 	 *  用户登录
 	 */

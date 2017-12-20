@@ -17,6 +17,20 @@ class Lottery extends Checkuser
     }
     
     public function lottery1(){
+        
+        $userinfo=Session::get('userinfo', 'www') ;
+        if($userinfo['id'] ) {
+            $map = [
+			'id' => $userinfo['id']
+		];
+             $userinfo=Loader::model('User')->getuser($map);
+             
+             $data['balance']   =$userinfo['balance'];
+             //var_dump($data);die;
+        }else{
+            $data['balance']   =0;
+        }
+         
         //彩票类型id
         $lotteryid=1;
         
