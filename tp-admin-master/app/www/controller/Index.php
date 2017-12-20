@@ -22,7 +22,7 @@ class Index extends Common
        // ignore_user_abort(TRUE);// 设定关闭浏览器也执行程序
         //set_time_limit(0);      // 设定响应时间不限制，默认为30秒
         //$time=3;
-        $timeout=1;
+        $timeout=3;
         $nowperiodsid=date('ymdHi',time());
         $url="http://www.yuletest.com/www/lottery/openlottery?lotteryid=1&periodsid=$nowperiodsid";
         //echo $url;die;

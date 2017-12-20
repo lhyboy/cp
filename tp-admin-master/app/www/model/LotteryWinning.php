@@ -13,7 +13,7 @@ class LotteryWinning extends Checkuser
     protected $deleteTime = 'delete_time';
 
     
-      //更具条件获取开奖号码
+      //根据条件获取开奖号码
     public function getnumbers($lotteryid,$periodsid)
     {   
         
