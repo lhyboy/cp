@@ -20,6 +20,38 @@ class Index extends Admin
 
             return view();
     }
+    
+    //投注记录
+    public function betrecord(){
+        
+        return view();
+        
+    }
+    
+     //获取投注记录
+    public function getbetrecord(){
+        //获取投注记录
+        
+        
+        $betrecordlist = Loader::model('UserLottery')->getList();
+        if(empty($betrecordlist) && is_array($betrecordlist)) {            
+            $betrecordlist='';
+        }else{
+            foreach ($betrecordlist as $key => $value) {                
+                $betrecord[$key]['create_time'] = date('Y-m-d H:i:s',$value['create_time']);
+                $betrecord[$key]['nickname']  =  $value['nickname'] ;
+                $betrecord[$key]['lotteryname']  = $value['lotteryname'];
+                $betrecord[$key]['bettingmoney']  = $value['bettingmoney'];
+                $betrecord[$key]['winningmoney']  = $value['winningmoney'];
+                $betrecord[$key]['lotteryid']  = $value['lotteryid'];
+                $betrecord[$key]['lotterynumbers']  = is_array($value['lotterynumbers']) ? implode(',',$value['lotterynumbers']):'';  
+            }
+        }
+        //var_dump($Recharge);die;
+        
+        return $betrecord;
+        
+    }
       
     //获取充值记录
     public function recharge(){
@@ -27,6 +59,11 @@ class Index extends Admin
         return view();
         
     }
+    
+    
+    
+    
+    
     //获取充值记录
     public function getrecharge(){
         //获取充值记录
