@@ -64,7 +64,7 @@ class Lottery extends Checkuser
             if($ret){
                 return $this->success( explode(',',$ret['lotterynumbers'])   );
             }else{
-                return $this->success( '还没到开奖时间'   );
+                return $this->success( '开奖结果正在生成中'   );
             }
             
         }else{

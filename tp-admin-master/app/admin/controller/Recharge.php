@@ -38,7 +38,8 @@ class Recharge extends Admin
         }else{
             foreach ($Rechargelist as $key => $value) {                
                 $Recharge[$key]['create_time'] = date('Y-m-d H:i:s',$value['create_time']);
-                $Recharge[$key]['playtype']  =  $value['playtype'] == 1 ? '银行卡' : $value['playtype'] == 2 ? '微信' : '支付宝';//1银行卡，2微信，3，支付宝
+                //$Recharge[$key]['playtype']  =  $value['playtype'] == 1 ? '银行卡' : $value['playtype'] == 2 ? '微信' : '支付宝';//1银行卡，2微信，3，支付宝
+                $Recharge[$key]['playtype']  =  $value['playtype'];
                 $Recharge[$key]['Rebate']  = $value['Rebate'];
                 $Recharge[$key]['Money']  = $value['Money'];
                 $Recharge[$key]['id']  = $value['rid'];

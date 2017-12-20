@@ -144,7 +144,8 @@ class Usercenter extends Checkuser
         }else{
             foreach ($Rechargelist as $key => $value) {                
                 $Recharge[$key]['create_time'] = date('Y-m-d H:i:s',$value['create_time']);
-                $Recharge[$key]['playtype']  =  $value['playtype'] == 1 ? '银行卡' : $value['playtype'] == 2 ? '微信' : '支付宝';//1银行卡，2微信，3，支付宝
+                //$Recharge[$key]['playtype']  =  $value['playtype'] == 1 ? '银行卡' : $value['playtype'] == 2 ? '微信' : '支付宝';//1银行卡，2微信，3，支付宝
+                $Recharge[$key]['playtype']  =  $value['playtype'];
                 $Recharge[$key]['state']  = '充值';
                 $Recharge[$key]['money']  = $value['Money'];
                 $Recharge[$key]['status']  = $value['status'] == 1 ? '成功' : '失败';//0失败，1成功

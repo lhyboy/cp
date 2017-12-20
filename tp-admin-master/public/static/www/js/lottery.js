@@ -16,13 +16,13 @@ function clearGame(n1,n2,n3){
     daojishi()
 }
 //滚动筛子控制
-function startGame(type){
+function startGame(lotteryid,periodsid){
     $.each($('.Sieve'),function(){
         $(this).removeClass('Dice1 Dice2 Dice3 Dice4 Dice5 Dice6');
     })
     game(0);
     //开奖
-    $.post('openlottery',{type:type},function(o){ //type 开奖类型
+    $.post('openlottery',{lotteryid:lotteryid,periodsid:periodsid},function(o){ //type 开奖类型
         if(o.code=='1'){
             clearGame(o.msg[0],o.msg[1],o.msg[2]);
             Betting_status=true;
@@ -56,7 +56,8 @@ function daojishi(){
            }else{
                //倒计时结束 开始开奖
                Betting_status=false;
-               startGame(1);
+               periodsid=$('nowperiodsid').val;
+               startGame(1,periodsid);
                clearInterval(timer);
            }
        },1000);
