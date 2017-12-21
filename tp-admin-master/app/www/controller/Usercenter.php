@@ -148,12 +148,13 @@ class Usercenter extends Checkuser
                 $Recharge[$key]['playtype']  =  $value['playtype'];
                 $Recharge[$key]['state']  = '充值';
                 $Recharge[$key]['money']  = $value['Money'];
-                $Recharge[$key]['status']  = $value['status'] == 1 ? '成功' : '失败';//0失败，1成功
+                $Recharge[$key]['status']  =  $value['status'] == 1 ? '成功' : ($value['status'] == 0 ? '进行中':'失败');//0进行中，1成功
             }
         }
         
         //获取提现记录       
         $Tixianlist = Loader::model('Tixian')->getTixianlist( $userinfo['id'] );
+        
         //格式化数据
         if(empty($Tixianlist) && is_array($Tixianlist)) {            
             $Tixian='';
@@ -161,14 +162,15 @@ class Usercenter extends Checkuser
             foreach ($Tixianlist as $key => $value) {                
                 $Tixian[$key]['addtime'] = $value['create_time'];
                 $Tixian[$key]['create_time'] = date('Y-m-d H:i:s',$value['create_time']);                
-                $Tixian[$key]['playtype']  = $value['playtype'] == 1 ? '银行卡' : $value['playtype'] == 2 ? '微信' : '支付宝';//1银行卡，2微信，3，支付宝
+                //$Tixian[$key]['playtype']  = $value['playtype'] == 1 ? '银行卡' : $value['playtype'] == 2 ? '微信' : '支付宝';//1银行卡，2微信，3，支付宝
+                $Tixian[$key]['playtype']  = $value['playtype'] ;
                 $Tixian[$key]['state']  = '提现';
                 $Tixian[$key]['money']  = $value['Money'];
-                $Tixian[$key]['status']  = $value['status'] == 1 ? '成功' : '失败';//0失败，1成功
+                $Tixian[$key]['status']  = $value['status'] == 1 ? '成功' : ($value['status'] == 0 ? '进行中':'失败');//0进行中，1成功
             }
         }
         
-        
+        //var_dump($Tixian);die;
         //混合排序
         if($Tixian && $Recharge){
             $all = array_merge($Tixian, $Recharge); 

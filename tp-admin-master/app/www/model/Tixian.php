@@ -95,7 +95,7 @@ class Tixian extends Checkuser
     //体现记录
     public function getTixianlist( $userid )
     {        
-        return $data = $this->where( array('userid'=>1 ))->order('create_time desc')->select();
+        return $data = $this->where( array('userid'=>$userid ))->order('create_time desc')->select();
          
     }
 

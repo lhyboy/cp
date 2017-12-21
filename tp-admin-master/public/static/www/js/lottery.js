@@ -75,8 +75,6 @@ var Odds8 = 7.47;   //9  12
 var Odds9 = 6.92;   //10 11
 var Betting_status=true; //投注状态，true可投注 false不可投注
 $(function(){   
-   $('#balance span').html($.cookie("userInfo")); //用户余额
-
    //即将开售倒计时
     daojishi()
    //下注

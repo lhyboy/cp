@@ -83,7 +83,21 @@ class Recharge extends Admin
         if(empty($id)){
             return info(lang('Data ID exception'), 0);
         }
+//        
+//        return Loader::model('Recharge')->deleterechargeById($id);
         
-        return Loader::model('Recharge')->deleterechargeById($id);
+        
+//         if(intval($id) < 0){
+//            return info(lang('Data ID exception'), 0);
+//        }
+//        if(!request()->isAjax()) {
+//            return info(lang('Request type error'));
+//        }
+ 
+        
+        
+        $data = ['status' => 2,'id' => $id];
+        //var_dump($data);die;
+        return Loader::model('Recharge')->saverecharge( $data );
     }
 }

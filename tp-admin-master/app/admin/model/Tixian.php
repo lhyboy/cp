@@ -32,6 +32,23 @@ class Tixian extends Admin
 		$data = $this->order('create_time desc')->where( $request['map'] )->limit($request['offset'], $request['limit'])->select();
 		return $this->_fmtData( $data );
 	}
+        
+    public function savetixiandelete( $data )
+	{
+            
+		if( isset( $data['id']) && !empty($data['id'])) {
+			$result = $this->edit( $data );
+                        
+		} else {
+			return FALSE;
+		}
+                 
+                
+               
+               return $result;
+           
+	}
+
 
 	public function savetixian( $data )
 	{

@@ -4394,7 +4394,7 @@ padding:.3rem .5rem;
 }
 .myBet td:nth-of-type(2) .Dice[data-v-5dbc8cc5], .openPast td:nth-of-type(2) .Dice[data-v-5dbc8cc5] {
 	width: 1.42em;
-	height: 1.42em
+	height: 1.32em;
 }
 .myBet td[data-v-5dbc8cc5]:nth-of-type(3), .myBet td[data-v-5dbc8cc5]:nth-of-type(4), .myBet td[data-v-5dbc8cc5]:nth-of-type(5), .openPast td[data-v-5dbc8cc5]:nth-of-type(3), .openPast td[data-v-5dbc8cc5]:nth-of-type(4), .openPast td[data-v-5dbc8cc5]:nth-of-type(5) {
 	width: 2.16rem
